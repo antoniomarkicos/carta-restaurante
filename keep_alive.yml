@@ -1,0 +1,17 @@
+name: Mantenimiento Supabase Active
+
+on:
+  schedule:
+    # Se ejecuta todos los días a las 08:00 AM UTC
+    - cron: '0 8 * * *'
+  workflow_dispatch: # Permite ejecutarlo manualmente
+
+jobs:
+  ping-supabase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hacer petición a Supabase
+        run: |
+          curl -i -X GET https://lfttuisfljirqapwqfyb.supabase.co/rest/v1/ \
+          -H "apikey:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxmdHR1aXNmbGppcnFhcHdxZnliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA3NzA1MjgsImV4cCI6MjEwNjM0NjUyOH0.ZaGk6iJbr-CBSPTGm1rkyteSkDTVG5KU4Hn6l8w7VuU " \
+          -H "Authorization: BearereyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxmdHR1aXNmbGppcnFhcHdxZnliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA3NzA1MjgsImV4cCI6MjEwNjM0NjUyOH0.ZaGk6iJbr-CBSPTGm1rkyteSkDTVG5KU4Hn6l8w7VuU "
