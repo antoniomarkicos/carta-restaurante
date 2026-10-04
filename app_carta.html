@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante Marquicos - Gestor de Menús, Carta y Sincronización</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        :root {
+            --primary: #7a1c28;
+            --primary-dark: #58121b;
+            --cream-bg: #fdfbf7;
+            --cream-card: #f8f4ec;
+            --border-color: #e2d7c7;
+            --text-main: #2c221e;
+            --accent: #b8860b;
+            --danger: #dc3545;
+            --success: #28a745;
+            --github-color: #24292e;
+            --supabase-color: #3ecf8e;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        body { background-color: var(--cream-bg); color: var(--text-main); padding-bottom: 90px; }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-logo { max-height: 70px; max-width: 200px; object-fit: contain; border-radius: 4px; }
+        header h1 { font-size: 1.4rem; letter-spacing: 1px; margin-bottom: 2px; }
+        header p { font-size: 0.85rem; opacity: 0.9; }
+
+        .status-bar { display: flex; justify-content: center; gap: 12px; font-size: 0.75rem; margin-top: 4px; }
+        .status-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 12px; background: rgba(255, 255, 255, 0.15); }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; background-color: #aaa; }
+        .status-dot.connected { background-color: #2e7d32; }
+
+        .container { max-width: 650px; margin: 0 auto; padding: 15px; }
+
+        .tabs { display: flex; background: #ebd8c3; border-radius: 8px; padding: 4px; margin-bottom: 15px; gap: 4px; overflow-x: auto; }
+        .tab-btn { flex: 1; padding: 10px 5px; border: none; background: none; font-weight: bold; color: var(--primary-dark); border-radius: 6px; cursor: pointer; transition: 0.2s; font-size: 0.8rem; text-align: center; white-space: nowrap; }
+        .tab-btn.active { background: var(--primary); color: white; }
+
+        .card { background: white; border-radius: 12px; padding: 15px; margin-bottom: 15px; border: 1px solid var(--border-color); box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
+        .card-title { font-size: 1rem; color: var(--primary); margin-bottom: 10px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
+
+        .title-actions { display: flex; align-items: center; gap: 6px; }
+        .title-btn { background: none; border: none; cursor: pointer; font-size: 0.85rem; opacity: 0.7; transition: 0.2s; }
+        .title-btn:hover { opacity: 1; }
+
+        .add-cat-btn {
+            width: 100%;
+            background: #e8ded1;
+            color: var(--primary-dark);
+            border: 2px dashed var(--border-color);
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: 0.2s;
+        }
+        .add-cat-btn:hover { background: #dfcfbc; }
+
+        .add-dish-btn { background: var(--primary); color: white; border: none; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; font-weight: bold; }
+        .input-text { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.95rem; font-weight: 600; color: var(--text-main); margin-bottom: 10px; }
+        .price-input { width: 100%; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1.1rem; font-weight: bold; color: var(--primary); }
+        .options-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
+        .toggle-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer; }
+
+        .dish-group { margin-bottom: 5px; }
+        .dish-item { display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #f0e8dd; background: white; gap: 10px; }
+        .dish-item:last-child { border-bottom: none; }
+        .dish-info { display: flex; align-items: center; gap: 8px; flex: 1; flex-wrap: wrap; }
+        .dish-info input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
+        .dish-name { font-size: 0.95rem; font-weight: 500; }
+        .dish-price { font-weight: bold; color: var(--primary); font-size: 0.95rem; margin-left: auto; padding-right: 8px; white-space: nowrap; }
+        .supplement-badge { font-size: 0.75rem; background: #fff3cd; color: #856404; padding: 2px 6px; border-radius: 4px; }
+        .allergen-badges { display: inline-flex; gap: 4px; margin-left: 4px; }
+        .allergen-icon { font-size: 0.85rem; background: #f0f0f0; padding: 2px 4px; border-radius: 4px; }
+        .dish-actions { display: flex; gap: 6px; }
+        .action-btn { background: none; border: none; cursor: pointer; font-size: 1rem; padding: 4px; opacity: 0.8; transition: 0.2s; }
+        .action-btn:hover { opacity: 1; }
+
+        .footer-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 2px solid var(--border-color); padding: 12px 20px; display: flex; gap: 10px; box-shadow: 0 -4px 10px rgba(0,0,0,0.08); z-index: 100; }
+        .btn { flex: 1; padding: 12px; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: 0.2s; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-secondary { background: #25d366; color: white; }
+        .btn-supabase { background: #101010; color: var(--supabase-color); border: 1px solid var(--supabase-color); }
+        .btn-github { background: var(--github-color); color: white; }
+
+        .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 200; align-items: center; justify-content: center; padding: 15px; }
+        .modal-content { background: white; padding: 20px; border-radius: 12px; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto; }
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: bold; margin-bottom: 4px; color: var(--text-main); }
+        .form-control { width: 100%; padding: 8px 10px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.95rem; }
+        .allergens-selector { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; background: var(--cream-card); padding: 10px; border-radius: 8px; }
+        .allergen-option { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; cursor: pointer; }
+
+        .print-view { background: var(--cream-bg); border: 2px solid var(--primary); padding: 20px; border-radius: 8px; text-align: center; }
+        .print-header { border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 15px; display: flex; flex-direction: column; align-items: center; }
+        .print-logo { max-height: 80px; margin-bottom: 10px; }
+        .print-header h2 { color: var(--primary); font-size: 1.4rem; text-transform: uppercase; }
+        .print-section-title { color: var(--primary); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin: 12px 0 6px; border-bottom: 1px solid var(--border-color); text-align: left; font-weight: bold; }
+        .print-dish { font-size: 0.9rem; margin: 4px 0; display: flex; justify-content: space-between; align-items: center; text-align: left; }
+        .social-box { background: #f4f4f4; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; font-size: 0.85rem; margin: 10px 0; max-height: 200px; overflow-y: auto; }
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+
+        @media print {
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            body * { visibility: hidden; }
+            .print-view, .print-view * { visibility: visible; }
+            .print-view { position: absolute; left: 0; top: 0; width: 100%; border: none; }
+            .allergen-badges, .allergen-icon { display: inline-flex !important; visibility: visible !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img id="main-logo" src="" alt="Logo" class="header-logo" style="display:none;">
+        <h1 id="header-brand-title">RESTAURANTE MARQUICOS</h1>
+        <p>Gestor de Menús, Carta y Sincronización en la Nube</p>
+        <div class="status-bar">
+            <span class="status-badge"><span id="dot-supabase" class="status-dot"></span> Supabase</span>
+            <span class="status-badge"><span id="dot-github" class="status-dot"></span> GitHub</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Pestañas -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('diario')">Menú Diario</button>
+            <button class="tab-btn" onclick="switchTab('especial')">Menú Especial</button>
+            <button class="tab-btn" onclick="switchTab('carta')">Carta Completa</button>
+            <button class="tab-btn" onclick="switchTab('sync')">⚡ Supabase & GitHub</button>
+            <button class="tab-btn" onclick="switchTab('config')">⚙️ Logo</button>
+        </div>
+
+        <!-- Secciones de Menú Diario -->
+        <div id="view-diario" class="view-section active">
+            <div class="card">
+                <div style="margin-bottom: 10px;">
+                    <label style="font-size:0.8rem; color:#666; font-weight:bold;">Nombre del Menú</label>
+                    <input type="text" id="menu-title-input" class="input-text" value="Menú Diario" oninput="saveData()">
+                </div>
+
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <div style="flex:1;">
+                        <label style="font-size:0.8rem; color:#666; font-weight:bold;">Precio Menú (€)</label>
+                        <input type="number" id="menu-price" class="price-input" value="12.50" step="0.50" oninput="saveData()">
+                    </div>
+                </div>
+                <div class="options-grid">
+                    <label class="toggle-item"><input type="checkbox" id="inc-pan" checked onchange="saveData()"> Incluye Pan</label>
+                    <label class="toggle-item"><input type="checkbox" id="inc-bebida" checked onchange="handleBebidaToggle('diario', 'inc-bebida')"> Incluye Bebida</label>
+                    <label class="toggle-item"><input type="checkbox" id="no-inc-bebida" onchange="handleBebidaToggle('diario', 'no-inc-bebida')"> Bebida No Incluida</label>
+                    <label class="toggle-item"><input type="checkbox" id="inc-postre" checked onchange="saveData()"> Incluye Postre</label>
+                    <label class="toggle-item"><input type="checkbox" id="inc-cafe" onchange="saveData()"> Incluye Café</label>
+                </div>
+            </div>
+
+            <div id="menu-categories-container"></div>
+            <button class="add-cat-btn" onclick="addCategory('menu')">➕ Añadir Nueva Subfamilia al Menú Diario</button>
+        </div>
+
+        <!-- Secciones de Menú Especial -->
+        <div id="view-especial" class="view-section">
+            <div class="card">
+                <div style="margin-bottom: 10px;">
+                    <label style="font-size:0.8rem; color:#666; font-weight:bold;">Nombre del Menú Especial</label>
+                    <input type="text" id="especial-title-input" class="input-text" value="Menú Especial" oninput="saveData()">
+                </div>
+
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <div style="flex:1;">
+                        <label style="font-size:0.8rem; color:#666; font-weight:bold;">Precio Menú (€)</label>
+                        <input type="number" id="especial-price" class="price-input" value="25.00" step="0.50" oninput="saveData()">
+                    </div>
+                </div>
+                <div class="options-grid">
+                    <label class="toggle-item"><input type="checkbox" id="esp-inc-pan" checked onchange="saveData()"> Incluye Pan</label>
+                    <label class="toggle-item"><input type="checkbox" id="esp-inc-bebida" checked onchange="handleBebidaToggle('especial', 'esp-inc-bebida')"> Incluye Bebida</label>
+                    <label class="toggle-item"><input type="checkbox" id="esp-no-inc-bebida" onchange="handleBebidaToggle('especial', 'esp-no-inc-bebida')"> Bebida No Incluida</label>
+                    <label class="toggle-item"><input type="checkbox" id="esp-inc-postre" checked onchange="saveData()"> Incluye Postre</label>
+                    <label class="toggle-item"><input type="checkbox" id="esp-inc-cafe" onchange="saveData()"> Incluye Café</label>
+                </div>
+            </div>
+
+            <div id="especial-categories-container"></div>
+            <button class="add-cat-btn" onclick="addCategory('especial')">➕ Añadir Nueva Subfamilia al Menú Especial</button>
+        </div>
+
+        <!-- Secciones de Carta Completa -->
+        <div id="view-carta" class="view-section">
+            <button class="btn btn-secondary" style="width:100%; margin-bottom:15px; font-size:1rem; padding:12px;" onclick="cargarTodaLaCartaYMenu()">
+                🚀 Cargar Toda la Carta y Menú Especial Automáticamente
+            </button>
+            <div id="carta-categories-container"></div>
+            <button class="add-cat-btn" onclick="addCategory('carta')">➕ Añadir Nueva Subfamilia a la Carta</button>
+        </div>
+
+        <!-- Pestaña Sincronización -->
+        <div id="view-sync" class="view-section">
+            <div class="card">
+                <h3 style="color:var(--primary); margin-bottom:12px;">Conexión Supabase (Base de Datos Realtime)</h3>
+                <p style="font-size:0.85rem; color:#555; margin-bottom:12px;">Sincroniza tus datos instantáneamente en la nube para compartirlos entre dispositivos.</p>
+                <div class="form-group">
+                    <label>Supabase URL</label>
+                    <input type="text" id="supabase-url" class="form-control" placeholder="https://xyz.supabase.co">
+                </div>
+                <div class="form-group">
+                    <label>Supabase Anon Key</label>
+                    <input type="password" id="supabase-key" class="form-control" placeholder="eyJhbGciOi...">
+                </div>
+                <div style="display:flex; gap:8px;">
+                    <button class="btn btn-supabase" onclick="saveSupabaseConfig()">💾 Guardar y Conectar</button>
+                    <button class="btn btn-primary" onclick="pushToSupabase()">⬆️ Guardar a Supabase</button>
+                    <button class="btn btn-secondary" onclick="pullFromSupabase()">⬇️ Descargar</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="color:var(--primary); margin-bottom:12px;">Conexión GitHub</h3>
+                <p style="font-size:0.85rem; color:#555; margin-bottom:12px;">Guarda una copia de respaldo o actualiza un archivo `menu.json` directamente en tu repositorio.</p>
+                <div class="form-group">
+                    <label>Personal Access Token (PAT)</label>
+                    <input type="password" id="github-token" class="form-control" placeholder="ghp_...">
+                </div>
+                <div class="form-group">
+                    <label>Repositorio (usuario/repo)</label>
+                    <input type="text" id="github-repo" class="form-control" placeholder="usuario/restaurante-marquicos">
+                </div>
+                <div class="form-group">
+                    <label>Ruta del Archivo en GitHub</label>
+                    <input type="text" id="github-path" class="form-control" value="data/menu.json">
+                </div>
+                <div style="display:flex; gap:8px;">
+                    <button class="btn btn-github" onclick="saveGithubConfig()">💾 Guardar Ajustes GitHub</button>
+                    <button class="btn btn-github" onclick="pushToGithub()">🚀 Commit & Push a GitHub</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pestaña Configuración del Logo -->
+        <div id="view-config" class="view-section">
+            <div class="card">
+                <h3 style="color:var(--primary); margin-bottom:10px;">Configuración de Logo</h3>
+                <div class="form-group">
+                    <label>Subir Imagen de Logo desde el dispositivo</label>
+                    <input type="file" id="logo-file-input" class="form-control" accept="image/*" onchange="handleLogoUpload(event)">
+                </div>
+                <div class="form-group" style="margin-top:15px;">
+                    <label>O pegar enlace/URL del logo en internet</label>
+                    <input type="text" id="logo-url-input" class="form-control" placeholder="https://ejemplo.com/logo.png">
+                    <button class="btn btn-primary" style="margin-top:8px; padding:6px 12px; font-size:0.85rem;" onclick="saveLogoUrl()">Guardar URL de Logo</button>
+                </div>
+                <div style="margin-top:20px; text-align:center;">
+                    <p style="font-size:0.85rem; font-weight:bold; color:#666;">Vista Previa del Logo Actual:</p>
+                    <img id="logo-preview" src="" alt="Vista previa" style="max-height: 100px; max-width: 100%; margin-top: 10px; display:none; border:1px dashed #ccc; padding:5px;">
+                    <br>
+                    <button class="action-btn" style="color:var(--danger); font-size:0.85rem; margin-top:10px;" onclick="removeLogo()">🗑️ Eliminar Logo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra Inferior -->
+    <div class="footer-bar">
+        <button class="btn btn-primary" onclick="openPrintModal()">🖨️ Imprimir Vista</button>
+        <button class="btn btn-secondary" onclick="openSocialModal()">📱 Copiar p/ Redes</button>
+    </div>
+
+    <!-- Modal Platos -->
+    <div id="dishModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modal-dish-title" style="color:var(--primary); margin-bottom:12px;">Añadir Plato</h3>
+            <div class="form-group">
+                <label>Nombre del Plato</label>
+                <input type="text" id="form-dish-name" class="form-control" placeholder="Ej: Croquetas Caseras">
+            </div>
+            <div class="form-group" id="group-price">
+                <label>Precio (€)</label>
+                <input type="number" id="form-dish-price" class="form-control" step="0.50" placeholder="Ej: 8.50">
+            </div>
+            <div class="form-group" id="group-sup">
+                <label>Suplemento (€) [Opcional]</label>
+                <input type="number" id="form-dish-sup" class="form-control" step="0.50" placeholder="0.00">
+            </div>
+            <div class="form-group">
+                <label>Alérgenos</label>
+                <div class="allergens-selector">
+                    <label class="allergen-option"><input type="checkbox" class="alg-check" value="gluten"> 🌾 Gluten</label>
+                    <label class="allergen-option"><input type="checkbox" class="alg-check" value="lacteos"> 🥛 Lácteos</label>
+                    <label class="allergen-option"><input type="checkbox" class="alg-check" value="huevos"> 🥚 Huevos</label>
+                    <label class="allergen-option"><input type="checkbox" class="alg-check" value="pescado"> 🐟 Pescado</label>
+                    <label class="allergen-option"><input type="checkbox" class="alg-check" value="marisco"> 🦐 Marisco</label>
+                    <label class="allergen-option"><input type="checkbox" class="alg-check" value="frutos_secos"> 🥜 Frutos Secos</label>
+                </div>
+            </div>
+            <div style="display:flex; gap:10px; margin-top:15px;">
+                <button class="btn btn-primary" onclick="saveDish()">Guardar Plato</button>
+                <button class="btn" style="background:#ccc;" onclick="closeModal('dishModal')">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Impresión -->
+    <div id="printModal" class="modal">
+        <div class="modal-content">
+            <div id="print-area" class="print-view">
+                <div class="print-header">
+                    <img id="print-logo" src="" alt="Logo Restaurante" class="print-logo" style="display:none;">
+                    <h2>RESTAURANTE MARQUICOS</h2>
+                    <p id="p-title" style="font-weight:bold; margin-top:5px;"></p>
+                </div>
+                <div id="print-dynamic-body"></div>
+                <div style="margin-top:15px; font-weight:bold; font-size:1.1rem; color:var(--primary);" id="p-price"></div>
+                <div style="font-size:0.8rem; margin-top:4px; color:#555;" id="p-includes"></div>
+            </div>
+            <div style="display:flex; gap:10px; margin-top:15px;">
+                <button class="btn btn-primary" onclick="window.print()">Imprimir Ahora</button>
+                <button class="btn" style="background:#ccc;" onclick="closeModal('printModal')">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Redes -->
+    <div id="socialModal" class="modal">
+        <div class="modal-content">
+            <h3 style="color:var(--primary); margin-bottom:10px;">Texto para Redes Sociales</h3>
+            <p style="font-size:0.85rem; color:#666;">Copia este texto para publicar en WhatsApp, Facebook e Instagram:</p>
+            <div id="social-text" class="social-box"></div>
+            <div style="display:flex; gap:10px; margin-top:15px;">
+                <button class="btn btn-primary" onclick="copySocialText()">Copiar Texto</button>
+                <button class="btn" style="background:#ccc;" onclick="closeModal('socialModal')">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentTab = 'diario';
+        let editingContext = null;
+        let supabaseClient = null;
+
+        const allergenIcons = {
+            gluten: '🌾', lacteos: '🥛', huevos: '🥚', pescado: '🐟', marisco: '🦐', frutos_secos: '🥜'
+        };
+
+        const defaultMenuCategories = [
+            {
+                id: 'cat_primeros', title: 'PRIMEROS PLATOS',
+                dishes: [
+                    { id: 1, name: "Lasaña Casera de Carne", sel: true, sup: 0, allergens: ['gluten', 'lacteos'] },
+                    { id: 2, name: "Gazpacho Andaluz con Guarnición", sel: true, sup: 0, allergens: [] }
+                ]
+            },
+            {
+                id: 'cat_segundos', title: 'SEGUNDOS PLATOS',
+                dishes: [
+                    { id: 4, name: "Solomillo Ibérico a la Pimienta", sel: true, sup: 3.0, allergens: ['lacteos'] },
+                    { id: 5, name: "Salmonete Fresco al Ajillo", sel: true, sup: 0, allergens: ['pescado'] }
+                ]
+            },
+            {
+                id: 'cat_postres', title: 'POSTRES',
+                dishes: [
+                    { id: 6, name: "Flan de Huevo Casero", sel: true, sup: 0, allergens: ['huevos', 'lacteos'] }
+                ]
+            }
+        ];
+
+        const defaultEspecialCategories = [
+            { id: 'esp_entrantes', title: 'ENTRANTES', dishes: [] },
+            { id: 'esp_primeros', title: 'PRIMER PLATO', dishes: [] },
+            { id: 'esp_segundos', title: 'SEGUNDO PLATO', dishes: [] },
+            { id: 'esp_postres', title: 'POSTRES', dishes: [] }
+        ];
+
+        const defaultCartaCategories = [
+            {
+                id: 'cat_entrantes', title: 'ENTRANTES',
+                dishes: [
+                    { id: 201, name: "Jamón Ibérico de Bellota", price: 18.00, sel: true, allergens: [] },
+                    { id: 202, name: "Croquetas Caseras Variadas", price: 10.50, sel: true, allergens: ['gluten', 'lacteos', 'huevos'] }
+                ]
+            },
+            {
+                id: 'cat_ensaladas', title: 'ENSALADAS',
+                dishes: [{ id: 204, name: "Ensalada Mixta Marquicos", price: 8.50, sel: true, allergens: ['huevos'] }]
+            },
+            {
+                id: 'cat_carnes', title: 'CARNES',
+                dishes: [{ id: 206, name: "Chuletón de Ternera (500g)", price: 22.50, sel: true, allergens: [] }]
+            },
+            {
+                id: 'cat_pescados', title: 'PESCADOS',
+                dishes: [{ id: 208, name: "Lubina a la Espalda", price: 16.50, sel: true, allergens: ['pescado'] }]
+            }
+        ];
+
+        let menuCategories = JSON.parse(localStorage.getItem('marquicos_menu_cats')) || defaultMenuCategories;
+        let especialCategories = JSON.parse(localStorage.getItem('marquicos_esp_cats')) || defaultEspecialCategories;
+        let cartaCategories = JSON.parse(localStorage.getItem('marquicos_carta_cats')) || defaultCartaCategories;
+        let logoData = localStorage.getItem('marquicos_logo') || '';
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+
+            const selectedBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(tab));
+            if (selectedBtn) selectedBtn.classList.add('active');
+
+            const view = document.getElementById(`view-${tab}`);
+            if (view) view.classList.add('active');
+        }
+
+        function handleBebidaToggle(menuType, clickedId) {
+            const isDiario = menuType === 'diario';
+            const incId = isDiario ? 'inc-bebida' : 'esp-inc-bebida';
+            const noIncId = isDiario ? 'no-inc-bebida' : 'esp-no-inc-bebida';
+
+            if (clickedId === incId && document.getElementById(incId).checked) {
+                document.getElementById(noIncId).checked = false;
+            } else if (clickedId === noIncId && document.getElementById(noIncId).checked) {
+                document.getElementById(incId).checked = false;
+            }
+            saveData();
+        }
+
+        function saveData() {
+            localStorage.setItem('marquicos_menu_cats', JSON.stringify(menuCategories));
+            localStorage.setItem('marquicos_esp_cats', JSON.stringify(especialCategories));
+            localStorage.setItem('marquicos_carta_cats', JSON.stringify(cartaCategories));
+            localStorage.setItem('marquicos_logo', logoData);
+
+            localStorage.setItem('marquicos_menu_title', document.getElementById('menu-title-input').value);
+            localStorage.setItem('marquicos_menu_price', document.getElementById('menu-price').value);
+            localStorage.setItem('marquicos_esp_title', document.getElementById('especial-title-input').value);
+            localStorage.setItem('marquicos_esp_price', document.getElementById('especial-price').value);
+
+            const opts = {
+                pan: document.getElementById('inc-pan').checked,
+                bebida: document.getElementById('inc-bebida').checked,
+                noBebida: document.getElementById('no-inc-bebida').checked,
+                postre: document.getElementById('inc-postre').checked,
+                cafe: document.getElementById('inc-cafe').checked
+            };
+            localStorage.setItem('marquicos_menu_options', JSON.stringify(opts));
+
+            const espOpts = {
+                pan: document.getElementById('esp-inc-pan').checked,
+                bebida: document.getElementById('esp-inc-bebida').checked,
+                noBebida: document.getElementById('esp-no-inc-bebida').checked,
+                postre: document.getElementById('esp-inc-postre').checked,
+                cafe: document.getElementById('esp-inc-cafe').checked
+            };
+            localStorage.setItem('marquicos_esp_options', JSON.stringify(espOpts));
+        }
+
+        function cargarTodaLaCartaYMenu() {
+            if (!confirm("¿Quieres cargar toda la carta completa y el menú especial? (Esto actualizará las subfamilias actuales)")) return;
+
+            cartaCategories = [
+                {
+                    id: 'cat_entrantes_cocina', title: 'ENTRANTES DE COCINA',
+                    dishes: [
+                        { id: Date.now()+1, name: "Calamar nacional de abordo (Plancha)", price: 16.00, sel: true, allergens: [] },
+                        { id: Date.now()+2, name: "Calamar nacional a la Andaluza", price: 16.00, sel: true, allergens: ['gluten'] },
+                        { id: Date.now()+3, name: "Revuelto de setas y gambas (Ajetes y PX)", price: 12.00, sel: true, allergens: ['huevos', 'marisco'] },
+                        { id: Date.now()+4, name: "Gamba blanca (Cocida)", price: 12.00, sel: true, allergens: ['marisco'] },
+                        { id: Date.now()+5, name: "Gamba blanca plancha 250 gr", price: 20.00, sel: true, allergens: ['marisco'] },
+                        { id: Date.now()+6, name: "Zamburiñas (ud.)", price: 2.30, sel: true, allergens: ['marisco'] },
+                        { id: Date.now()+7, name: "Pulpo a la gallega", price: 16.00, sel: true, allergens: ['marisco'] },
+                        { id: Date.now()+8, name: "Sepia a la plancha (Salsa verde)", price: 14.00, sel: true, allergens: ['marisco'] },
+                        { id: Date.now()+9, name: "Croquetas de jamón (ud.)", price: 1.40, sel: true, allergens: ['gluten', 'lacteos'] }
+                    ]
+                },
+                {
+                    id: 'cat_entrantes_barra', title: 'ENTRANTES DE BARRA',
+                    dishes: [
+                        { id: Date.now()+10, name: "Ensaladilla rusa", price: 6.00, sel: true, allergens: ['huevos'] },
+                        { id: Date.now()+11, name: "Ensaladilla de mariscos", price: 7.00, sel: true, allergens: ['marisco', 'huevos'] },
+                        { id: Date.now()+12, name: "Tabla de quesos artesanos", price: 14.00, sel: true, allergens: ['lacteos'] },
+                        { id: Date.now()+13, name: "Hueva de mújol con almendras", price: 12.00, sel: true, allergens: ['pescado', 'frutos_secos'] }
+                    ]
+                },
+                {
+                    id: 'cat_ensaladas_carta', title: 'ENSALADAS',
+                    dishes: [
+                        { id: Date.now()+14, name: "Ensalada Casa Marquicos", price: 11.00, sel: true, allergens: ['huevos'] },
+                        { id: Date.now()+15, name: "Ensalada César con Pollo Crisp", price: 10.50, sel: true, allergens: ['gluten', 'lacteos'] }
+                    ]
+                },
+                {
+                    id: 'cat_carnes_carta', title: 'CARNES DE CALIDAD',
+                    dishes: [
+                        { id: Date.now()+16, name: "Solomillo de Vaca a la Brasa", price: 21.00, sel: true, allergens: [] },
+                        { id: Date.now()+17, name: "Entrecot de Ternera 350g", price: 18.50, sel: true, allergens: [] }
+                    ]
+                },
+                {
+                    id: 'cat_postres_carta', title: 'POSTRES CASEROS',
+                    dishes: [
+                        { id: Date.now()+18, name: "Tarta de Queso Horneada", price: 5.00, sel: true, allergens: ['lacteos', 'huevos'] },
+                        { id: Date.now()+19, name: "Coulant de Chocolate con Helado", price: 5.50, sel: true, allergens: ['gluten', 'lacteos'] }
+                    ]
+                }
+            ];
+
+            saveData();
+            renderUI();
+        }
+
+        function getTargetCategories(type) {
+            if (type === 'menu' || type === 'diario') return menuCategories;
+            if (type === 'especial') return especialCategories;
+            return cartaCategories;
+        }
+
+        function renderUI() {
+            renderCategories('diario', menuCategories, 'menu-categories-container');
+            renderCategories('especial', especialCategories, 'especial-categories-container');
+            renderCategories('carta', cartaCategories, 'carta-categories-container');
+            updateLogoDisplay();
+        }
+
+        function renderCategories(type, categories, containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = '';
+
+            categories.forEach((cat, catIdx) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                let dishesHTML = '';
+                cat.dishes.forEach((dish, dishIdx) => {
+                    const priceLabel = type === 'carta' 
+                        ? `${(dish.price || 0).toFixed(2)} €`
+                        : (dish.sup > 0 ? `+${dish.sup.toFixed(2)} €` : '');
+
+                    const allergenIconsHTML = (dish.allergens || []).map(a => `<span class="allergen-icon" title="${a}">${allergenIcons[a] || ''}</span>`).join('');
+
+                    dishesHTML += `
+                        <div class="dish-item">
+                            <div class="dish-info">
+                                <input type="checkbox" ${dish.sel ? 'checked' : ''} onchange="toggleDishSelection('${type}', ${catIdx}, ${dishIdx})">
+                                <span class="dish-name">${dish.name}</span>
+                                <div class="allergen-badges">${allergenIconsHTML}</div>
+                            </div>
+                            ${priceLabel ? `<span class="${type === 'carta' ? 'dish-price' : 'supplement-badge'}">${priceLabel}</span>` : ''}
+                            <div class="dish-actions">
+                                <button class="action-btn" onclick="openDishModal('${type}', ${catIdx}, ${dishIdx})">✏️</button>
+                                <button class="action-btn" onclick="deleteDish('${type}', ${catIdx}, ${dishIdx})">🗑️</button>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="card-title">
+                        <input type="text" value="${cat.title}" class="input-text" style="margin:0; width:70%; font-size:0.95rem;" onchange="updateCatTitle('${type}', ${catIdx}, this.value)">
+                        <div class="title-actions">
+                            <button class="add-dish-btn" onclick="openDishModal('${type}', ${catIdx})">➕ Plato</button>
+                            <button class="title-btn" style="color:var(--danger);" onclick="deleteCategory('${type}', ${catIdx})">🗑️</button>
+                        </div>
+                    </div>
+                    <div class="dish-group">${dishesHTML}</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function toggleDishSelection(type, catIdx, dishIdx) {
+            const cats = getTargetCategories(type);
+            cats[catIdx].dishes[dishIdx].sel = !cats[catIdx].dishes[dishIdx].sel;
+            saveData();
+        }
+
+        function updateCatTitle(type, catIdx, value) {
+            const cats = getTargetCategories(type);
+            cats[catIdx].title = value.toUpperCase();
+            saveData();
+        }
+
+        function addCategory(type) {
+            const cats = getTargetCategories(type);
+            cats.push({ id: 'cat_' + Date.now(), title: 'NUEVA SUBFAMILIA', dishes: [] });
+            saveData();
+            renderUI();
+        }
+
+        function deleteCategory(type, catIdx) {
+            if (!confirm("¿Eliminar esta subfamilia y sus platos?")) return;
+            const cats = getTargetCategories(type);
+            cats.splice(catIdx, 1);
+            saveData();
+            renderUI();
+        }
+
+        function openDishModal(type, catIdx, dishIdx = null) {
+            editingContext = { type, catIdx, dishIdx };
+            const cats = getTargetCategories(type);
+
+            document.getElementById('modal-dish-title').innerText = dishIdx !== null ? 'Editar Plato' : 'Añadir Plato';
+            document.querySelectorAll('.alg-check').forEach(cb => cb.checked = false);
+
+            const isCarta = type === 'carta';
+            document.getElementById('group-price').style.display = isCarta ? 'block' : 'none';
+            document.getElementById('group-sup').style.display = !isCarta ? 'block' : 'none';
+
+            if (dishIdx !== null) {
+                const dish = cats[catIdx].dishes[dishIdx];
+                document.getElementById('form-dish-name').value = dish.name;
+                document.getElementById('form-dish-price').value = dish.price || '';
+                document.getElementById('form-dish-sup').value = dish.sup || '';
+                (dish.allergens || []).forEach(alg => {
+                    const cb = document.querySelector(`.alg-check[value="${alg}"]`);
+                    if (cb) cb.checked = true;
+                });
+            } else {
+                document.getElementById('form-dish-name').value = '';
+                document.getElementById('form-dish-price').value = '';
+                document.getElementById('form-dish-sup').value = '';
+            }
+
+            document.getElementById('dishModal').style.display = 'flex';
+        }
+
+        function saveDish() {
+            if (!editingContext) return;
+            const { type, catIdx, dishIdx } = editingContext;
+            const cats = getTargetCategories(type);
+
+            const name = document.getElementById('form-dish-name').value.trim();
+            if (!name) return alert("El nombre del plato es obligatorio.");
+
+            const selectedAllergens = Array.from(document.querySelectorAll('.alg-check:checked')).map(cb => cb.value);
+
+            const dishData = {
+                id: dishIdx !== null ? cats[catIdx].dishes[dishIdx].id : Date.now(),
+                name: name,
+                sel: true,
+                allergens: selectedAllergens
+            };
+
+            if (type === 'carta') {
+                dishData.price = parseFloat(document.getElementById('form-dish-price').value) || 0;
+            } else {
+                dishData.sup = parseFloat(document.getElementById('form-dish-sup').value) || 0;
+            }
+
+            if (dishIdx !== null) {
+                cats[catIdx].dishes[dishIdx] = dishData;
+            } else {
+                cats[catIdx].dishes.push(dishData);
+            }
+
+            saveData();
+            renderUI();
+            closeModal('dishModal');
+        }
+
+        function deleteDish(type, catIdx, dishIdx) {
+            const cats = getTargetCategories(type);
+            cats[catIdx].dishes.splice(dishIdx, 1);
+            saveData();
+            renderUI();
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        /* --- Gestión de Logo --- */
+        function handleLogoUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                logoData = evt.target.result;
+                saveData();
+                updateLogoDisplay();
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function saveLogoUrl() {
+            const url = document.getElementById('logo-url-input').value.trim();
+            if (url) {
+                logoData = url;
+                saveData();
+                updateLogoDisplay();
+            }
+        }
+
+        function removeLogo() {
+            logoData = '';
+            saveData();
+            updateLogoDisplay();
+        }
+
+        function updateLogoDisplay() {
+            const mainLogo = document.getElementById('main-logo');
+            const preview = document.getElementById('logo-preview');
+            const printLogo = document.getElementById('print-logo');
+
+            if (logoData) {
+                mainLogo.src = logoData; mainLogo.style.display = 'block';
+                preview.src = logoData; preview.style.display = 'inline-block';
+                printLogo.src = logoData; printLogo.style.display = 'block';
+            } else {
+                mainLogo.style.display = 'none';
+                preview.style.display = 'none';
+                printLogo.style.display = 'none';
+            }
+        }
+
+        /* --- Modales e Impresión --- */
+        function openPrintModal() {
+            const printBody = document.getElementById('print-dynamic-body');
+            const pTitle = document.getElementById('p-title');
+            const pPrice = document.getElementById('p-price');
+            const pIncludes = document.getElementById('p-includes');
+
+            printBody.innerHTML = '';
+            let cats = getTargetCategories(currentTab);
+
+            if (currentTab === 'diario' || currentTab === 'especial') {
+                const isDiario = currentTab === 'diario';
+                const titleVal = document.getElementById(isDiario ? 'menu-title-input' : 'especial-title-input').value;
+                const priceVal = document.getElementById(isDiario ? 'menu-price' : 'especial-price').value;
+
+                pTitle.innerText = titleVal;
+                pPrice.innerText = `Precio: ${parseFloat(priceVal).toFixed(2)} €`;
+
+                const optsKey = isDiario ? 'marquicos_menu_options' : 'marquicos_esp_options';
+                const opts = JSON.parse(localStorage.getItem(optsKey)) || {};
+                const incs = [];
+                if (opts.pan) incs.push('Pan');
+                if (opts.bebida) incs.push('Bebida');
+                if (opts.postre) incs.push('Postre');
+                if (opts.cafe) incs.push('Café');
+                
+                let textIncludes = incs.length ? `Incluye: ${incs.join(', ')}` : '';
+                if (opts.noBebida) {
+                    textIncludes += textIncludes ? ' (Bebida no incluida)' : 'Bebida no incluida';
+                }
+
+                pIncludes.innerText = textIncludes;
+
+            } else {
+                pTitle.innerText = "CARTA DE PLATOS";
+                pPrice.innerText = '';
+                pIncludes.innerText = '';
+            }
+
+            cats.forEach(cat => {
+                const activeDishes = cat.dishes.filter(d => d.sel);
+                if (activeDishes.length > 0) {
+                    const sec = document.createElement('div');
+                    sec.innerHTML = `<div class="print-section-title">${cat.title}</div>`;
+                    activeDishes.forEach(d => {
+                        const algs = (d.allergens || []).map(a => allergenIcons[a] || '').join(' ');
+                        const extra = currentTab === 'carta' 
+                            ? `${(d.price || 0).toFixed(2)} €` 
+                            : (d.sup > 0 ? `(+${d.sup.toFixed(2)}€)` : '');
+
+                        sec.innerHTML += `
+                            <div class="print-dish">
+                                <span>${d.name} <small>${algs}</small></span>
+                                <span><strong>${extra}</strong></span>
+                            </div>
+                        `;
+                    });
+                    printBody.appendChild(sec);
+                }
+            });
+
+            document.getElementById('printModal').style.display = 'flex';
+        }
+
+        function openSocialModal() {
+            let cats = getTargetCategories(currentTab);
+            let text = `🍽️ *RESTAURANTE MARQUICOS* 🍽️\n`;
+
+            if (currentTab === 'diario' || currentTab === 'especial') {
+                const isDiario = currentTab === 'diario';
+                const titleVal = document.getElementById(isDiario ? 'menu-title-input' : 'especial-title-input').value;
+                const priceVal = document.getElementById(isDiario ? 'menu-price' : 'especial-price').value;
+                text += `📋 *${titleVal.toUpperCase()}* - ${parseFloat(priceVal).toFixed(2)}€\n\n`;
+            } else {
+                text += `📜 *NUESTRA CARTA*\n\n`;
+            }
+
+            cats.forEach(cat => {
+                const activeDishes = cat.dishes.filter(d => d.sel);
+                if (activeDishes.length > 0) {
+                    text += `🔹 *${cat.title}*\n`;
+                    activeDishes.forEach(d => {
+                        const priceText = currentTab === 'carta' ? ` (${d.price.toFixed(2)}€)` : (d.sup > 0 ? ` (+${d.sup.toFixed(2)}€)` : '');
+                        text += ` • ${d.name}${priceText}\n`;
+                    });
+                    text += `\n`;
+                }
+            });
+
+            text += `¡Te esperamos! Reservas y encargos disponibles.`;
+            document.getElementById('social-text').innerText = text;
+            document.getElementById('socialModal').style.display = 'flex';
+        }
+
+        function copySocialText() {
+            const text = document.getElementById('social-text').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("¡Texto copiado al portapapeles!");
+            });
+        }
+
+        /* --- Sincronización Supabase y GitHub --- */
+        function saveSupabaseConfig() {
+            const url = document.getElementById('supabase-url').value.trim();
+            const key = document.getElementById('supabase-key').value.trim();
+            localStorage.setItem('marquicos_sb_url', url);
+            localStorage.setItem('marquicos_sb_key', key);
+            initSupabase();
+        }
+
+        function initSupabase() {
+            const url = localStorage.getItem('marquicos_sb_url');
+            const key = localStorage.getItem('marquicos_sb_key');
+            if (url && key && window.supabase) {
+                supabaseClient = window.supabase.createClient(url, key);
+                document.getElementById('dot-supabase').classList.add('connected');
+            }
+        }
+
+        async function pushToSupabase() {
+            if (!supabaseClient) return alert("Configura primero Supabase.");
+            const payload = { id: 1, menu: menuCategories, especial: especialCategories, carta: cartaCategories, updated_at: new Date() };
+            const { error } = await supabaseClient.from('menu_data').upsert(payload);
+            if (error) alert("Error al guardar en Supabase: " + error.message);
+            else alert("¡Datos sincronizados en Supabase con éxito!");
+        }
+
+        async function pullFromSupabase() {
+            if (!supabaseClient) return alert("Configura primero Supabase.");
+            const { data, error } = await supabaseClient.from('menu_data').select('*').eq('id', 1).single();
+            if (error) return alert("Error al cargar de Supabase: " + error.message);
+            if (data) {
+                if (data.menu) menuCategories = data.menu;
+                if (data.especial) especialCategories = data.especial;
+                if (data.carta) cartaCategories = data.carta;
+                saveData();
+                renderUI();
+                alert("¡Datos actualizados desde Supabase!");
+            }
+        }
+
+        function saveGithubConfig() {
+            localStorage.setItem('marquicos_gh_token', document.getElementById('github-token').value.trim());
+            localStorage.setItem('marquicos_gh_repo', document.getElementById('github-repo').value.trim());
+            localStorage.setItem('marquicos_gh_path', document.getElementById('github-path').value.trim());
+            document.getElementById('dot-github').classList.add('connected');
+            alert("Ajustes de GitHub guardados.");
+        }
+
+        async function pushToGithub() {
+            const token = localStorage.getItem('marquicos_gh_token');
+            const repo = localStorage.getItem('marquicos_gh_repo');
+            const path = localStorage.getItem('marquicos_gh_path') || 'data/menu.json';
+
+            if (!token || !repo) return alert("Configura tus credenciales de GitHub.");
+
+            const content = btoa(unescape(encodeURIComponent(JSON.stringify({
+                menu: menuCategories,
+                especial: especialCategories,
+                carta: cartaCategories
+            }, null, 2))));
+
+            const url = `https://api.github.com/repos/${repo}/contents/${path}`;
+
+            try {
+                let sha = '';
+                const getRes = await fetch(url, { headers: { Authorization: `token ${token}` } });
+                if (getRes.ok) {
+                    const getData = await getRes.json();
+                    sha = getData.sha;
+                }
+
+                const res = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        Authorization: `token ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: 'Actualización automática del menú',
+                        content: content,
+                        sha: sha || undefined
+                    })
+                });
+
+                if (res.ok) alert("¡Publicado en GitHub correctamente!");
+                else alert("Error al actualizar GitHub.");
+            } catch (err) {
+                alert("Error de conexión con GitHub: " + err.message);
+            }
+        }
+
+        // Carga inicial al abrir la aplicación
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('marquicos_menu_title')) {
+                document.getElementById('menu-title-input').value = localStorage.getItem('marquicos_menu_title');
+            }
+            if (localStorage.getItem('marquicos_menu_price')) {
+                document.getElementById('menu-price').value = localStorage.getItem('marquicos_menu_price');
+            }
+            if (localStorage.getItem('marquicos_esp_title')) {
+                document.getElementById('especial-title-input').value = localStorage.getItem('marquicos_esp_title');
+            }
+            if (localStorage.getItem('marquicos_esp_price')) {
+                document.getElementById('especial-price').value = localStorage.getItem('marquicos_esp_price');
+            }
+
+            const opts = JSON.parse(localStorage.getItem('marquicos_menu_options'));
+            if (opts) {
+                document.getElementById('inc-pan').checked = opts.pan;
+                document.getElementById('inc-bebida').checked = opts.bebida;
+                document.getElementById('no-inc-bebida').checked = !!opts.noBebida;
+                document.getElementById('inc-postre').checked = opts.postre;
+                document.getElementById('inc-cafe').checked = opts.cafe;
+            }
+
+            const espOpts = JSON.parse(localStorage.getItem('marquicos_esp_options'));
+            if (espOpts) {
+                document.getElementById('esp-inc-pan').checked = espOpts.pan;
+                document.getElementById('esp-inc-bebida').checked = espOpts.bebida;
+                document.getElementById('esp-no-inc-bebida').checked = !!espOpts.noBebida;
+                document.getElementById('esp-inc-postre').checked = espOpts.postre;
+                document.getElementById('esp-inc-cafe').checked = espOpts.cafe;
+            }
+
+            document.getElementById('supabase-url').value = localStorage.getItem('marquicos_sb_url') || '';
+            document.getElementById('supabase-key').value = localStorage.getItem('marquicos_sb_key') || '';
+            document.getElementById('github-token').value = localStorage.getItem('marquicos_gh_token') || '';
+            document.getElementById('github-repo').value = localStorage.getItem('marquicos_gh_repo') || '';
+            document.getElementById('github-path').value = localStorage.getItem('marquicos_gh_path') || 'data/menu.json';
+
+            initSupabase();
+            if (localStorage.getItem('marquicos_gh_token')) {
+                document.getElementById('dot-github').classList.add('connected');
+            }
+
+            renderUI();
+        });
+    </script>
+</body>
+</html>
