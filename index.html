@@ -810,7 +810,7 @@
                 if (activeDishes.length > 0) {
                     text += `🔹 *${cat.title}*\n`;
                     activeDishes.forEach(d => {
-                        const priceText = currentTab === 'carta' ? ` (${d.price.toFixed(2)}€)` : (d.sup > 0 ? ` (+${d.sup.toFixed(2)}€)` : '');
+                        const priceText = currentTab === 'carta' ? ` (${(d.price || 0).toFixed(2)}€)` : (d.sup > 0 ? ` (+${d.sup.toFixed(2)}€)` : '');
                         text += ` • ${d.name}${priceText}\n`;
                     });
                     text += `\n`;
@@ -826,6 +826,8 @@
             const text = document.getElementById('social-text').innerText;
             navigator.clipboard.writeText(text).then(() => {
                 alert("¡Texto copiado al portapapeles!");
+            }).catch(() => {
+                alert("No se pudo copiar automáticamente. Por favor, selecciona el texto manualmente.");
             });
         }
 
@@ -836,6 +838,9 @@
             localStorage.setItem('marquicos_sb_url', url);
             localStorage.setItem('marquicos_sb_key', key);
             initSupabase();
+            if (url && key) {
+                alert("Configuración de Supabase guardada.");
+            }
         }
 
         function initSupabase() {
@@ -844,13 +849,21 @@
             if (url && key && window.supabase) {
                 supabaseClient = window.supabase.createClient(url, key);
                 document.getElementById('dot-supabase').classList.add('connected');
+            } else {
+                document.getElementById('dot-supabase').classList.remove('connected');
             }
         }
 
         async function pushToSupabase() {
             if (!supabaseClient) return alert("Configura primero Supabase.");
-            const payload = { id: 1, menu: menuCategories, especial: especialCategories, carta: cartaCategories, updated_at: new Date() };
-            const { error } = await supabaseClient.from('menu_data').upsert(payload);
+            const payload = { 
+                id: 1, 
+                menu: menuCategories, 
+                especial: especialCategories, 
+                carta: cartaCategories, 
+                updated_at: new Date().toISOString() 
+            };
+            const { error } = await supabaseClient.from('menu_data').upsert(payload, { onConflict: 'id' });
             if (error) alert("Error al guardar en Supabase: " + error.message);
             else alert("¡Datos sincronizados en Supabase con éxito!");
         }
@@ -870,10 +883,19 @@
         }
 
         function saveGithubConfig() {
-            localStorage.setItem('marquicos_gh_token', document.getElementById('github-token').value.trim());
-            localStorage.setItem('marquicos_gh_repo', document.getElementById('github-repo').value.trim());
-            localStorage.setItem('marquicos_gh_path', document.getElementById('github-path').value.trim());
-            document.getElementById('dot-github').classList.add('connected');
+            const token = document.getElementById('github-token').value.trim();
+            const repo = document.getElementById('github-repo').value.trim();
+            const path = document.getElementById('github-path').value.trim();
+
+            localStorage.setItem('marquicos_gh_token', token);
+            localStorage.setItem('marquicos_gh_repo', repo);
+            localStorage.setItem('marquicos_gh_path', path);
+
+            if (token && repo) {
+                document.getElementById('dot-github').classList.add('connected');
+            } else {
+                document.getElementById('dot-github').classList.remove('connected');
+            }
             alert("Ajustes de GitHub guardados.");
         }
 
@@ -884,11 +906,20 @@
 
             if (!token || !repo) return alert("Configura tus credenciales de GitHub.");
 
-            const content = btoa(unescape(encodeURIComponent(JSON.stringify({
+            const jsonString = JSON.stringify({
                 menu: menuCategories,
                 especial: especialCategories,
                 carta: cartaCategories
-            }, null, 2))));
+            }, null, 2);
+
+            // Codificación UTF-8 robusta para Base64
+            const encoder = new TextEncoder();
+            const data = encoder.encode(jsonString);
+            let binary = '';
+            for (let i = 0; i < data.byteLength; i++) {
+                binary += String.fromCharCode(data[i]);
+            }
+            const content = btoa(binary);
 
             const url = `https://api.github.com/repos/${repo}/contents/${path}`;
 
@@ -937,20 +968,20 @@
 
             const opts = JSON.parse(localStorage.getItem('marquicos_menu_options'));
             if (opts) {
-                document.getElementById('inc-pan').checked = opts.pan;
-                document.getElementById('inc-bebida').checked = opts.bebida;
+                document.getElementById('inc-pan').checked = !!opts.pan;
+                document.getElementById('inc-bebida').checked = !!opts.bebida;
                 document.getElementById('no-inc-bebida').checked = !!opts.noBebida;
-                document.getElementById('inc-postre').checked = opts.postre;
-                document.getElementById('inc-cafe').checked = opts.cafe;
+                document.getElementById('inc-postre').checked = !!opts.postre;
+                document.getElementById('inc-cafe').checked = !!opts.cafe;
             }
 
             const espOpts = JSON.parse(localStorage.getItem('marquicos_esp_options'));
             if (espOpts) {
-                document.getElementById('esp-inc-pan').checked = espOpts.pan;
-                document.getElementById('esp-inc-bebida').checked = espOpts.bebida;
+                document.getElementById('esp-inc-pan').checked = !!espOpts.pan;
+                document.getElementById('esp-inc-bebida').checked = !!espOpts.bebida;
                 document.getElementById('esp-no-inc-bebida').checked = !!espOpts.noBebida;
-                document.getElementById('esp-inc-postre').checked = espOpts.postre;
-                document.getElementById('esp-inc-cafe').checked = espOpts.cafe;
+                document.getElementById('esp-inc-postre').checked = !!espOpts.postre;
+                document.getElementById('esp-inc-cafe').checked = !!espOpts.cafe;
             }
 
             document.getElementById('supabase-url').value = localStorage.getItem('marquicos_sb_url') || '';
@@ -960,7 +991,7 @@
             document.getElementById('github-path').value = localStorage.getItem('marquicos_gh_path') || 'data/menu.json';
 
             initSupabase();
-            if (localStorage.getItem('marquicos_gh_token')) {
+            if (localStorage.getItem('marquicos_gh_token') && localStorage.getItem('marquicos_gh_repo')) {
                 document.getElementById('dot-github').classList.add('connected');
             }
 
