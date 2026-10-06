@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante Marquicos - Gestor de Menús, Carta y Sincronización</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         :root {
             --primary: #7a1c28;
@@ -315,25 +316,23 @@
         </div>
     </div>
 
-    <!-- Modal Impresión -->
-    <div id="printModal" class="modal">
-        <div class="modal-content">
-            <div id="print-area" class="print-view">
-                <div class="print-header">
-                    <img id="print-logo" src="" alt="Logo Restaurante" class="print-logo" style="display:none;">
-                    <h2>RESTAURANTE MARQUICOS</h2>
-                    <p id="p-title" style="font-weight:bold; margin-top:5px;"></p>
+    <!-- NUEVO BLOQUE CON SELECTOR DE FORMATO Y BOTÓN PDF -->
+            <div style="margin-top:15px; display:flex; flex-direction:column; gap:10px;">
+                <div style="display:flex; gap:10px; align-items:center;">
+                    <label style="font-size:0.85rem; font-weight:bold;">Formato de descarga:</label>
+                    <select id="pdf-format" class="form-control" style="flex:1;">
+                        <option value="a4">A4 (Estándar)</option>
+                        <option value="letter">Carta (Letter)</option>
+                        <option value="ticket">Ticket (80mm)</option>
+                    </select>
                 </div>
-                <div id="print-dynamic-body"></div>
-                <div style="margin-top:15px; font-weight:bold; font-size:1.1rem; color:var(--primary);" id="p-price"></div>
-                <div style="font-size:0.8rem; margin-top:4px; color:#555;" id="p-includes"></div>
+                <div style="display:flex; gap:10px;">
+                    <button class="btn btn-primary" onclick="window.print()">🖨️ Imprimir</button>
+                    <button class="btn btn-secondary" style="background-color:#28a745;" onclick="descargarPDF()">📄 Descargar PDF</button>
+                    <button class="btn" style="background:#ccc;" onclick="closeModal('printModal')">Cerrar</button>
+                </div>
             </div>
-            <div style="display:flex; gap:10px; margin-top:15px;">
-                <button class="btn btn-primary" onclick="window.print()">Imprimir Ahora</button>
-                <button class="btn" style="background:#ccc;" onclick="closeModal('printModal')">Cerrar</button>
-            </div>
-        </div>
-    </div>
+    
 
     <!-- Modal Redes -->
     <div id="socialModal" class="modal">
@@ -950,6 +949,32 @@
                 alert("Error de conexión con GitHub: " + err.message);
             }
         }
+        /* --- Exportar a PDF con html2pdf.js --- */
+        function descargarPDF() {
+            const elemento = document.getElementById('print-area');
+            const formato = document.getElementById('pdf-format').value;
+
+            let formatoPapel = 'a4';
+            if (formato === 'letter') {
+                formatoPapel = 'letter';
+            } else if (formato === 'ticket') {
+                formatoPapel = [80, 297]; // Ancho de 80mm para impresoras térmicas
+            }
+
+            const opciones = {
+                margin:       [8, 8, 8, 8],
+                filename:     `menu-marquicos-${currentTab}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'mm', format: formatoPapel, orientation: 'portrait' }
+            };
+
+            html2pdf().set(opciones).from(elemento).save();
+        }
+
+        // Carga inicial al abrir la aplicación
+        window.addEventListener('DOMContentLoaded', () => {
+            // ... aquí dentro sigue tu código actual con initSupabase(); ...
 
         // Carga inicial al abrir la aplicación
         window.addEventListener('DOMContentLoaded', () => {
