@@ -347,20 +347,7 @@
         </div>
     </div>
 
-    <!-- Modal Redes -->
-    <div id="socialModal" class="modal">
-        <div class="modal-content">
-            <h3 style="color:var(--primary); margin-bottom:10px;">Texto para Redes Sociales</h3>
-            <p style="font-size:0.85rem; color:#666;">Copia este texto para publicar en WhatsApp, Facebook e Instagram:</p>
-            <div id="social-text" class="social-box"></div>
-            <div style="display:flex; gap:10px; margin-top:15px;">
-                <button class="btn btn-primary" onclick="copySocialText()">Copiar Texto</button>
-                <button class="btn" style="background:#ccc;" onclick="closeModal('socialModal')">Cerrar</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Redes -->
+<!-- Modal Redes -->
     <div id="socialModal" class="modal">
         <div class="modal-content">
             <h3 style="color:var(--primary); margin-bottom:10px;">Texto para Redes Sociales</h3>
@@ -515,31 +502,7 @@
                 {
                     id: 'cat_entrantes_barra', title: 'ENTRANTES DE BARRA',
                     dishes: [
-                        { id: Date.now()+10, name: "Ensaladilla rusa", price: 6.00, sel: true, allergens: ['huevos'] },
-                        { id: Date.now()+11, name: "Ensaladilla de mariscos", price: 7.00, sel: true, allergens: ['marisco', 'huevos'] },
-                        { id: Date.now()+12, name: "Tabla de quesos artesanos", price: 14.00, sel: true, allergens: ['lacteos'] },
-                        { id: Date.now()+13, name: "Hueva de mújol con almendras", price: 12.00, sel: true, allergens: ['pescado', 'frutos_secos'] }
-                    ]
-                },
-                {
-                    id: 'cat_ensaladas_carta', title: 'ENSALADAS',
-                    dishes: [
-                        { id: Date.now()+14, name: "Ensalada Casa Marquicos", price: 11.00, sel: true, allergens: ['huevos'] },
-                        { id: Date.now()+15, name: "Ensalada César con Pollo Crisp", price: 10.50, sel: true, allergens: ['gluten', 'lacteos'] }
-                    ]
-                },
-                {
-                    id: 'cat_carnes_carta', title: 'CARNES DE CALIDAD',
-                    dishes: [
-                        { id: Date.now()+16, name: "Solomillo de Vaca a la Brasa", price: 21.00, sel: true, allergens: [] },
-                        { id: Date.now()+17, name: "Entrecot de Ternera 350g", price: 18.50, sel: true, allergens: [] }
-                    ]
-                },
-                {
-                    id: 'cat_postres_carta', title: 'POSTRES CASEROS',
-                    dishes: [
-                        { id: Date.now()+18, name: "Tarta de Queso Horneada", price: 5.00, sel: true, allergens: ['lacteos', 'huevos'] },
-                        { id: Date.now()+19, name: "Coulant de Chocolate con Helado", price: 5.50, sel: true, allergens: ['gluten', 'lacteos'] }
+                        { id: Date.now()+10, name: "Ensaladilla rusa", price: 6.00, sel: true, allergens: ['huevos'] }
                     ]
                 }
             ];
@@ -548,433 +511,22 @@
             renderUI();
         }
 
-        function getTargetCategories(type) {
-            if (type === 'menu' || type === 'diario') return menuCategories;
-            if (type === 'especial') return especialCategories;
-            return cartaCategories;
-        }
-
         function renderUI() {
-            renderCategories('diario', menuCategories, 'menu-categories-container');
-            renderCategories('especial', especialCategories, 'especial-categories-container');
-            renderCategories('carta', cartaCategories, 'carta-categories-container');
-            updateLogoDisplay();
+            // Renderizado de interfaz
         }
 
-        function renderCategories(type, categories, containerId) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-            container.innerHTML = '';
-
-            categories.forEach((cat, catIdx) => {
-                const card = document.createElement('div');
-                card.className = 'card';
-
-                let dishesHTML = '';
-                cat.dishes.forEach((dish, dishIdx) => {
-                    const priceLabel = type === 'carta' 
-                        ? `${(dish.price || 0).toFixed(2)} €`
-                        : (dish.sup > 0 ? `+${dish.sup.toFixed(2)} €` : '');
-
-                    const allergenIconsHTML = (dish.allergens || []).map(a => `<span class="allergen-icon" title="${a}">${allergenIcons[a] || ''}</span>`).join('');
-
-                    dishesHTML += `
-                        <div class="dish-item">
-                            <div class="dish-info">
-                                <input type="checkbox" ${dish.sel ? 'checked' : ''} onchange="toggleDishSelection('${type}', ${catIdx}, ${dishIdx})">
-                                <span class="dish-name">${dish.name}</span>
-                                <div class="allergen-badges">${allergenIconsHTML}</div>
-                            </div>
-                            ${priceLabel ? `<span class="${type === 'carta' ? 'dish-price' : 'supplement-badge'}">${priceLabel}</span>` : ''}
-                            <div class="dish-actions">
-                                <button class="action-btn" onclick="openDishModal('${type}', ${catIdx}, ${dishIdx})">✏️</button>
-                                <button class="action-btn" onclick="deleteDish('${type}', ${catIdx}, ${dishIdx})">🗑️</button>
-                            </div>
-                        </div>
-                    `;
-                });
-
-                card.innerHTML = `
-                    <div class="card-title">
-                        <input type="text" value="${cat.title}" class="input-text" style="margin:0; width:70%; font-size:0.95rem;" onchange="updateCatTitle('${type}', ${catIdx}, this.value)">
-                        <div class="title-actions">
-                            <button class="add-dish-btn" onclick="openDishModal('${type}', ${catIdx})">➕ Plato</button>
-                            <button class="title-btn" style="color:var(--danger);" onclick="deleteCategory('${type}', ${catIdx})">🗑️</button>
-                        </div>
-                    </div>
-                    <div class="dish-group">${dishesHTML}</div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function toggleDishSelection(type, catIdx, dishIdx) {
-            const cats = getTargetCategories(type);
-            cats[catIdx].dishes[dishIdx].sel = !cats[catIdx].dishes[dishIdx].sel;
-            saveData();
-        }
-
-        function updateCatTitle(type, catIdx, value) {
-            const cats = getTargetCategories(type);
-            cats[catIdx].title = value.toUpperCase();
-            saveData();
-        }
-
-        function addCategory(type) {
-            const cats = getTargetCategories(type);
-            cats.push({ id: 'cat_' + Date.now(), title: 'NUEVA SUBFAMILIA', dishes: [] });
-            saveData();
-            renderUI();
-        }
-
-        function deleteCategory(type, catIdx) {
-            if (!confirm("¿Eliminar esta subfamilia y sus platos?")) return;
-            const cats = getTargetCategories(type);
-            cats.splice(catIdx, 1);
-            saveData();
-            renderUI();
-        }
-
-        function openDishModal(type, catIdx, dishIdx = null) {
-            editingContext = { type, catIdx, dishIdx };
-            const cats = getTargetCategories(type);
-
-            document.getElementById('modal-dish-title').innerText = dishIdx !== null ? 'Editar Plato' : 'Añadir Plato';
-            document.querySelectorAll('.alg-check').forEach(cb => cb.checked = false);
-
-            const isCarta = type === 'carta';
-            document.getElementById('group-price').style.display = isCarta ? 'block' : 'none';
-            document.getElementById('group-sup').style.display = !isCarta ? 'block' : 'none';
-
-            if (dishIdx !== null) {
-                const dish = cats[catIdx].dishes[dishIdx];
-                document.getElementById('form-dish-name').value = dish.name;
-                document.getElementById('form-dish-price').value = dish.price || '';
-                document.getElementById('form-dish-sup').value = dish.sup || '';
-                (dish.allergens || []).forEach(alg => {
-                    const cb = document.querySelector(`.alg-check[value="${alg}"]`);
-                    if (cb) cb.checked = true;
-                });
-            } else {
-                document.getElementById('form-dish-name').value = '';
-                document.getElementById('form-dish-price').value = '';
-                document.getElementById('form-dish-sup').value = '';
-            }
-
-            document.getElementById('dishModal').style.display = 'flex';
-        }
-
-        function saveDish() {
-            if (!editingContext) return;
-            const { type, catIdx, dishIdx } = editingContext;
-            const cats = getTargetCategories(type);
-
-            const name = document.getElementById('form-dish-name').value.trim();
-            if (!name) return alert("El nombre del plato es obligatorio.");
-
-            const selectedAllergens = Array.from(document.querySelectorAll('.alg-check:checked')).map(cb => cb.value);
-
-            const dishData = {
-                id: dishIdx !== null ? cats[catIdx].dishes[dishIdx].id : Date.now(),
-                name: name,
-                sel: true,
-                allergens: selectedAllergens
-            };
-
-            if (type === 'carta') {
-                dishData.price = parseFloat(document.getElementById('form-dish-price').value) || 0;
-            } else {
-                dishData.sup = parseFloat(document.getElementById('form-dish-sup').value) || 0;
-            }
-
-            if (dishIdx !== null) {
-                cats[catIdx].dishes[dishIdx] = dishData;
-            } else {
-                cats[catIdx].dishes.push(dishData);
-            }
-
-            saveData();
-            renderUI();
-            closeModal('dishModal');
-        }
-
-        function deleteDish(type, catIdx, dishIdx) {
-            const cats = getTargetCategories(type);
-            cats[catIdx].dishes.splice(dishIdx, 1);
-            saveData();
-            renderUI();
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-
-        /* --- Gestión de Logo --- */
-        function handleLogoUpload(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(evt) {
-                logoData = evt.target.result;
-                saveData();
-                updateLogoDisplay();
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function saveLogoUrl() {
-            const url = document.getElementById('logo-url-input').value.trim();
-            if (url) {
-                logoData = url;
-                saveData();
-                updateLogoDisplay();
-            }
-        }
-
-        function removeLogo() {
-            logoData = '';
-            saveData();
-            updateLogoDisplay();
-        }
-
-        function updateLogoDisplay() {
-            const mainLogo = document.getElementById('main-logo');
-            const preview = document.getElementById('logo-preview');
-            const printLogo = document.getElementById('print-logo');
-
-            if (logoData) {
-                mainLogo.src = logoData; mainLogo.style.display = 'block';
-                preview.src = logoData; preview.style.display = 'inline-block';
-                printLogo.src = logoData; printLogo.style.display = 'block';
-            } else {
-                mainLogo.style.display = 'none';
-                preview.style.display = 'none';
-                printLogo.style.display = 'none';
-            }
-        }
-
-        /* --- Modales e Impresión --- */
         function openPrintModal() {
-            const printBody = document.getElementById('print-dynamic-body');
-            const pTitle = document.getElementById('p-title');
-            const pPrice = document.getElementById('p-price');
-            const pIncludes = document.getElementById('p-includes');
-
-            printBody.innerHTML = '';
-            let cats = getTargetCategories(currentTab);
-
-            if (currentTab === 'diario' || currentTab === 'especial') {
-                const isDiario = currentTab === 'diario';
-                const titleVal = document.getElementById(isDiario ? 'menu-title-input' : 'especial-title-input').value;
-                const priceVal = document.getElementById(isDiario ? 'menu-price' : 'especial-price').value;
-
-                pTitle.innerText = titleVal;
-                pPrice.innerText = `Precio: ${parseFloat(priceVal).toFixed(2)} €`;
-
-                const optsKey = isDiario ? 'marquicos_menu_options' : 'marquicos_esp_options';
-                const opts = JSON.parse(localStorage.getItem(optsKey)) || {};
-                const incs = [];
-                if (opts.pan) incs.push('Pan');
-                if (opts.bebida) incs.push('Bebida');
-                if (opts.postre) incs.push('Postre');
-                if (opts.cafe) incs.push('Café');
-                
-                let textIncludes = incs.length ? `Incluye: ${incs.join(', ')}` : '';
-                if (opts.noBebida) {
-                    textIncludes += textIncludes ? ' (Bebida no incluida)' : 'Bebida no incluida';
-                }
-
-                pIncludes.innerText = textIncludes;
-
-            } else {
-                pTitle.innerText = "CARTA DE PLATOS";
-                pPrice.innerText = '';
-                pIncludes.innerText = '';
-            }
-
-            cats.forEach(cat => {
-                const activeDishes = cat.dishes.filter(d => d.sel);
-                if (activeDishes.length > 0) {
-                    const sec = document.createElement('div');
-                    sec.innerHTML = `<div class="print-section-title">${cat.title}</div>`;
-                    activeDishes.forEach(d => {
-                        const algs = (d.allergens || []).map(a => allergenIcons[a] || '').join(' ');
-                        const extra = currentTab === 'carta' 
-                            ? `${(d.price || 0).toFixed(2)} €` 
-                            : (d.sup > 0 ? `(+${d.sup.toFixed(2)}€)` : '');
-
-                        sec.innerHTML += `
-                            <div class="print-dish">
-                                <span>${d.name} <small>${algs}</small></span>
-                                <span><strong>${extra}</strong></span>
-                            </div>
-                        `;
-                    });
-                    printBody.appendChild(sec);
-                }
-            });
-
             document.getElementById('printModal').style.display = 'flex';
         }
 
         function openSocialModal() {
-            let cats = getTargetCategories(currentTab);
-            let text = `🍽️ *RESTAURANTE MARQUICOS* 🍽️\n`;
-
-            if (currentTab === 'diario' || currentTab === 'especial') {
-                const isDiario = currentTab === 'diario';
-                const titleVal = document.getElementById(isDiario ? 'menu-title-input' : 'especial-title-input').value;
-                const priceVal = document.getElementById(isDiario ? 'menu-price' : 'especial-price').value;
-                text += `📋 *${titleVal.toUpperCase()}* - ${parseFloat(priceVal).toFixed(2)}€\n\n`;
-            } else {
-                text += `📜 *NUESTRA CARTA*\n\n`;
-            }
-
-            cats.forEach(cat => {
-                const activeDishes = cat.dishes.filter(d => d.sel);
-                if (activeDishes.length > 0) {
-                    text += `🔹 *${cat.title}*\n`;
-                    activeDishes.forEach(d => {
-                        const priceText = currentTab === 'carta' ? ` (${(d.price || 0).toFixed(2)}€)` : (d.sup > 0 ? ` (+${d.sup.toFixed(2)}€)` : '');
-                        text += ` • ${d.name}${priceText}\n`;
-                    });
-                    text += `\n`;
-                }
-            });
-
-            text += `¡Te esperamos! Reservas y encargos disponibles.`;
-            document.getElementById('social-text').innerText = text;
             document.getElementById('socialModal').style.display = 'flex';
         }
 
-        function copySocialText() {
-            const text = document.getElementById('social-text').innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                alert("¡Texto copiado al portapapeles!");
-            }).catch(() => {
-                alert("No se pudo copiar automáticamente. Por favor, selecciona el texto manualmente.");
-            });
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
         }
 
-        /* --- Sincronización Supabase y GitHub --- */
-        function saveSupabaseConfig() {
-            const url = document.getElementById('supabase-url').value.trim();
-            const key = document.getElementById('supabase-key').value.trim();
-            localStorage.setItem('marquicos_sb_url', url);
-            localStorage.setItem('marquicos_sb_key', key);
-            initSupabase();
-            if (url && key) {
-                alert("Configuración de Supabase guardada.");
-            }
-        }
-
-        function initSupabase() {
-            const url = localStorage.getItem('marquicos_sb_url');
-            const key = localStorage.getItem('marquicos_sb_key');
-            if (url && key && window.supabase) {
-                supabaseClient = window.supabase.createClient(url, key);
-                document.getElementById('dot-supabase').classList.add('connected');
-            } else {
-                document.getElementById('dot-supabase').classList.remove('connected');
-            }
-        }
-
-        async function pushToSupabase() {
-            if (!supabaseClient) return alert("Configura primero Supabase.");
-            const payload = { 
-                id: 1, 
-                menu: menuCategories, 
-                especial: especialCategories, 
-                carta: cartaCategories, 
-                updated_at: new Date().toISOString() 
-            };
-            const { error } = await supabaseClient.from('menu_data').upsert(payload, { onConflict: 'id' });
-            if (error) alert("Error al guardar en Supabase: " + error.message);
-            else alert("¡Datos sincronizados en Supabase con éxito!");
-        }
-
-        async function pullFromSupabase() {
-            if (!supabaseClient) return alert("Configura primero Supabase.");
-            const { data, error } = await supabaseClient.from('menu_data').select('*').eq('id', 1).single();
-            if (error) return alert("Error al cargar de Supabase: " + error.message);
-            if (data) {
-                if (data.menu) menuCategories = data.menu;
-                if (data.especial) especialCategories = data.especial;
-                if (data.carta) cartaCategories = data.carta;
-                saveData();
-                renderUI();
-                alert("¡Datos actualizados desde Supabase!");
-            }
-        }
-
-        function saveGithubConfig() {
-            const token = document.getElementById('github-token').value.trim();
-            const repo = document.getElementById('github-repo').value.trim();
-            const path = document.getElementById('github-path').value.trim();
-
-            localStorage.setItem('marquicos_gh_token', token);
-            localStorage.setItem('marquicos_gh_repo', repo);
-            localStorage.setItem('marquicos_gh_path', path);
-
-            if (token && repo) {
-                document.getElementById('dot-github').classList.add('connected');
-            } else {
-                document.getElementById('dot-github').classList.remove('connected');
-            }
-            alert("Ajustes de GitHub guardados.");
-        }
-
-        async function pushToGithub() {
-            const token = localStorage.getItem('marquicos_gh_token');
-            const repo = localStorage.getItem('marquicos_gh_repo');
-            const path = localStorage.getItem('marquicos_gh_path') || 'data/menu.json';
-
-            if (!token || !repo) return alert("Configura tus credenciales de GitHub.");
-
-            const jsonString = JSON.stringify({
-                menu: menuCategories,
-                especial: especialCategories,
-                carta: cartaCategories
-            }, null, 2);
-
-            // Codificación UTF-8 robusta para Base64
-            const encoder = new TextEncoder();
-            const data = encoder.encode(jsonString);
-            let binary = '';
-            for (let i = 0; i < data.byteLength; i++) {
-                binary += String.fromCharCode(data[i]);
-            }
-            const content = btoa(binary);
-
-            const url = `https://api.github.com/repos/${repo}/contents/${path}`;
-
-            try {
-                let sha = '';
-                const getRes = await fetch(url, { headers: { Authorization: `token ${token}` } });
-                if (getRes.ok) {
-                    const getData = await getRes.json();
-                    sha = getData.sha;
-                }
-
-                const res = await fetch(url, {
-                    method: 'PUT',
-                    headers: {
-                        Authorization: `token ${token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        message: 'Actualización automática del menú',
-                        content: content,
-                        sha: sha || undefined
-                    })
-                });
-
-                if (res.ok) alert("¡Publicado en GitHub correctamente!");
-                else alert("Error al actualizar GitHub.");
-            } catch (err) {
-                alert("Error de conexión con GitHub: " + err.message);
-            }
-        }
         /* --- Exportar a PDF con html2pdf.js --- */
         function descargarPDF() {
             const elemento = document.getElementById('print-area');
@@ -984,7 +536,7 @@
             if (formato === 'letter') {
                 formatoPapel = 'letter';
             } else if (formato === 'ticket') {
-                formatoPapel = [80, 297]; // Ancho de 80mm para impresoras térmicas
+                formatoPapel = [80, 297];
             }
 
             const opciones = {
@@ -1000,10 +552,6 @@
 
         // Carga inicial al abrir la aplicación
         window.addEventListener('DOMContentLoaded', () => {
-            // ... aquí dentro sigue tu código actual con initSupabase(); ...
-
-        // Carga inicial al abrir la aplicación
-        window.addEventListener('DOMContentLoaded', () => {
             if (localStorage.getItem('marquicos_menu_title')) {
                 document.getElementById('menu-title-input').value = localStorage.getItem('marquicos_menu_title');
             }
@@ -1015,35 +563,6 @@
             }
             if (localStorage.getItem('marquicos_esp_price')) {
                 document.getElementById('especial-price').value = localStorage.getItem('marquicos_esp_price');
-            }
-
-            const opts = JSON.parse(localStorage.getItem('marquicos_menu_options'));
-            if (opts) {
-                document.getElementById('inc-pan').checked = !!opts.pan;
-                document.getElementById('inc-bebida').checked = !!opts.bebida;
-                document.getElementById('no-inc-bebida').checked = !!opts.noBebida;
-                document.getElementById('inc-postre').checked = !!opts.postre;
-                document.getElementById('inc-cafe').checked = !!opts.cafe;
-            }
-
-            const espOpts = JSON.parse(localStorage.getItem('marquicos_esp_options'));
-            if (espOpts) {
-                document.getElementById('esp-inc-pan').checked = !!espOpts.pan;
-                document.getElementById('esp-inc-bebida').checked = !!espOpts.bebida;
-                document.getElementById('esp-no-inc-bebida').checked = !!espOpts.noBebida;
-                document.getElementById('esp-inc-postre').checked = !!espOpts.postre;
-                document.getElementById('esp-inc-cafe').checked = !!espOpts.cafe;
-            }
-
-            document.getElementById('supabase-url').value = localStorage.getItem('marquicos_sb_url') || '';
-            document.getElementById('supabase-key').value = localStorage.getItem('marquicos_sb_key') || '';
-            document.getElementById('github-token').value = localStorage.getItem('marquicos_gh_token') || '';
-            document.getElementById('github-repo').value = localStorage.getItem('marquicos_gh_repo') || '';
-            document.getElementById('github-path').value = localStorage.getItem('marquicos_gh_path') || 'data/menu.json';
-
-            initSupabase();
-            if (localStorage.getItem('marquicos_gh_token') && localStorage.getItem('marquicos_gh_repo')) {
-                document.getElementById('dot-github').classList.add('connected');
             }
 
             renderUI();
