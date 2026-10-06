@@ -316,7 +316,19 @@
         </div>
     </div>
 
-    <!-- NUEVO BLOQUE CON SELECTOR DE FORMATO Y BOTÓN PDF -->
+   <!-- Modal Impresión -->
+    <div id="printModal" class="modal">
+        <div class="modal-content">
+            <div id="print-area" class="print-view">
+                <div class="print-header">
+                    <img id="print-logo" src="" alt="Logo Restaurante" class="print-logo" style="display:none;">
+                    <h2>RESTAURANTE MARQUICOS</h2>
+                    <p id="p-title" style="font-weight:bold; margin-top:5px;"></p>
+                </div>
+                <div id="print-dynamic-body"></div>
+                <div style="margin-top:15px; font-weight:bold; font-size:1.1rem; color:var(--primary);" id="p-price"></div>
+                <div style="font-size:0.8rem; margin-top:4px; color:#555;" id="p-includes"></div>
+            </div>
             <div style="margin-top:15px; display:flex; flex-direction:column; gap:10px;">
                 <div style="display:flex; gap:10px; align-items:center;">
                     <label style="font-size:0.85rem; font-weight:bold;">Formato de descarga:</label>
@@ -332,7 +344,24 @@
                     <button class="btn" style="background:#ccc;" onclick="closeModal('printModal')">Cerrar</button>
                 </div>
             </div>
-    
+        </div>
+    </div>
+
+    <!-- Modal Redes -->
+    <div id="socialModal" class="modal">
+        <div class="modal-content">
+            <h3 style="color:var(--primary); margin-bottom:10px;">Texto para Redes Sociales</h3>
+            <p style="font-size:0.85rem; color:#666;">Copia este texto para publicar en WhatsApp, Facebook e Instagram:</p>
+            <div id="social-text" class="social-box"></div>
+            <div style="display:flex; gap:10px; margin-top:15px;">
+                <button class="btn btn-primary" onclick="copySocialText()">Copiar Texto</button>
+                <button class="btn" style="background:#ccc;" onclick="closeModal('socialModal')">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ... (Tu código JavaScript existente desde el inicio del script permanece igual) ...
 
     <!-- Modal Redes -->
     <div id="socialModal" class="modal">
