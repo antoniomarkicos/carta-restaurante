@@ -1,1 +1,12 @@
-
+[
+  {
+    "id": 1,
+    "nombre": "Ensalada César",
+    "precio": "10.50€"
+  },
+  {
+    "id": 2,
+    "nombre": "Hamburguesa Completa",
+    "precio": "12.00€"
+  }
+]
