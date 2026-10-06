@@ -1,12 +1,1354 @@
-[
-  {
-    "id": 1,
-    "nombre": "Ensalada César",
-    "precio": "10.50€"
-  },
-  {
-    "id": 2,
-    "nombre": "Hamburguesa Completa",
-    "precio": "12.00€"
-  }
-]
+{
+  "menu": [
+    {
+      "id": "cat_primeros",
+      "title": "PRIMEROS PLATOS",
+      "dishes": [
+        {
+          "id": 1,
+          "sel": true,
+          "sup": 0,
+          "name": "Lasaña Casera de Carne",
+          "allergens": [
+            "gluten",
+            "lacteos"
+          ]
+        },
+        {
+          "id": 2,
+          "sel": true,
+          "sup": 0,
+          "name": "Gazpacho Andaluz con Guarnición",
+          "allergens": []
+        },
+        {
+          "id": 1791221557560,
+          "sel": true,
+          "sup": 0,
+          "name": "Ensalada Rusa",
+          "allergens": [
+            "huevos"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat_segundos",
+      "title": "SEGUNDOS PLATOS",
+      "dishes": [
+        {
+          "id": 4,
+          "sel": true,
+          "sup": 0,
+          "name": "Solomillo Ibérico a la Pimienta",
+          "allergens": [
+            "lacteos"
+          ]
+        },
+        {
+          "id": 5,
+          "sel": true,
+          "sup": 0,
+          "name": "Salmonete Fresco al Ajillo",
+          "allergens": [
+            "pescado"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat_postres",
+      "title": "POSTRES",
+      "dishes": [
+        {
+          "id": 6,
+          "sel": true,
+          "sup": 0,
+          "name": "Flan de Huevo Casero",
+          "allergens": [
+            "huevos",
+            "lacteos"
+          ]
+        }
+      ]
+    }
+  ],
+  "especial": [
+    {
+      "id": "esp_entrantes",
+      "title": "ENTRANTES (AL CENTRO)",
+      "dishes": [
+        {
+          "id": 1790964051822.6707,
+          "sel": false,
+          "sup": 0,
+          "name": "Calamar nacional de abordo (Plancha)",
+          "allergens": []
+        },
+        {
+          "id": 1790964051822.527,
+          "sel": false,
+          "sup": 0,
+          "name": "Calamar nacional a la Andaluza",
+          "allergens": []
+        },
+        {
+          "id": 1790964051822.363,
+          "sel": false,
+          "sup": 0,
+          "name": "Revuelto de setas y gambas (Ajetes y Pedro Ximénez)",
+          "allergens": []
+        },
+        {
+          "id": 1790964051822.1677,
+          "sel": false,
+          "sup": 0,
+          "name": "Gamba blanca (Cocida)",
+          "allergens": [
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051822.1416,
+          "sel": false,
+          "sup": 0,
+          "name": "Gamba blanca plancha 250 gr",
+          "allergens": [
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051822.5325,
+          "sel": false,
+          "sup": 0,
+          "name": "Zamburiñas (ud.)",
+          "allergens": [
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051822.312,
+          "sel": true,
+          "sup": 0,
+          "name": "Pulpo a la gallega",
+          "allergens": [
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051822.9783,
+          "sel": true,
+          "sup": 0,
+          "name": "Pastel de verduras",
+          "allergens": []
+        },
+        {
+          "id": 1790964051822.1626,
+          "sel": false,
+          "sup": 0,
+          "name": "Sepia a la plancha (Salsa verde)",
+          "allergens": [
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051822.348,
+          "sel": false,
+          "sup": 0,
+          "name": "Alcachofa con foie, huevo frito y PX",
+          "allergens": [
+            "huevos"
+          ]
+        },
+        {
+          "id": 1790964051822.9917,
+          "sel": false,
+          "sup": 0,
+          "name": "Caballitos (ud.)",
+          "allergens": [
+            "gluten",
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051822.128,
+          "sel": false,
+          "sup": 0,
+          "name": "Albóndigas de bacalao (ud.)",
+          "allergens": [
+            "pescado",
+            "gluten"
+          ]
+        },
+        {
+          "id": 1790964051822.702,
+          "sel": false,
+          "sup": 0,
+          "name": "Croquetas de jamón (ud.)",
+          "allergens": [
+            "gluten",
+            "lacteos"
+          ]
+        },
+        {
+          "id": 1790964051822.9697,
+          "sel": false,
+          "sup": 0,
+          "name": "Croquetas de rabo de toro (ud.)",
+          "allergens": [
+            "gluten",
+            "lacteos"
+          ]
+        },
+        {
+          "id": 1790964051822.9717,
+          "sel": false,
+          "sup": 0,
+          "name": "Croqueta de centollo (ud.)",
+          "allergens": [
+            "gluten",
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051822.199,
+          "sel": false,
+          "sup": 0,
+          "name": "Croquetón de puchero",
+          "allergens": [
+            "gluten"
+          ]
+        },
+        {
+          "id": 1790964051822.3855,
+          "sel": false,
+          "sup": 0,
+          "name": "Michirones",
+          "allergens": []
+        },
+        {
+          "id": 1790964051822.9978,
+          "sel": false,
+          "sup": 0,
+          "name": "Boquerones fritos con pimientos",
+          "allergens": [
+            "pescado",
+            "gluten"
+          ]
+        },
+        {
+          "id": 1790964051822.767,
+          "sel": false,
+          "sup": 0,
+          "name": "Gyozas de chipirón y marisco (4 ud.)",
+          "allergens": [
+            "gluten",
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051822.0767,
+          "sel": false,
+          "sup": 0,
+          "name": "Huevas de Atún",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051822.9724,
+          "sel": false,
+          "sup": 0,
+          "name": "Huevos rotos con atún Rojo",
+          "allergens": [
+            "huevos",
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051822.1284,
+          "sel": true,
+          "sup": 0,
+          "name": "Cazuela de Gambas",
+          "allergens": [
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051822.95,
+          "sel": false,
+          "sup": 0,
+          "name": "Cazuela mixta (bacalao y gambas)",
+          "allergens": [
+            "pescado",
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051822.5344,
+          "sel": true,
+          "sup": 0,
+          "name": "Atún Rojo con cama de guacamole",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051822.924,
+          "sel": false,
+          "sup": 0,
+          "name": "Tartar de Salmón",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051822.517,
+          "sel": false,
+          "sup": 0,
+          "name": "Steak tartar vaca 180 gr",
+          "allergens": []
+        },
+        {
+          "id": 1790964051822.0059,
+          "sel": false,
+          "sup": 0,
+          "name": "Torta de Camarón",
+          "allergens": [
+            "marisco",
+            "gluten"
+          ]
+        },
+        {
+          "id": 1790964051822.5933,
+          "sel": false,
+          "sup": 0,
+          "name": "Ensaladilla rusa",
+          "allergens": [
+            "huevos"
+          ]
+        },
+        {
+          "id": 1790964051822.578,
+          "sel": false,
+          "sup": 0,
+          "name": "Ensaladilla de mariscos",
+          "allergens": [
+            "marisco",
+            "huevos"
+          ]
+        },
+        {
+          "id": 1790964051822.5972,
+          "sel": false,
+          "sup": 0,
+          "name": "Tabla de quesos artesanos",
+          "allergens": [
+            "lacteos"
+          ]
+        },
+        {
+          "id": 1790964051822.2083,
+          "sel": false,
+          "sup": 0,
+          "name": "Hueva de mújol con almendra marcona",
+          "allergens": [
+            "pescado",
+            "frutos_secos"
+          ]
+        },
+        {
+          "id": 1790964051822.4983,
+          "sel": false,
+          "sup": 0,
+          "name": "Mojama con almendra marcona",
+          "allergens": [
+            "pescado",
+            "frutos_secos"
+          ]
+        },
+        {
+          "id": 1790964051822.114,
+          "sel": false,
+          "sup": 0,
+          "name": "Bisagra de atún ahumado",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051822.9353,
+          "sel": false,
+          "sup": 0,
+          "name": "Bloc de pato con champagne",
+          "allergens": []
+        },
+        {
+          "id": 1790964051822.3816,
+          "sel": false,
+          "sup": 0,
+          "name": "Lomo de bellota",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.1323,
+          "sel": false,
+          "sup": 0,
+          "name": "Tomate con olivas y tallos",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.1755,
+          "sel": true,
+          "sup": 0,
+          "name": "Tomate RAF con lomo de atún",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051823.111,
+          "sel": false,
+          "sup": 0,
+          "name": "Tomate con bonito salado",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051823.5562,
+          "sel": false,
+          "sup": 0,
+          "name": "Ensalada cántabra (Anchoas)",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051823.0674,
+          "sel": false,
+          "sup": 0,
+          "name": "Ensalada de la casa",
+          "allergens": [
+            "pescado",
+            "huevos",
+            "lacteos"
+          ]
+        },
+        {
+          "id": 1790964051823.6255,
+          "sel": false,
+          "sup": 0,
+          "name": "Ensalada de burrata",
+          "allergens": [
+            "lacteos",
+            "frutos_secos"
+          ]
+        },
+        {
+          "id": 1790964051823.6055,
+          "sel": false,
+          "sup": 0,
+          "name": "Ensalada César",
+          "allergens": [
+            "gluten",
+            "lacteos",
+            "huevos"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp_primeros",
+      "title": "PRIMER PLATO",
+      "dishes": [
+        {
+          "id": 1790964051823.2144,
+          "sel": false,
+          "sup": 0,
+          "name": "Solomillo de cerdo",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.5005,
+          "sel": false,
+          "sup": 0,
+          "name": "Abanico ibérico",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.5137,
+          "sel": false,
+          "sup": 0,
+          "name": "Chuletas de cabrito",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.1538,
+          "sel": false,
+          "sup": 0,
+          "name": "Costillas de cordero",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.4385,
+          "sel": false,
+          "sup": 0,
+          "name": "Pluma de cerdo ibérica de bellota",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.5356,
+          "sel": false,
+          "sup": 0,
+          "name": "Entrecot parrilla (Vaca vieja)",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.4546,
+          "sel": false,
+          "sup": 0,
+          "name": "Paletilla de cabrito al horno",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.0046,
+          "sel": false,
+          "sup": 0,
+          "name": "Lomo alto de wagyu 250gr",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.9912,
+          "sel": false,
+          "sup": 0,
+          "name": "Emperador",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051823.5967,
+          "sel": false,
+          "sup": 0,
+          "name": "Lomo de Atún rojo",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051823.1482,
+          "sel": false,
+          "sup": 0,
+          "name": "Lenguado con verduras",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051823.1406,
+          "sel": false,
+          "sup": 0,
+          "name": "Dentón (A la espalda)",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051823.233,
+          "sel": false,
+          "sup": 0,
+          "name": "Rodaballo con verduras",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051823.4827,
+          "sel": false,
+          "sup": 0,
+          "name": "Lecha",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051823.9495,
+          "sel": false,
+          "sup": 0,
+          "name": "Ijada de atún 250 gr",
+          "allergens": [
+            "pescado"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp_segundos",
+      "title": "SEGUNDO PLATO (A ELEGIR)",
+      "dishes": [
+        {
+          "id": 1790964051823.2144,
+          "sel": true,
+          "sup": 0,
+          "name": "Solomillo de cerdo en salsa de champiñón",
+          "allergens": [
+            "lacteos",
+            "huevos"
+          ]
+        },
+        {
+          "id": 1790964051823.5005,
+          "sel": true,
+          "sup": 0,
+          "name": "Abanico ibérico con patatas y pimientos",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.5137,
+          "sel": false,
+          "sup": 0,
+          "name": "Chuletas de cabrito",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.1538,
+          "sel": false,
+          "sup": 0,
+          "name": "Costillas de cordero",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.4385,
+          "sel": false,
+          "sup": 0,
+          "name": "Pluma de cerdo ibérica de bellota",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.5356,
+          "sel": false,
+          "sup": 0,
+          "name": "Entrecot parrilla (Vaca vieja)",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.4546,
+          "sel": false,
+          "sup": 0,
+          "name": "Paletilla de cabrito al horno",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.0046,
+          "sel": false,
+          "sup": 0,
+          "name": "Lomo alto de wagyu 250gr",
+          "allergens": []
+        },
+        {
+          "id": 1790964051823.9912,
+          "sel": false,
+          "sup": 0,
+          "name": "Emperador",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051823.5967,
+          "sel": true,
+          "sup": 0,
+          "name": "Lomo de Atún rojo con verduras",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051823.1482,
+          "sel": false,
+          "sup": 0,
+          "name": "Lenguado con verduras",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051823.1406,
+          "sel": false,
+          "sup": 0,
+          "name": "Dentón (A la espalda)",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051823.233,
+          "sel": false,
+          "sup": 0,
+          "name": "Rodaballo con verduras",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051823.4827,
+          "sel": false,
+          "sup": 0,
+          "name": "Lecha",
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051823.9495,
+          "sel": false,
+          "sup": 0,
+          "name": "Ijada de atún 250 gr",
+          "allergens": [
+            "pescado"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp_postres",
+      "title": "POSTRES",
+      "dishes": [
+        {
+          "id": 1790964051823.1094,
+          "sel": false,
+          "sup": 0,
+          "name": "Arroz con leche",
+          "allergens": [
+            "lacteos"
+          ]
+        },
+        {
+          "id": 1790964051823.288,
+          "sel": false,
+          "sup": 0,
+          "name": "Contesa (Helado)",
+          "allergens": [
+            "lacteos"
+          ]
+        },
+        {
+          "id": 1790964051823.0247,
+          "sel": false,
+          "sup": 0,
+          "name": "Coulant de chocolate con helado de vainilla",
+          "allergens": [
+            "gluten",
+            "lacteos",
+            "huevos"
+          ]
+        },
+        {
+          "id": 1790964051823.315,
+          "sel": false,
+          "sup": 0,
+          "name": "Tiramisú",
+          "allergens": [
+            "gluten",
+            "lacteos",
+            "huevos"
+          ]
+        },
+        {
+          "id": 1790964051823.5298,
+          "sel": false,
+          "sup": 0,
+          "name": "Belbele bombón helado",
+          "allergens": [
+            "lacteos"
+          ]
+        }
+      ]
+    }
+  ],
+  "carta": [
+    {
+      "id": "cat_entrantes_cocina",
+      "title": "ENTRANTES DE COCINA",
+      "dishes": [
+        {
+          "id": 1790964051823,
+          "sel": true,
+          "name": "Calamar nacional de abordo (Plancha)",
+          "price": 16,
+          "allergens": []
+        },
+        {
+          "id": 1790964051824,
+          "sel": true,
+          "name": "Calamar nacional a la Andaluza",
+          "price": 16,
+          "allergens": []
+        },
+        {
+          "id": 1790964051825,
+          "sel": true,
+          "name": "Revuelto de setas y gambas (Ajetes y Pedro Ximénez)",
+          "price": 12,
+          "allergens": []
+        },
+        {
+          "id": 1790964051826,
+          "sel": true,
+          "name": "Gamba blanca (Cocida)",
+          "price": 12,
+          "allergens": [
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051827,
+          "sel": true,
+          "name": "Gamba blanca plancha 250 gr",
+          "price": 20,
+          "allergens": [
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051828,
+          "sel": true,
+          "name": "Zamburiñas (ud.)",
+          "price": 2.3,
+          "allergens": [
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051829,
+          "sel": true,
+          "name": "Pulpo a la gallega",
+          "price": 16,
+          "allergens": [
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051830,
+          "sel": true,
+          "name": "Pastel de verduras",
+          "price": 12,
+          "allergens": []
+        },
+        {
+          "id": 1790964051831,
+          "sel": true,
+          "name": "Sepia a la plancha (Salsa verde)",
+          "price": 14,
+          "allergens": [
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051832,
+          "sel": true,
+          "name": "Alcachofa con foie, huevo frito y PX",
+          "price": 9,
+          "allergens": [
+            "huevos"
+          ]
+        },
+        {
+          "id": 1790964051833,
+          "sel": true,
+          "name": "Caballitos (ud.)",
+          "price": 1.5,
+          "allergens": [
+            "gluten",
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051834,
+          "sel": true,
+          "name": "Albóndigas de bacalao (ud.)",
+          "price": 1,
+          "allergens": [
+            "pescado",
+            "gluten"
+          ]
+        },
+        {
+          "id": 1790964051835,
+          "sel": true,
+          "name": "Croquetas de jamón (ud.)",
+          "price": 1.4,
+          "allergens": [
+            "gluten",
+            "lacteos"
+          ]
+        },
+        {
+          "id": 1790964051836,
+          "sel": true,
+          "name": "Croquetas de rabo de toro (ud.)",
+          "price": 1.8,
+          "allergens": [
+            "gluten",
+            "lacteos"
+          ]
+        },
+        {
+          "id": 1790964051837,
+          "sel": true,
+          "name": "Croqueta de centollo (ud.)",
+          "price": 1.8,
+          "allergens": [
+            "gluten",
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051838,
+          "sel": true,
+          "name": "Croquetón de puchero",
+          "price": 2.6,
+          "allergens": [
+            "gluten"
+          ]
+        },
+        {
+          "id": 1790964051839,
+          "sel": true,
+          "name": "Michirones",
+          "price": 5,
+          "allergens": []
+        },
+        {
+          "id": 1790964051840,
+          "sel": true,
+          "name": "Boquerones fritos con pimientos",
+          "price": 13,
+          "allergens": [
+            "pescado",
+            "gluten"
+          ]
+        },
+        {
+          "id": 1790964051841,
+          "sel": true,
+          "name": "Gyozas de chipirón y marisco (4 ud.)",
+          "price": 8,
+          "allergens": [
+            "gluten",
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051842,
+          "sel": true,
+          "name": "Huevas de Atún",
+          "price": 12,
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051843,
+          "sel": true,
+          "name": "Huevos rotos con atún Rojo",
+          "price": 18,
+          "allergens": [
+            "huevos",
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051844,
+          "sel": true,
+          "name": "Cazuela de Gambas",
+          "price": 15,
+          "allergens": [
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051845,
+          "sel": true,
+          "name": "Cazuela mixta (bacalao y gambas)",
+          "price": 17,
+          "allergens": [
+            "pescado",
+            "marisco"
+          ]
+        },
+        {
+          "id": 1790964051846,
+          "sel": true,
+          "name": "Atún con cama de guacamole",
+          "price": 15,
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051847,
+          "sel": true,
+          "name": "Tartar de Salmón",
+          "price": 15,
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051848,
+          "sel": true,
+          "name": "Steak tartar vaca 180 gr",
+          "price": 25,
+          "allergens": []
+        },
+        {
+          "id": 1790964051849,
+          "sel": true,
+          "name": "Torta de Camarón",
+          "price": 7,
+          "allergens": [
+            "marisco",
+            "gluten"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat_entrantes_barra",
+      "title": "ENTRANTES DE BARRA",
+      "dishes": [
+        {
+          "id": 1790964051850,
+          "sel": true,
+          "name": "Ensaladilla rusa",
+          "price": 6,
+          "allergens": [
+            "huevos"
+          ]
+        },
+        {
+          "id": 1790964051851,
+          "sel": true,
+          "name": "Ensaladilla de mariscos",
+          "price": 7,
+          "allergens": [
+            "marisco",
+            "huevos"
+          ]
+        },
+        {
+          "id": 1790964051852,
+          "sel": true,
+          "name": "Tabla de quesos artesanos",
+          "price": 14,
+          "allergens": [
+            "lacteos"
+          ]
+        },
+        {
+          "id": 1790964051853,
+          "sel": true,
+          "name": "Hueva de mújol con almendra marcona",
+          "price": 12,
+          "allergens": [
+            "pescado",
+            "frutos_secos"
+          ]
+        },
+        {
+          "id": 1790964051854,
+          "sel": true,
+          "name": "Mojama con almendra marcona",
+          "price": 0,
+          "allergens": [
+            "pescado",
+            "frutos_secos"
+          ]
+        },
+        {
+          "id": 1790964051855,
+          "sel": true,
+          "name": "Bisagra de atún ahumado",
+          "price": 2.5,
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051856,
+          "sel": true,
+          "name": "Bloc de pato con champagne",
+          "price": 14,
+          "allergens": []
+        },
+        {
+          "id": 1790964051857,
+          "sel": true,
+          "name": "Lomo de bellota",
+          "price": 12,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "cat_ensaladas",
+      "title": "ENSALADAS",
+      "dishes": [
+        {
+          "id": 1790964051858,
+          "sel": true,
+          "name": "Tomate con olivas y tallos",
+          "price": 8,
+          "allergens": []
+        },
+        {
+          "id": 1790964051859,
+          "sel": true,
+          "name": "Tomate con lomo de atún",
+          "price": 12,
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051860,
+          "sel": true,
+          "name": "Tomate con bonito salado",
+          "price": 14,
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051861,
+          "sel": true,
+          "name": "Ensalada cántabra (Anchoas)",
+          "price": 16,
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051862,
+          "sel": true,
+          "name": "Ensalada de la casa",
+          "price": 13,
+          "allergens": [
+            "pescado",
+            "huevos",
+            "lacteos"
+          ]
+        },
+        {
+          "id": 1790964051863,
+          "sel": true,
+          "name": "Ensalada de burrata",
+          "price": 14,
+          "allergens": [
+            "lacteos",
+            "frutos_secos"
+          ]
+        },
+        {
+          "id": 1790964051864,
+          "sel": true,
+          "name": "Ensalada César",
+          "price": 16,
+          "allergens": [
+            "gluten",
+            "lacteos",
+            "huevos"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat_carnes",
+      "title": "CARNES",
+      "dishes": [
+        {
+          "id": 1790964051865,
+          "sel": true,
+          "name": "Solomillo de cerdo",
+          "price": 12,
+          "allergens": []
+        },
+        {
+          "id": 1790964051866,
+          "sel": true,
+          "name": "Abanico ibérico",
+          "price": 18,
+          "allergens": []
+        },
+        {
+          "id": 1790964051867,
+          "sel": true,
+          "name": "Chuletas de cabrito",
+          "price": 19,
+          "allergens": []
+        },
+        {
+          "id": 1790964051868,
+          "sel": true,
+          "name": "Costillas de cordero",
+          "price": 19,
+          "allergens": []
+        },
+        {
+          "id": 1790964051869,
+          "sel": true,
+          "name": "Pluma de cerdo ibérica de bellota",
+          "price": 22,
+          "allergens": []
+        },
+        {
+          "id": 1790964051870,
+          "sel": true,
+          "name": "Entrecot parrilla (Vaca vieja)",
+          "price": 23,
+          "allergens": []
+        },
+        {
+          "id": 1790964051871,
+          "sel": true,
+          "name": "Paletilla de cabrito al horno",
+          "price": 27,
+          "allergens": []
+        },
+        {
+          "id": 1790964051872,
+          "sel": true,
+          "name": "Lomo alto de wagyu 250gr",
+          "price": 50,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "cat_pescados",
+      "title": "PESCADOS",
+      "dishes": [
+        {
+          "id": 1790964051873,
+          "sel": true,
+          "name": "Emperador",
+          "price": 12,
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051874,
+          "sel": true,
+          "name": "Lomo de Atún rojo",
+          "price": 15,
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051875,
+          "sel": true,
+          "name": "Lenguado con verduras",
+          "price": 18,
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051876,
+          "sel": true,
+          "name": "Dentón (A la espalda)",
+          "price": 20,
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051877,
+          "sel": true,
+          "name": "Rodaballo con verduras",
+          "price": 22,
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051878,
+          "sel": true,
+          "name": "Lecha",
+          "price": 22,
+          "allergens": [
+            "pescado"
+          ]
+        },
+        {
+          "id": 1790964051879,
+          "sel": true,
+          "name": "Ijada de atún 250 gr",
+          "price": 25,
+          "allergens": [
+            "pescado"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cat_postres",
+      "title": "POSTRES",
+      "dishes": [
+        {
+          "id": 1790964051880,
+          "sel": true,
+          "name": "Arroz con leche",
+          "price": 3.3,
+          "allergens": [
+            "lacteos"
+          ]
+        },
+        {
+          "id": 1790964051881,
+          "sel": true,
+          "name": "Contesa (Helado)",
+          "price": 4,
+          "allergens": [
+            "lacteos"
+          ]
+        },
+        {
+          "id": 1790964051882,
+          "sel": true,
+          "name": "Coulant de chocolate con helado de vainilla",
+          "price": 6,
+          "allergens": [
+            "gluten",
+            "lacteos",
+            "huevos"
+          ]
+        },
+        {
+          "id": 1790964051883,
+          "sel": true,
+          "name": "Tiramisú",
+          "price": 6,
+          "allergens": [
+            "gluten",
+            "lacteos",
+            "huevos"
+          ]
+        },
+        {
+          "id": 1790964051884,
+          "sel": true,
+          "name": "Belbele bombón helado",
+          "price": 6,
+          "allergens": [
+            "lacteos"
+          ]
+        }
+      ]
+    }
+  ]
+}
