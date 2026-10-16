@@ -851,12 +851,23 @@
 
         async function pushToSupabase() {
             if (!supabaseClient) return alert("Configura Supabase primero.");
+            
             const data = {
                 menu: menuCategories,
                 especial: especialCategories,
                 carta: cartaCategories,
+                // Añadimos títulos, precios y opciones
+                meta: {
+                    menuTitle: document.getElementById('menu-title-input').value,
+                    menuPrice: document.getElementById('menu-price').value,
+                    especialTitle: document.getElementById('especial-title-input').value,
+                    especialPrice: document.getElementById('especial-price').value,
+                    menuOpts: JSON.parse(localStorage.getItem('marquicos_menu_options') || '{}'),
+                    espOpts: JSON.parse(localStorage.getItem('marquicos_esp_options') || '{}')
+                },
                 updated_at: new Date()
             };
+            
             const { error } = await supabaseClient.from('menus').upsert({ id: 1, content: data });
             if (error) alert("Error al subir: " + error.message);
             else alert("¡Sincronizado con Supabase con éxito!");
@@ -870,6 +881,31 @@
                 menuCategories = data.content.menu || [];
                 especialCategories = data.content.especial || [];
                 cartaCategories = data.content.carta || [];
+
+                // Restauramos títulos, precios y opciones si vienen en el contenido
+                if (data.content.meta) {
+                    const m = data.content.meta;
+                    if (m.menuTitle !== undefined) document.getElementById('menu-title-input').value = m.menuTitle;
+                    if (m.menuPrice !== undefined) document.getElementById('menu-price').value = m.menuPrice;
+                    if (m.especialTitle !== undefined) document.getElementById('especial-title-input').value = m.especialTitle;
+                    if (m.especialPrice !== undefined) document.getElementById('especial-price').value = m.especialPrice;
+
+                    if (m.menuOpts) {
+                        document.getElementById('inc-pan').checked = !!m.menuOpts.pan;
+                        document.getElementById('inc-bebida').checked = !!m.menuOpts.bebida;
+                        document.getElementById('no-inc-bebida').checked = !!m.menuOpts.noBebida;
+                        document.getElementById('inc-postre').checked = !!m.menuOpts.postre;
+                        document.getElementById('inc-cafe').checked = !!m.menuOpts.cafe;
+                    }
+                    if (m.espOpts) {
+                        document.getElementById('esp-inc-pan').checked = !!m.espOpts.pan;
+                        document.getElementById('esp-inc-bebida').checked = !!m.espOpts.bebida;
+                        document.getElementById('esp-no-inc-bebida').checked = !!m.espOpts.noBebida;
+                        document.getElementById('esp-inc-postre').checked = !!m.espOpts.postre;
+                        document.getElementById('esp-inc-cafe').checked = !!m.espOpts.cafe;
+                    }
+                }
+
                 saveData();
                 renderAll();
                 alert("¡Datos actualizados desde Supabase!");
@@ -920,13 +956,16 @@
                     })
                 });
 
-                if (putRes.ok) alert("¡Publicado en GitHub correctamente!");
-                else alert("Error al publicar en GitHub.");
+                if (putRes.ok) {
+                    alert("¡Publicado en GitHub correctamente!");
+                } else {
+                    const errData = await putRes.json();
+                    alert("Error al publicar en GitHub: " + (errData.message || putRes.statusText));
+                }
             } catch (err) {
                 alert("Error de red con GitHub: " + err.message);
             }
         }
-
         window.onload = function() {
             const spUrl = localStorage.getItem('marquicos_sp_url');
             const spKey = localStorage.getItem('marquicos_sp_key');
