@@ -774,28 +774,28 @@
       "dishes": [
         {
           "id": 1790964051823,
-          "sel": true,
+          "sel": false,
           "name": "Calamar nacional de abordo (Plancha)",
           "price": 16,
           "allergens": []
         },
         {
           "id": 1790964051824,
-          "sel": true,
+          "sel": false,
           "name": "Calamar nacional a la Andaluza",
           "price": 16,
           "allergens": []
         },
         {
           "id": 1790964051825,
-          "sel": true,
+          "sel": false,
           "name": "Revuelto de setas y gambas (Ajetes y Pedro Ximénez)",
           "price": 12,
           "allergens": []
         },
         {
           "id": 1790964051826,
-          "sel": true,
+          "sel": false,
           "name": "Gamba blanca (Cocida)",
           "price": 12,
           "allergens": [
@@ -804,7 +804,7 @@
         },
         {
           "id": 1790964051827,
-          "sel": true,
+          "sel": false,
           "name": "Gamba blanca plancha 250 gr",
           "price": 20,
           "allergens": [
@@ -813,7 +813,7 @@
         },
         {
           "id": 1790964051828,
-          "sel": true,
+          "sel": false,
           "name": "Zamburiñas (ud.)",
           "price": 2.3,
           "allergens": [
@@ -822,7 +822,7 @@
         },
         {
           "id": 1790964051829,
-          "sel": true,
+          "sel": false,
           "name": "Pulpo a la gallega",
           "price": 16,
           "allergens": [
@@ -831,14 +831,14 @@
         },
         {
           "id": 1790964051830,
-          "sel": true,
+          "sel": false,
           "name": "Pastel de verduras",
           "price": 12,
           "allergens": []
         },
         {
           "id": 1790964051831,
-          "sel": true,
+          "sel": false,
           "name": "Sepia a la plancha (Salsa verde)",
           "price": 14,
           "allergens": [
@@ -847,7 +847,7 @@
         },
         {
           "id": 1790964051832,
-          "sel": true,
+          "sel": false,
           "name": "Alcachofa con foie, huevo frito y PX",
           "price": 9,
           "allergens": [
@@ -856,7 +856,7 @@
         },
         {
           "id": 1790964051833,
-          "sel": true,
+          "sel": false,
           "name": "Caballitos (ud.)",
           "price": 1.5,
           "allergens": [
@@ -866,7 +866,7 @@
         },
         {
           "id": 1790964051834,
-          "sel": true,
+          "sel": false,
           "name": "Albóndigas de bacalao (ud.)",
           "price": 1,
           "allergens": [
@@ -876,7 +876,7 @@
         },
         {
           "id": 1790964051835,
-          "sel": true,
+          "sel": false,
           "name": "Croquetas de jamón (ud.)",
           "price": 1.4,
           "allergens": [
@@ -886,7 +886,7 @@
         },
         {
           "id": 1790964051836,
-          "sel": true,
+          "sel": false,
           "name": "Croquetas de rabo de toro (ud.)",
           "price": 1.8,
           "allergens": [
@@ -896,7 +896,7 @@
         },
         {
           "id": 1790964051837,
-          "sel": true,
+          "sel": false,
           "name": "Croqueta de centollo (ud.)",
           "price": 1.8,
           "allergens": [
@@ -906,7 +906,7 @@
         },
         {
           "id": 1790964051838,
-          "sel": true,
+          "sel": false,
           "name": "Croquetón de puchero",
           "price": 2.6,
           "allergens": [
@@ -915,14 +915,14 @@
         },
         {
           "id": 1790964051839,
-          "sel": true,
+          "sel": false,
           "name": "Michirones",
           "price": 5,
           "allergens": []
         },
         {
           "id": 1790964051840,
-          "sel": true,
+          "sel": false,
           "name": "Boquerones fritos con pimientos",
           "price": 13,
           "allergens": [
@@ -932,7 +932,7 @@
         },
         {
           "id": 1790964051841,
-          "sel": true,
+          "sel": false,
           "name": "Gyozas de chipirón y marisco (4 ud.)",
           "price": 8,
           "allergens": [
@@ -942,7 +942,7 @@
         },
         {
           "id": 1790964051842,
-          "sel": true,
+          "sel": false,
           "name": "Huevas de Atún",
           "price": 12,
           "allergens": [
@@ -951,7 +951,7 @@
         },
         {
           "id": 1790964051843,
-          "sel": true,
+          "sel": false,
           "name": "Huevos rotos con atún Rojo",
           "price": 18,
           "allergens": [
@@ -961,7 +961,7 @@
         },
         {
           "id": 1790964051844,
-          "sel": true,
+          "sel": false,
           "name": "Cazuela de Gambas",
           "price": 15,
           "allergens": [
@@ -970,7 +970,7 @@
         },
         {
           "id": 1790964051845,
-          "sel": true,
+          "sel": false,
           "name": "Cazuela mixta (bacalao y gambas)",
           "price": 17,
           "allergens": [
@@ -980,7 +980,7 @@
         },
         {
           "id": 1790964051846,
-          "sel": true,
+          "sel": false,
           "name": "Atún con cama de guacamole",
           "price": 15,
           "allergens": [
@@ -989,7 +989,7 @@
         },
         {
           "id": 1790964051847,
-          "sel": true,
+          "sel": false,
           "name": "Tartar de Salmón",
           "price": 15,
           "allergens": [
@@ -998,14 +998,14 @@
         },
         {
           "id": 1790964051848,
-          "sel": true,
+          "sel": false,
           "name": "Steak tartar vaca 180 gr",
           "price": 25,
           "allergens": []
         },
         {
           "id": 1790964051849,
-          "sel": true,
+          "sel": false,
           "name": "Torta de Camarón",
           "price": 7,
           "allergens": [
@@ -1021,7 +1021,7 @@
       "dishes": [
         {
           "id": 1790964051850,
-          "sel": false,
+          "sel": true,
           "name": "Ensaladilla rusa",
           "price": 6,
           "allergens": [
@@ -1030,7 +1030,7 @@
         },
         {
           "id": 1790964051851,
-          "sel": false,
+          "sel": true,
           "name": "Ensaladilla de mariscos",
           "price": 7,
           "allergens": [
@@ -1040,7 +1040,7 @@
         },
         {
           "id": 1790964051852,
-          "sel": false,
+          "sel": true,
           "name": "Tabla de quesos artesanos",
           "price": 14,
           "allergens": [
@@ -1059,7 +1059,7 @@
         },
         {
           "id": 1790964051854,
-          "sel": false,
+          "sel": true,
           "name": "Mojama con almendra marcona",
           "price": 0,
           "allergens": [
@@ -1069,7 +1069,7 @@
         },
         {
           "id": 1790964051855,
-          "sel": false,
+          "sel": true,
           "name": "Bisagra de atún ahumado",
           "price": 2.5,
           "allergens": [
@@ -1078,14 +1078,14 @@
         },
         {
           "id": 1790964051856,
-          "sel": false,
+          "sel": true,
           "name": "Bloc de pato con champagne",
           "price": 14,
           "allergens": []
         },
         {
           "id": 1790964051857,
-          "sel": false,
+          "sel": true,
           "name": "Lomo de bellota",
           "price": 12,
           "allergens": []
@@ -1098,14 +1098,14 @@
       "dishes": [
         {
           "id": 1790964051858,
-          "sel": false,
+          "sel": true,
           "name": "Tomate con olivas y tallos",
           "price": 8,
           "allergens": []
         },
         {
           "id": 1790964051859,
-          "sel": false,
+          "sel": true,
           "name": "Tomate con lomo de atún",
           "price": 12,
           "allergens": [
@@ -1114,7 +1114,7 @@
         },
         {
           "id": 1790964051860,
-          "sel": false,
+          "sel": true,
           "name": "Tomate con bonito salado",
           "price": 14,
           "allergens": [
@@ -1132,7 +1132,7 @@
         },
         {
           "id": 1790964051862,
-          "sel": false,
+          "sel": true,
           "name": "Ensalada de la casa",
           "price": 13,
           "allergens": [
@@ -1143,7 +1143,7 @@
         },
         {
           "id": 1790964051863,
-          "sel": false,
+          "sel": true,
           "name": "Ensalada de burrata",
           "price": 14,
           "allergens": [
@@ -1153,7 +1153,7 @@
         },
         {
           "id": 1790964051864,
-          "sel": false,
+          "sel": true,
           "name": "Ensalada César",
           "price": 16,
           "allergens": [
