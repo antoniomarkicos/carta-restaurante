@@ -29,6 +29,16 @@
           "allergens": [
             "huevos"
           ]
+        },
+        {
+          "id": 1792198493583,
+          "sel": true,
+          "sup": 0,
+          "name": "Sopa Castellana",
+          "allergens": [
+            "gluten",
+            "huevos"
+          ]
         }
       ]
     },
