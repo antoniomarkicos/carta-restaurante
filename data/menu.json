@@ -42,28 +42,28 @@
         },
         {
           "id": 1792404508237,
-          "name": "Guiso de costillejas",
           "sel": true,
-          "allergens": [],
-          "sup": 0
+          "sup": 0,
+          "name": "Guiso de costillejas",
+          "allergens": []
         },
         {
           "id": 1792404533018,
-          "name": "Caldo con pelotas.",
           "sel": true,
-          "allergens": [],
-          "sup": 0
+          "sup": 0,
+          "name": "Caldo con pelotas.",
+          "allergens": []
         },
         {
           "id": 1792404569311,
-          "name": "Croqueta de puchero con ensaladilla rusa",
           "sel": true,
+          "sup": 0,
+          "name": "Croqueta de puchero con ensaladilla rusa",
           "allergens": [
             "gluten",
             "lacteos",
             "huevos"
-          ],
-          "sup": 0
+          ]
         }
       ]
     },
@@ -91,33 +91,33 @@
         },
         {
           "id": 1792404617475,
-          "name": "Hamburguesa de pollo.",
           "sel": true,
+          "sup": 0,
+          "name": "Hamburguesa de pollo.",
           "allergens": [
             "huevos"
-          ],
-          "sup": 0
+          ]
         },
         {
           "id": 1792404642059,
-          "name": "Albóndigas en salsa.",
           "sel": true,
+          "sup": 0,
+          "name": "Albóndigas en salsa.",
           "allergens": [
             "gluten",
             "lacteos",
             "huevos"
-          ],
-          "sup": 0
+          ]
         },
         {
           "id": 1792404679778,
-          "name": "Boqueron rebozado.",
           "sel": true,
+          "sup": 0,
+          "name": "Boqueron rebozado.",
           "allergens": [
             "gluten",
             "huevos"
-          ],
-          "sup": 0
+          ]
         }
       ]
     },
@@ -148,19 +148,19 @@
         },
         {
           "id": 1792404698887,
-          "name": "Piña",
           "sel": true,
-          "allergens": [],
-          "sup": 0
+          "sup": 0,
+          "name": "Piña",
+          "allergens": []
         },
         {
           "id": 1792404761214,
-          "name": "Arroz con leche",
           "sel": true,
+          "sup": 0,
+          "name": "Arroz con leche",
           "allergens": [
             "lacteos"
-          ],
-          "sup": 0
+          ]
         }
       ]
     }
@@ -740,7 +740,7 @@
         },
         {
           "id": 1790964051823.9912,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Emperador",
           "allergens": [
@@ -855,6 +855,13 @@
           "allergens": [
             "lacteos"
           ]
+        },
+        {
+          "id": 1792406059886,
+          "name": "Poste casero a elegir.",
+          "sel": true,
+          "allergens": [],
+          "sup": 0
         }
       ]
     }
