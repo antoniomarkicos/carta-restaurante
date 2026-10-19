@@ -1397,6 +1397,15 @@
           "sel": true,
           "allergens": [],
           "price": 65
+        },
+        {
+          "id": 1792428528164,
+          "name": "Pepito de ternera",
+          "sel": true,
+          "allergens": [
+            "gluten"
+          ],
+          "price": 6
         }
       ]
     },
@@ -1460,12 +1469,12 @@
         },
         {
           "id": 1790964051879,
+          "name": "Ijada de atún",
           "sel": true,
-          "name": "Ijada de atún 250 gr",
-          "price": 25,
           "allergens": [
             "pescado"
-          ]
+          ],
+          "price": 20
         }
       ]
     },
@@ -1521,13 +1530,57 @@
           "allergens": [
             "lacteos"
           ]
+        },
+        {
+          "id": 1792428209529,
+          "name": "Tarta de whisky",
+          "sel": true,
+          "allergens": [
+            "gluten",
+            "lacteos",
+            "huevos",
+            "frutos_secos"
+          ],
+          "price": 5
+        },
+        {
+          "id": 1792428240274,
+          "name": "Tarta de turrón",
+          "sel": true,
+          "allergens": [
+            "gluten",
+            "lacteos",
+            "huevos",
+            "frutos_secos"
+          ],
+          "price": 6
+        },
+        {
+          "id": 1792428333938,
+          "name": "Torrija con helado de turrón",
+          "sel": true,
+          "allergens": [
+            "gluten",
+            "lacteos",
+            "huevos",
+            "frutos_secos"
+          ],
+          "price": 6
         }
       ]
     },
     {
       "id": "cat_1792407682660",
       "title": "CARTA DE VINOS",
-      "dishes": []
+      "dishes": [
+        {
+          "id": 1792428147285,
+          "name": "Altos de luzon",
+          "sel": false,
+          "allergens": [],
+          "price": 20
+        }
+      ]
     }
   ]
 }
