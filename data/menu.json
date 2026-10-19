@@ -193,6 +193,26 @@
           ]
         }
       ]
+    },
+    {
+      "id": "cat_1792407964070",
+      "title": "VINOS TINTOS.",
+      "dishes": []
+    },
+    {
+      "id": "cat_1792408029965",
+      "title": "VINOS BLANCOS.",
+      "dishes": []
+    },
+    {
+      "id": "cat_1792408068195",
+      "title": "ESPUMOSOS",
+      "dishes": []
+    },
+    {
+      "id": "cat_1792408085733",
+      "title": "VINOS ROSADOS",
+      "dishes": []
     }
   ],
   "especial": [
@@ -903,28 +923,28 @@
       "dishes": [
         {
           "id": 1790964051823,
-          "sel": true,
+          "sel": false,
           "name": "Calamar nacional de abordo (Plancha)",
           "price": 16,
           "allergens": []
         },
         {
           "id": 1790964051824,
-          "sel": true,
+          "sel": false,
           "name": "Calamar nacional a la Andaluza",
           "price": 16,
           "allergens": []
         },
         {
           "id": 1790964051825,
-          "sel": true,
+          "sel": false,
           "name": "Revuelto de setas y gambas (Ajetes y Pedro Ximénez)",
           "price": 12,
           "allergens": []
         },
         {
           "id": 1790964051826,
-          "sel": true,
+          "sel": false,
           "name": "Gamba blanca (Cocida)",
           "price": 12,
           "allergens": [
@@ -933,7 +953,7 @@
         },
         {
           "id": 1790964051827,
-          "sel": true,
+          "sel": false,
           "name": "Gamba blanca plancha 250 gr",
           "price": 20,
           "allergens": [
@@ -942,7 +962,7 @@
         },
         {
           "id": 1790964051828,
-          "sel": true,
+          "sel": false,
           "name": "Zamburiñas (ud.)",
           "price": 2.3,
           "allergens": [
@@ -951,7 +971,7 @@
         },
         {
           "id": 1790964051829,
-          "sel": true,
+          "sel": false,
           "name": "Pulpo a la gallega",
           "price": 16,
           "allergens": [
@@ -960,14 +980,14 @@
         },
         {
           "id": 1790964051830,
-          "sel": true,
+          "sel": false,
           "name": "Pastel de verduras",
           "price": 12,
           "allergens": []
         },
         {
           "id": 1790964051831,
-          "sel": true,
+          "sel": false,
           "name": "Sepia a la plancha (Salsa verde)",
           "price": 14,
           "allergens": [
@@ -976,7 +996,7 @@
         },
         {
           "id": 1790964051832,
-          "sel": true,
+          "sel": false,
           "name": "Alcachofa con foie, huevo frito y PX",
           "price": 9,
           "allergens": [
@@ -985,7 +1005,7 @@
         },
         {
           "id": 1790964051833,
-          "sel": true,
+          "sel": false,
           "name": "Caballitos (ud.)",
           "price": 1.5,
           "allergens": [
@@ -995,7 +1015,7 @@
         },
         {
           "id": 1790964051834,
-          "sel": true,
+          "sel": false,
           "name": "Albóndigas de bacalao (ud.)",
           "price": 1,
           "allergens": [
@@ -1005,7 +1025,7 @@
         },
         {
           "id": 1790964051835,
-          "sel": true,
+          "sel": false,
           "name": "Croquetas de jamón (ud.)",
           "price": 1.4,
           "allergens": [
@@ -1015,7 +1035,7 @@
         },
         {
           "id": 1790964051836,
-          "sel": true,
+          "sel": false,
           "name": "Croquetas de rabo de toro (ud.)",
           "price": 1.8,
           "allergens": [
@@ -1025,7 +1045,7 @@
         },
         {
           "id": 1790964051837,
-          "sel": true,
+          "sel": false,
           "name": "Croqueta de centollo (ud.)",
           "price": 1.8,
           "allergens": [
@@ -1035,7 +1055,7 @@
         },
         {
           "id": 1790964051838,
-          "sel": true,
+          "sel": false,
           "name": "Croquetón de puchero",
           "price": 2.6,
           "allergens": [
@@ -1044,14 +1064,14 @@
         },
         {
           "id": 1790964051839,
-          "sel": true,
+          "sel": false,
           "name": "Michirones",
           "price": 5,
           "allergens": []
         },
         {
           "id": 1790964051840,
-          "sel": true,
+          "sel": false,
           "name": "Boquerones fritos con pimientos",
           "price": 13,
           "allergens": [
@@ -1061,7 +1081,7 @@
         },
         {
           "id": 1790964051841,
-          "sel": true,
+          "sel": false,
           "name": "Gyozas de chipirón y marisco (4 ud.)",
           "price": 8,
           "allergens": [
@@ -1071,7 +1091,7 @@
         },
         {
           "id": 1790964051842,
-          "sel": true,
+          "sel": false,
           "name": "Huevas de Atún",
           "price": 12,
           "allergens": [
@@ -1080,7 +1100,7 @@
         },
         {
           "id": 1790964051843,
-          "sel": true,
+          "sel": false,
           "name": "Huevos rotos con atún Rojo",
           "price": 18,
           "allergens": [
@@ -1090,7 +1110,7 @@
         },
         {
           "id": 1790964051844,
-          "sel": true,
+          "sel": false,
           "name": "Cazuela de Gambas",
           "price": 15,
           "allergens": [
@@ -1099,7 +1119,7 @@
         },
         {
           "id": 1790964051845,
-          "sel": true,
+          "sel": false,
           "name": "Cazuela mixta (bacalao y gambas)",
           "price": 17,
           "allergens": [
@@ -1109,7 +1129,7 @@
         },
         {
           "id": 1790964051846,
-          "sel": true,
+          "sel": false,
           "name": "Atún con cama de guacamole",
           "price": 15,
           "allergens": [
@@ -1118,7 +1138,7 @@
         },
         {
           "id": 1790964051847,
-          "sel": true,
+          "sel": false,
           "name": "Tartar de Salmón",
           "price": 15,
           "allergens": [
@@ -1134,13 +1154,20 @@
         },
         {
           "id": 1790964051849,
-          "sel": true,
+          "sel": false,
           "name": "Torta de Camarón",
           "price": 7,
           "allergens": [
             "marisco",
             "gluten"
           ]
+        },
+        {
+          "id": 1792408645943,
+          "name": "Gamba roja de Denia (precio por Kg)",
+          "sel": true,
+          "allergens": [],
+          "price": 140
         }
       ]
     },
@@ -1227,52 +1254,52 @@
       "dishes": [
         {
           "id": 1790964051858,
-          "sel": false,
-          "name": "Tomate con olivas y tallos",
-          "price": 8,
-          "allergens": []
+          "name": "Tomate raf con olivas y tallos",
+          "sel": true,
+          "allergens": [],
+          "price": 10
         },
         {
           "id": 1790964051859,
-          "sel": false,
-          "name": "Tomate con lomo de atún",
-          "price": 12,
+          "name": "Tomate raf con lomo de atún",
+          "sel": true,
           "allergens": [
             "pescado"
-          ]
+          ],
+          "price": 14
         },
         {
           "id": 1790964051860,
-          "sel": false,
-          "name": "Tomate con bonito salado",
-          "price": 14,
+          "name": "Tomate raf con bonito salado",
+          "sel": true,
           "allergens": [
             "pescado"
-          ]
+          ],
+          "price": 14
         },
         {
           "id": 1790964051861,
-          "sel": false,
           "name": "Ensalada cántabra (Anchoas)",
-          "price": 16,
+          "sel": true,
           "allergens": [
             "pescado"
-          ]
+          ],
+          "price": 18
         },
         {
           "id": 1790964051862,
-          "sel": false,
           "name": "Ensalada de la casa",
-          "price": 13,
+          "sel": true,
           "allergens": [
-            "pescado",
+            "lacteos",
             "huevos",
-            "lacteos"
-          ]
+            "pescado"
+          ],
+          "price": 14
         },
         {
           "id": 1790964051863,
-          "sel": false,
+          "sel": true,
           "name": "Ensalada de burrata",
           "price": 14,
           "allergens": [
@@ -1282,7 +1309,7 @@
         },
         {
           "id": 1790964051864,
-          "sel": false,
+          "sel": true,
           "name": "Ensalada César",
           "price": 16,
           "allergens": [
@@ -1313,21 +1340,21 @@
         },
         {
           "id": 1790964051867,
-          "sel": false,
+          "sel": true,
           "name": "Chuletas de cabrito",
           "price": 19,
           "allergens": []
         },
         {
           "id": 1790964051868,
-          "sel": false,
+          "sel": true,
           "name": "Costillas de cordero",
           "price": 19,
           "allergens": []
         },
         {
           "id": 1790964051869,
-          "sel": false,
+          "sel": true,
           "name": "Pluma de cerdo ibérica de bellota",
           "price": 22,
           "allergens": []
@@ -1341,17 +1368,24 @@
         },
         {
           "id": 1790964051871,
-          "sel": false,
+          "sel": true,
           "name": "Paletilla de cabrito al horno",
           "price": 27,
           "allergens": []
         },
         {
           "id": 1790964051872,
-          "sel": false,
+          "sel": true,
           "name": "Lomo alto de wagyu 250gr",
           "price": 50,
           "allergens": []
+        },
+        {
+          "id": 1792408492329,
+          "name": "Cotte (chuleta de ternera) precio por kg",
+          "sel": true,
+          "allergens": [],
+          "price": 65
         }
       ]
     },
@@ -1370,7 +1404,7 @@
         },
         {
           "id": 1790964051874,
-          "sel": false,
+          "sel": true,
           "name": "Lomo de Atún rojo",
           "price": 15,
           "allergens": [
@@ -1388,7 +1422,7 @@
         },
         {
           "id": 1790964051876,
-          "sel": false,
+          "sel": true,
           "name": "Dentón (A la espalda)",
           "price": 20,
           "allergens": [
@@ -1397,7 +1431,7 @@
         },
         {
           "id": 1790964051877,
-          "sel": false,
+          "sel": true,
           "name": "Rodaballo con verduras",
           "price": 22,
           "allergens": [
@@ -1406,7 +1440,7 @@
         },
         {
           "id": 1790964051878,
-          "sel": false,
+          "sel": true,
           "name": "Lecha",
           "price": 22,
           "allergens": [
@@ -1415,7 +1449,7 @@
         },
         {
           "id": 1790964051879,
-          "sel": false,
+          "sel": true,
           "name": "Ijada de atún 250 gr",
           "price": 25,
           "allergens": [
@@ -1478,6 +1512,11 @@
           ]
         }
       ]
+    },
+    {
+      "id": "cat_1792407682660",
+      "title": "CARTA DE VINOS",
+      "dishes": []
     }
   ]
 }
