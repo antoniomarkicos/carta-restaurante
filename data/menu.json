@@ -6,7 +6,7 @@
       "dishes": [
         {
           "id": 1,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Lasaña Casera de Carne",
           "allergens": [
@@ -16,14 +16,14 @@
         },
         {
           "id": 2,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Gazpacho Andaluz con Guarnición",
           "allergens": []
         },
         {
           "id": 1791221557560,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Ensalada Rusa",
           "allergens": [
@@ -32,13 +32,38 @@
         },
         {
           "id": 1792198493583,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Sopa Castellana",
           "allergens": [
             "gluten",
             "huevos"
           ]
+        },
+        {
+          "id": 1792404508237,
+          "name": "Guiso de costillejas",
+          "sel": true,
+          "allergens": [],
+          "sup": 0
+        },
+        {
+          "id": 1792404533018,
+          "name": "Caldo con pelotas.",
+          "sel": true,
+          "allergens": [],
+          "sup": 0
+        },
+        {
+          "id": 1792404569311,
+          "name": "Croqueta de puchero con ensaladilla rusa",
+          "sel": true,
+          "allergens": [
+            "gluten",
+            "lacteos",
+            "huevos"
+          ],
+          "sup": 0
         }
       ]
     },
@@ -48,7 +73,7 @@
       "dishes": [
         {
           "id": 4,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Solomillo Ibérico a la Pimienta",
           "allergens": [
@@ -57,12 +82,42 @@
         },
         {
           "id": 5,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Salmonete Fresco al Ajillo",
           "allergens": [
             "pescado"
           ]
+        },
+        {
+          "id": 1792404617475,
+          "name": "Hamburguesa de pollo.",
+          "sel": true,
+          "allergens": [
+            "huevos"
+          ],
+          "sup": 0
+        },
+        {
+          "id": 1792404642059,
+          "name": "Albóndigas en salsa.",
+          "sel": true,
+          "allergens": [
+            "gluten",
+            "lacteos",
+            "huevos"
+          ],
+          "sup": 0
+        },
+        {
+          "id": 1792404679778,
+          "name": "Boqueron rebozado.",
+          "sel": true,
+          "allergens": [
+            "gluten",
+            "huevos"
+          ],
+          "sup": 0
         }
       ]
     },
@@ -72,13 +127,40 @@
       "dishes": [
         {
           "id": 6,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Flan de Huevo Casero",
           "allergens": [
             "huevos",
             "lacteos"
           ]
+        },
+        {
+          "id": 1792403909736,
+          "sel": true,
+          "sup": 0,
+          "name": "Tiramisú",
+          "allergens": [
+            "gluten",
+            "lacteos",
+            "huevos"
+          ]
+        },
+        {
+          "id": 1792404698887,
+          "name": "Piña",
+          "sel": true,
+          "allergens": [],
+          "sup": 0
+        },
+        {
+          "id": 1792404761214,
+          "name": "Arroz con leche",
+          "sel": true,
+          "allergens": [
+            "lacteos"
+          ],
+          "sup": 0
         }
       ]
     }
