@@ -78,7 +78,10 @@
           "id": 1792406691321,
           "name": "Arroz caldoso de pescado.",
           "sel": true,
-          "allergens": [],
+          "allergens": [
+            "pescado",
+            "marisco"
+          ],
           "sup": 0
         },
         {
@@ -98,12 +101,12 @@
       "dishes": [
         {
           "id": 4,
-          "sel": false,
-          "sup": 0,
-          "name": "Solomillo Ibérico a la Pimienta",
+          "name": "Solomillo de cerdo a la Pimienta",
+          "sel": true,
           "allergens": [
             "lacteos"
-          ]
+          ],
+          "sup": 0
         },
         {
           "id": 1792404617475,
@@ -157,7 +160,7 @@
       "dishes": [
         {
           "id": 6,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Flan de Huevo Casero",
           "allergens": [
@@ -167,7 +170,7 @@
         },
         {
           "id": 1792403909736,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Tiramisú",
           "allergens": [
@@ -178,41 +181,49 @@
         },
         {
           "id": 1792404698887,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Piña",
           "allergens": []
         },
         {
           "id": 1792404761214,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Arroz con leche",
           "allergens": [
             "lacteos"
           ]
+        },
+        {
+          "id": 1792427751039,
+          "name": "Crema de almendra",
+          "sel": false,
+          "allergens": [],
+          "sup": 0
+        },
+        {
+          "id": 1792427782916,
+          "name": "Tarta de la abuela",
+          "sel": false,
+          "allergens": [
+            "gluten",
+            "lacteos",
+            "huevos"
+          ],
+          "sup": 0
+        },
+        {
+          "id": 1792427999826,
+          "name": "Contesa",
+          "sel": true,
+          "allergens": [
+            "lacteos",
+            "huevos"
+          ],
+          "sup": 0
         }
       ]
-    },
-    {
-      "id": "cat_1792407964070",
-      "title": "VINOS TINTOS.",
-      "dishes": []
-    },
-    {
-      "id": "cat_1792408029965",
-      "title": "VINOS BLANCOS.",
-      "dishes": []
-    },
-    {
-      "id": "cat_1792408068195",
-      "title": "ESPUMOSOS",
-      "dishes": []
-    },
-    {
-      "id": "cat_1792408085733",
-      "title": "VINOS ROSADOS",
-      "dishes": []
     }
   ],
   "especial": [
