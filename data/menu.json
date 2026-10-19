@@ -42,21 +42,21 @@
         },
         {
           "id": 1792404508237,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Guiso de costillejas",
           "allergens": []
         },
         {
           "id": 1792404533018,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Caldo con pelotas.",
           "allergens": []
         },
         {
           "id": 1792404569311,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Croqueta de puchero con ensaladilla rusa",
           "allergens": [
@@ -64,6 +64,31 @@
             "lacteos",
             "huevos"
           ]
+        },
+        {
+          "id": 1792406636543,
+          "name": "Salmorejo",
+          "sel": true,
+          "allergens": [
+            "huevos"
+          ],
+          "sup": 0
+        },
+        {
+          "id": 1792406691321,
+          "name": "Arroz caldoso de pescado.",
+          "sel": true,
+          "allergens": [],
+          "sup": 0
+        },
+        {
+          "id": 1792406720206,
+          "name": "Ensalada mixta",
+          "sel": true,
+          "allergens": [
+            "huevos"
+          ],
+          "sup": 0
         }
       ]
     },
@@ -81,17 +106,8 @@
           ]
         },
         {
-          "id": 5,
-          "sel": false,
-          "sup": 0,
-          "name": "Salmonete Fresco al Ajillo",
-          "allergens": [
-            "pescado"
-          ]
-        },
-        {
           "id": 1792404617475,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Hamburguesa de pollo.",
           "allergens": [
@@ -111,13 +127,27 @@
         },
         {
           "id": 1792404679778,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Boqueron rebozado.",
           "allergens": [
             "gluten",
             "huevos"
           ]
+        },
+        {
+          "id": 1792406744801,
+          "name": "Filete de ternera",
+          "sel": true,
+          "allergens": [],
+          "sup": 0
+        },
+        {
+          "id": 1792406766946,
+          "name": "Filete de atún.",
+          "sel": true,
+          "allergens": [],
+          "sup": 0
         }
       ]
     },
@@ -127,7 +157,7 @@
       "dishes": [
         {
           "id": 6,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Flan de Huevo Casero",
           "allergens": [
