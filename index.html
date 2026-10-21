@@ -309,6 +309,13 @@
                 <label>Precio (€)</label>
                 <input type="number" id="form-dish-price" class="form-control" step="0.50" placeholder="Ej: 8.50">
             </div>
+            <div class="form-group" id="group-price-type">
+                <label>Tipo de Precio</label>
+                <select id="form-dish-price-type" class="form-control">
+                    <option value="fixed">Precio Fijo (por ración/unidad)</option>
+                    <option value="kg">Precio por Kilo (€ / kg)</option>
+                </select>
+            </div>
             <div class="form-group" id="group-sup">
                 <label>Suplemento (€) [Opcional]</label>
                 <input type="number" id="form-dish-sup" class="form-control" step="0.50" placeholder="0.00">
@@ -395,21 +402,21 @@
             {
                 id: 'cat_entrantes', title: 'ENTRANTES',
                 dishes: [
-                    { id: 201, name: "Jamón Ibérico de Bellota", price: 18.00, sel: true, allergens: [] },
-                    { id: 202, name: "Croquetas Caseras Variadas", price: 10.50, sel: true, allergens: ['gluten', 'lacteos', 'huevos'] }
+                    { id: 201, name: "Jamón Ibérico de Bellota", price: 18.00, priceType: 'fixed', sel: true, allergens: [] },
+                    { id: 202, name: "Croquetas Caseras Variadas", price: 10.50, priceType: 'fixed', sel: true, allergens: ['gluten', 'lacteos', 'huevos'] }
                 ]
             },
             {
                 id: 'cat_ensaladas', title: 'ENSALADAS',
-                dishes: [{ id: 204, name: "Ensalada Mixta Marquicos", price: 8.50, sel: true, allergens: ['huevos'] }]
+                dishes: [{ id: 204, name: "Ensalada Mixta Marquicos", price: 8.50, priceType: 'fixed', sel: true, allergens: ['huevos'] }]
             },
             {
                 id: 'cat_carnes', title: 'CARNES',
-                dishes: [{ id: 206, name: "Chuletón de Ternera (500g)", price: 22.50, sel: true, allergens: [] }]
+                dishes: [{ id: 206, name: "Chuletón de Ternera (500g)", price: 65.00, priceType: 'kg', sel: true, allergens: [] }]
             },
             {
                 id: 'cat_pescados', title: 'PESCADOS',
-                dishes: [{ id: 208, name: "Lubina a la Espalda", price: 16.50, sel: true, allergens: ['pescado'] }]
+                dishes: [{ id: 208, name: "Gamba Roja", price: 90.00, priceType: 'kg', sel: true, allergens: ['marisco'] }]
             }
         ];
 
@@ -565,7 +572,7 @@
                                     </div>
                                 </div>
                                 ${dish.sup ? `<span class="supplement-badge">+${dish.sup.toFixed(2)}€</span>` : ''}
-                                ${dish.price ? `<span class="dish-price">${dish.price.toFixed(2)}€</span>` : ''}
+                                ${dish.price !== undefined && dish.price !== '' ? `<span class="dish-price">${dish.price.toFixed(2)}€${dish.priceType === 'kg' ? ' / kg' : ''}</span>` : ''}
                                 <div class="dish-actions">
                                     <button class="action-btn" onclick="openDishModal('${type}', ${catIdx},${dishIdx})">✏️</button>
                                     <button class="action-btn" onclick="deleteDish('${type}', ${catIdx},${dishIdx})">🗑️</button>
@@ -618,14 +625,16 @@
             editingContext = { type, catIdx, dishIdx };
             const isCarta = type === 'carta';
             const isEdit = dishIdx !== null;
-            const dish = isEdit ? getCategoryList(type)[catIdx].dishes[dishIdx] : { name: '', price: '', sup: '', allergens: [] };
+            const dish = isEdit ? getCategoryList(type)[catIdx].dishes[dishIdx] : { name: '', price: '', priceType: 'fixed', sup: '', allergens: [] };
 
             document.getElementById('modal-dish-title').innerText = isEdit ? 'Editar Plato' : 'Añadir Plato';
             document.getElementById('form-dish-name').value = dish.name || '';
-            document.getElementById('form-dish-price').value = dish.price || '';
+            document.getElementById('form-dish-price').value = dish.price !== undefined ? dish.price : '';
+            document.getElementById('form-dish-price-type').value = dish.priceType || 'fixed';
             document.getElementById('form-dish-sup').value = dish.sup || '';
 
             document.getElementById('group-price').style.display = isCarta ? 'block' : 'none';
+            document.getElementById('group-price-type').style.display = isCarta ? 'block' : 'none';
             document.getElementById('group-sup').style.display = isCarta ? 'none' : 'block';
 
             document.querySelectorAll('.alg-check').forEach(chk => {
@@ -655,6 +664,7 @@
 
             if (type === 'carta') {
                 dishObj.price = parseFloat(document.getElementById('form-dish-price').value) || 0;
+                dishObj.priceType = document.getElementById('form-dish-price-type').value;
             } else {
                 dishObj.sup = parseFloat(document.getElementById('form-dish-sup').value) || 0;
             }
@@ -717,9 +727,11 @@
         function openPrintModal() {
             const isDiario = currentTab === 'diario';
             const isEspecial = currentTab === 'especial';
+            const isCarta = currentTab === 'carta';
             
             const title = isDiario ? document.getElementById('menu-title-input').value :
-                          isEspecial ? document.getElementById('especial-title-input').value : '';
+                          isEspecial ? document.getElementById('especial-title-input').value :
+                          isCarta ? "CARTA COMPLETA" : '';
 
             const subtitle = isDiario ? document.getElementById('menu-subtitle-input').value :
                              isEspecial ? document.getElementById('especial-subtitle-input').value : '';
@@ -736,7 +748,11 @@
                     bodyHtml += `<div class="print-section-title">${cat.title}</div>`;
                     selectedDishes.forEach(d => {
                         const supText = d.sup ? ` (+${d.sup.toFixed(2)}€)` : '';
-                        const priceText = d.price ? `${d.price.toFixed(2)}€` : '';
+                        let priceText = '';
+                        if (d.price !== undefined && d.price !== '') {
+                            const unitText = d.priceType === 'kg' ? ' / kg' : '';
+                            priceText = `${d.price.toFixed(2)}€${unitText}`;
+                        }
                         const algs = (d.allergens || []).map(a => allergenIcons[a] || '').join(' ');
                         bodyHtml += `
                             <div class="print-dish">
@@ -749,7 +765,7 @@
 
             document.getElementById('print-dynamic-body').innerHTML = bodyHtml;
 
-            if (currentTab !== 'carta') {
+            if (!isCarta) {
                 const price = isDiario ? document.getElementById('menu-price').value : document.getElementById('especial-price').value;
                 document.getElementById('p-price').innerText = `Precio: ${price}€`;
 
