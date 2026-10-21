@@ -147,6 +147,7 @@
             <button class="tab-btn active" onclick="switchTab('diario')">Menú Diario</button>
             <button class="tab-btn" onclick="switchTab('especial')">Menú Especial</button>
             <button class="tab-btn" onclick="switchTab('carta')">Carta Completa</button>
+            <button class="tab-btn" onclick="switchTab('vinos')">🍷 Vinos</button>
             <button class="tab-btn" onclick="switchTab('sync')">⚡ Supabase & GitHub</button>
             <button class="tab-btn" onclick="switchTab('config')">⚙️ Logo</button>
         </div>
@@ -176,7 +177,7 @@
                     <label class="toggle-item"><input type="checkbox" id="inc-una-bebida" onchange="handleBebidaToggle('diario', 'inc-una-bebida')"> Incluye Una Bebida</label>
                     <label class="toggle-item"><input type="checkbox" id="no-inc-bebida" onchange="handleBebidaToggle('diario', 'no-inc-bebida')"> Bebida No Incluida</label>
                     <label class="toggle-item"><input type="checkbox" id="inc-postre" checked onchange="saveData()"> Incluye Postre</label>
-                    <label class="toggle-item"><input type="checkbox" id="inc-cafe" onchange="saveData()"> Incluye Café</label>
+                    <label class="toggle-item"><input type="checkbox" id="inc-cafe" checked onchange="saveData()"> Incluye Café</label>
                 </div>
             </div>
 
@@ -209,7 +210,7 @@
                     <label class="toggle-item"><input type="checkbox" id="esp-inc-una-bebida" onchange="handleBebidaToggle('especial', 'esp-inc-una-bebida')"> Incluye Una Bebida</label>
                     <label class="toggle-item"><input type="checkbox" id="esp-no-inc-bebida" onchange="handleBebidaToggle('especial', 'esp-no-inc-bebida')"> Bebida No Incluida</label>
                     <label class="toggle-item"><input type="checkbox" id="esp-inc-postre" checked onchange="saveData()"> Incluye Postre</label>
-                    <label class="toggle-item"><input type="checkbox" id="esp-inc-cafe" onchange="saveData()"> Incluye Café</label>
+                    <label class="toggle-item"><input type="checkbox" id="esp-inc-cafe" checked onchange="saveData()"> Incluye Café</label>
                 </div>
             </div>
 
@@ -224,6 +225,12 @@
             </button>
             <div id="carta-categories-container"></div>
             <button class="add-cat-btn" onclick="addCategory('carta')">➕ Añadir Nueva Subfamilia a la Carta</button>
+        </div>
+
+        <!-- Sección de Vinos -->
+        <div id="view-vinos" class="view-section">
+            <div id="vinos-categories-container"></div>
+            <button class="add-cat-btn" onclick="addCategory('vinos')">➕ Añadir Nueva Categoría de Vinos</button>
         </div>
 
         <!-- Pestaña Sincronización -->
@@ -297,22 +304,22 @@
         <button class="btn btn-secondary" onclick="downloadMenuAsImage()">📸 Guardar como Imagen</button>
     </div>
 
-    <!-- Modal Platos -->
+    <!-- Modal Platos / Vinos -->
     <div id="dishModal" class="modal">
         <div class="modal-content">
-            <h3 id="modal-dish-title" style="color:var(--primary); margin-bottom:12px;">Añadir Plato</h3>
+            <h3 id="modal-dish-title" style="color:var(--primary); margin-bottom:12px;">Añadir Elemento</h3>
             <div class="form-group">
-                <label>Nombre del Plato</label>
-                <input type="text" id="form-dish-name" class="form-control" placeholder="Ej: Croquetas Caseras">
+                <label id="label-name-item">Nombre del Plato / Vino</label>
+                <input type="text" id="form-dish-name" class="form-control" placeholder="Ej: Rioja Crianza">
             </div>
             <div class="form-group" id="group-price">
                 <label>Precio (€)</label>
-                <input type="number" id="form-dish-price" class="form-control" step="0.50" placeholder="Ej: 8.50">
+                <input type="number" id="form-dish-price" class="form-control" step="0.50" placeholder="Ej: 14.00">
             </div>
             <div class="form-group" id="group-price-type">
                 <label>Tipo de Precio</label>
                 <select id="form-dish-price-type" class="form-control">
-                    <option value="fixed">Precio Fijo (por ración/unidad)</option>
+                    <option value="fixed">Precio Fijo / Botella</option>
                     <option value="kg">Precio por Kilo (€ / kg)</option>
                 </select>
             </div>
@@ -320,7 +327,7 @@
                 <label>Suplemento (€) [Opcional]</label>
                 <input type="number" id="form-dish-sup" class="form-control" step="0.50" placeholder="0.00">
             </div>
-            <div class="form-group">
+            <div class="form-group" id="group-allergens">
                 <label>Alérgenos</label>
                 <div class="allergens-selector">
                     <label class="allergen-option"><input type="checkbox" class="alg-check" value="gluten"> 🌾 Gluten</label>
@@ -332,7 +339,7 @@
                 </div>
             </div>
             <div style="display:flex; gap:10px; margin-top:15px;">
-                <button class="btn btn-primary" onclick="saveDish()">Guardar Plato</button>
+                <button class="btn btn-primary" onclick="saveDish()">Guardar</button>
                 <button class="btn" style="background:#ccc;" onclick="closeModal('dishModal')">Cancelar</button>
             </div>
         </div>
@@ -420,9 +427,85 @@
             }
         ];
 
+        const defaultVinosCategories = [
+            {
+                id: 'vinos_cavas', title: 'CAVAS',
+                dishes: [
+                    { id: 401, name: "Mitic 1908 Brut Nature", price: 20.00, priceType: 'fixed', sel: true },
+                    { id: 402, name: "Milesime Cava", price: 35.00, priceType: 'fixed', sel: true }
+                ]
+            },
+            {
+                id: 'vinos_tintos', title: 'VINOS TINTOS',
+                dishes: [
+                    { id: 403, name: "Altos de Luzón (Oferta especial)", price: 20.00, priceType: 'fixed', sel: true },
+                    { id: 404, name: "Matarromera Crianza (Ribera)", price: 32.00, priceType: 'fixed', sel: true },
+                    { id: 405, name: "Protos 27", price: 30.00, priceType: 'fixed', sel: true },
+                    { id: 406, name: "Valduero Una Cepa (Ribera del Duero)", price: 39.00, priceType: 'fixed', sel: true },
+                    { id: 407, name: "Bruto (Jumilla)", price: 40.00, priceType: 'fixed', sel: true },
+                    { id: 408, name: "Porti (Jumilla)", price: 32.00, priceType: 'fixed', sel: true },
+                    { id: 409, name: "Carmelo Rodero Crianza (Ribera del Duero)", price: 33.00, priceType: 'fixed', sel: true },
+                    { id: 410, name: "Taulla 6 meses Magnum (Ribera del Duero 1.5L)", price: 35.00, priceType: 'fixed', sel: true },
+                    { id: 411, name: "Roa Crianza (Ribera del Duero)", price: 18.00, priceType: 'fixed', sel: true },
+                    { id: 412, name: "Ego Fuerza 21 - 12 meses (Jumilla)", price: 22.00, priceType: 'fixed', sel: true },
+                    { id: 413, name: "Carmelo 9 meses (Ribera)", price: 22.00, priceType: 'fixed', sel: true },
+                    { id: 414, name: "Abadía Retuerta (Botella de 3 L)", price: 180.00, priceType: 'fixed', sel: true },
+                    { id: 415, name: "Juana la Loca Syrah - 18 meses en Barrica", price: 38.00, priceType: 'fixed', sel: true },
+                    { id: 416, name: "Don Jacobo Rioja Crianza", price: 17.00, priceType: 'fixed', sel: true },
+                    { id: 417, name: "Goru (Jumilla)", price: 14.00, priceType: 'fixed', sel: true },
+                    { id: 418, name: "Viña Jaraba - Vino de Pago (3 meses barrica)", price: 14.00, priceType: 'fixed', sel: true },
+                    { id: 419, name: "Montecastro Crianza (Ribera del Duero)", price: 28.00, priceType: 'fixed', sel: true },
+                    { id: 420, name: "Tobia Selección de Autor (Rioja)", price: 24.00, priceType: 'fixed', sel: true },
+                    { id: 421, name: "Carroa (Ribera del Duero)", price: 46.00, priceType: 'fixed', sel: true },
+                    { id: 422, name: "Bosque de Matasnos Crianza (Ribera del Duero)", price: 42.00, priceType: 'fixed', sel: true },
+                    { id: 423, name: "Luis Cañas Rioja Crianza", price: 20.00, priceType: 'fixed', sel: true },
+                    { id: 424, name: "Tobia Cuvée", price: 16.00, priceType: 'fixed', sel: true }
+                ]
+            },
+            {
+                id: 'vinos_blancos', title: 'VINOS BLANCOS',
+                dishes: [
+                    { id: 425, name: "Luzón Blanco (Jumilla)", price: 12.00, priceType: 'fixed', sel: true },
+                    { id: 426, name: "De Alberto (Rueda)", price: 13.00, priceType: 'fixed', sel: true },
+                    { id: 427, name: "Castaño Chardonnay - 6 meses barricas", price: 18.00, priceType: 'fixed', sel: true },
+                    { id: 428, name: "Ego Goru Chardonnay (Jumilla)", price: 18.00, priceType: 'fixed', sel: true },
+                    { id: 429, name: "Feroce (Espumoso)", price: 12.00, priceType: 'fixed', sel: true },
+                    { id: 430, name: "Mar de Frades Albariño", price: 23.00, priceType: 'fixed', sel: true },
+                    { id: 431, name: "Pazo das Bruxas Albariño", price: 20.00, priceType: 'fixed', sel: true },
+                    { id: 432, name: "Martín Códax Albariño", price: 20.00, priceType: 'fixed', sel: true },
+                    { id: 433, name: "Godeval Godello (Valdeorras)", price: 23.00, priceType: 'fixed', sel: true },
+                    { id: 434, name: "Cepas Vellas Godeval Godello (Valdeorras)", price: 29.00, priceType: 'fixed', sel: true },
+                    { id: 435, name: "Cuvée Protos Verdejo", price: 19.00, priceType: 'fixed', sel: true },
+                    { id: 436, name: "Pago de la Jaraba Sauvignon Blanc", price: 18.00, priceType: 'fixed', sel: true },
+                    { id: 437, name: "Los Ángeles También Pecan (Verdejo)", price: 19.00, priceType: 'fixed', sel: true },
+                    { id: 438, name: "Valduero Blanco (Ribera del Duero)", price: 20.00, priceType: 'fixed', sel: true },
+                    { id: 439, name: "Chardonnay Ropiteu (Francia)", price: 18.00, priceType: 'fixed', sel: true },
+                    { id: 440, name: "Tobia Selección de Autor (Rioja)", price: 24.00, priceType: 'fixed', sel: true },
+                    { id: 441, name: "Pita Verdejo 2024", price: 14.00, priceType: 'fixed', sel: true },
+                    { id: 442, name: "Pita Finca La Cantera (Barrica roble francés y lías)", price: 29.00, priceType: 'fixed', sel: true },
+                    { id: 443, name: "Juan Galindo Verdejo", price: 14.00, priceType: 'fixed', sel: true },
+                    { id: 444, name: "Nasica Verdejo", price: 13.50, priceType: 'fixed', sel: true }
+                ]
+            },
+            {
+                id: 'vinos_rosados', title: 'VINOS ROSADOS',
+                dishes: [
+                    { id: 445, name: "Peñascal", price: 9.00, priceType: 'fixed', sel: true },
+                    { id: 446, name: "Voila (Navarra)", price: 23.00, priceType: 'fixed', sel: true },
+                    { id: 447, name: "Castaño Ecológico (Yecla)", price: 14.00, priceType: 'fixed', sel: true }
+                ]
+            }
+        ];
+
         let menuCategories = JSON.parse(localStorage.getItem('marquicos_menu_cats')) || defaultMenuCategories;
         let especialCategories = JSON.parse(localStorage.getItem('marquicos_esp_cats')) || defaultEspecialCategories;
         let cartaCategories = JSON.parse(localStorage.getItem('marquicos_carta_cats')) || defaultCartaCategories;
+        // Forzamos la carga de vinos si no existían o estaban vacíos en el navegador
+        let vinosCategories = JSON.parse(localStorage.getItem('marquicos_vinos_cats'));
+        if (!vinosCategories || vinosCategories.length === 0) {
+            vinosCategories = defaultVinosCategories;
+            localStorage.setItem('marquicos_vinos_cats', JSON.stringify(vinosCategories));
+        }
         let logoData = localStorage.getItem('marquicos_logo') || '';
 
         function switchTab(tab) {
@@ -460,6 +543,7 @@
             localStorage.setItem('marquicos_menu_cats', JSON.stringify(menuCategories));
             localStorage.setItem('marquicos_esp_cats', JSON.stringify(especialCategories));
             localStorage.setItem('marquicos_carta_cats', JSON.stringify(cartaCategories));
+            localStorage.setItem('marquicos_vinos_cats', JSON.stringify(vinosCategories));
             localStorage.setItem('marquicos_logo', logoData);
 
             localStorage.setItem('marquicos_menu_title', document.getElementById('menu-title-input').value);
@@ -536,6 +620,7 @@
         function getCategoryList(type) {
             if (type === 'menu' || type === 'diario') return menuCategories;
             if (type === 'especial') return especialCategories;
+            if (type === 'vinos') return vinosCategories;
             return cartaCategories;
         }
 
@@ -543,6 +628,7 @@
             renderCategories('menu', 'menu-categories-container');
             renderCategories('especial', 'especial-categories-container');
             renderCategories('carta', 'carta-categories-container');
+            renderCategories('vinos', 'vinos-categories-container');
             updateLogoDisplay();
         }
 
@@ -557,7 +643,7 @@
                         <span>${cat.title}</span>
                         <div class="title-actions">
                             <button class="add-dish-btn" style="background:#6c757d; padding:4px 8px; font-size:0.75rem;" onclick="toggleAllDishesInCat('${type}', ${catIdx})">🔘 Todos</button>
-                            <button class="add-dish-btn" onclick="openDishModal('${type}', ${catIdx})">➕ Añadir Plato</button>
+                            <button class="add-dish-btn" onclick="openDishModal('${type}', ${catIdx})">➕ Añadir</button>
                             <button class="title-btn" onclick="deleteCategory('${type}', ${catIdx})">🗑️</button>
                         </div>
                     </div>
@@ -585,7 +671,7 @@
         }
 
         function addCategory(type) {
-            const title = prompt("Nombre de la nueva subfamilia:");
+            const title = prompt("Nombre de la nueva categoría:");
             if (!title) return;
             const list = getCategoryList(type);
             list.push({ id: 'cat_' + Date.now(), title: title.toUpperCase(), dishes: [] });
@@ -594,7 +680,7 @@
         }
 
         function deleteCategory(type, catIdx) {
-            if (!confirm("¿Seguro que deseas eliminar esta subfamilia?")) return;
+            if (!confirm("¿Seguro que deseas eliminar esta categoría?")) return;
             getCategoryList(type).splice(catIdx, 1);
             saveData();
             renderAll();
@@ -623,19 +709,20 @@
 
         function openDishModal(type, catIdx, dishIdx = null) {
             editingContext = { type, catIdx, dishIdx };
-            const isCarta = type === 'carta';
+            const isPriced = type === 'carta' || type === 'vinos';
             const isEdit = dishIdx !== null;
             const dish = isEdit ? getCategoryList(type)[catIdx].dishes[dishIdx] : { name: '', price: '', priceType: 'fixed', sup: '', allergens: [] };
 
-            document.getElementById('modal-dish-title').innerText = isEdit ? 'Editar Plato' : 'Añadir Plato';
+            document.getElementById('modal-dish-title').innerText = isEdit ? 'Editar Elemento' : 'Añadir Elemento';
             document.getElementById('form-dish-name').value = dish.name || '';
             document.getElementById('form-dish-price').value = dish.price !== undefined ? dish.price : '';
             document.getElementById('form-dish-price-type').value = dish.priceType || 'fixed';
             document.getElementById('form-dish-sup').value = dish.sup || '';
 
-            document.getElementById('group-price').style.display = isCarta ? 'block' : 'none';
-            document.getElementById('group-price-type').style.display = isCarta ? 'block' : 'none';
-            document.getElementById('group-sup').style.display = isCarta ? 'none' : 'block';
+            document.getElementById('group-price').style.display = isPriced ? 'block' : 'none';
+            document.getElementById('group-price-type').style.display = type === 'carta' ? 'block' : 'none';
+            document.getElementById('group-sup').style.display = type === 'diario' || type === 'especial' ? 'block' : 'none';
+            document.getElementById('group-allergens').style.display = type === 'vinos' ? 'none' : 'block';
 
             document.querySelectorAll('.alg-check').forEach(chk => {
                 chk.checked = (dish.allergens || []).includes(chk.value);
@@ -652,9 +739,9 @@
             if (!editingContext) return;
             const { type, catIdx, dishIdx } = editingContext;
             const name = document.getElementById('form-dish-name').value.trim();
-            if (!name) return alert("Por favor ingresa un nombre para el plato");
+            if (!name) return alert("Por favor ingresa un nombre");
 
-            const allergens = Array.from(document.querySelectorAll('.alg-check:checked')).map(c => c.value);
+            const allergens = type === 'vinos' ? [] : Array.from(document.querySelectorAll('.alg-check:checked')).map(c => c.value);
             const dishObj = {
                 id: dishIdx !== null ? getCategoryList(type)[catIdx].dishes[dishIdx].id : Date.now(),
                 name,
@@ -662,9 +749,11 @@
                 allergens
             };
 
-            if (type === 'carta') {
+            if (type === 'carta' || type === 'vinos') {
                 dishObj.price = parseFloat(document.getElementById('form-dish-price').value) || 0;
-                dishObj.priceType = document.getElementById('form-dish-price-type').value;
+                if (type === 'carta') {
+                    dishObj.priceType = document.getElementById('form-dish-price-type').value;
+                }
             } else {
                 dishObj.sup = parseFloat(document.getElementById('form-dish-sup').value) || 0;
             }
@@ -728,10 +817,12 @@
             const isDiario = currentTab === 'diario';
             const isEspecial = currentTab === 'especial';
             const isCarta = currentTab === 'carta';
+            const isVinos = currentTab === 'vinos';
             
             const title = isDiario ? document.getElementById('menu-title-input').value :
                           isEspecial ? document.getElementById('especial-title-input').value :
-                          isCarta ? "CARTA COMPLETA" : '';
+                          isCarta ? "CARTA COMPLETA" :
+                          isVinos ? "CARTA DE VINOS" : '';
 
             const subtitle = isDiario ? document.getElementById('menu-subtitle-input').value :
                              isEspecial ? document.getElementById('especial-subtitle-input').value : '';
@@ -765,7 +856,7 @@
 
             document.getElementById('print-dynamic-body').innerHTML = bodyHtml;
 
-            if (!isCarta) {
+            if (isDiario || isEspecial) {
                 const price = isDiario ? document.getElementById('menu-price').value : document.getElementById('especial-price').value;
                 document.getElementById('p-price').innerText = `Precio: ${price}€`;
 
@@ -834,6 +925,7 @@
                 menu: menuCategories,
                 especial: especialCategories,
                 carta: cartaCategories,
+                vinos: vinosCategories,
                 meta: {
                     menuTitle: document.getElementById('menu-title-input').value,
                     menuSubtitle: document.getElementById('menu-subtitle-input').value,
@@ -860,6 +952,7 @@
                 menuCategories = data.content.menu || [];
                 especialCategories = data.content.especial || [];
                 cartaCategories = data.content.carta || [];
+                vinosCategories = data.content.vinos || [];
 
                 if (data.content.meta) {
                     const m = data.content.meta;
@@ -881,7 +974,7 @@
                     if (m.espOpts) {
                         document.getElementById('esp-inc-pan').checked = !!m.espOpts.pan;
                         document.getElementById('esp-inc-bebida').checked = !!m.espOpts.bebida;
-                        document.getElementById('esp-inc-una-bebida').checked = !!m.espOpts.unabebida;
+                        document.getElementById('esp-inc-una-bebida').checked = !!m.menuOpts.unabebida;
                         document.getElementById('esp-no-inc-bebida').checked = !!m.espOpts.noBebida;
                         document.getElementById('esp-inc-postre').checked = !!m.espOpts.postre;
                         document.getElementById('esp-inc-cafe').checked = !!m.espOpts.cafe;
@@ -912,7 +1005,8 @@
             const content = btoa(unescape(encodeURIComponent(JSON.stringify({
                 menu: menuCategories,
                 especial: especialCategories,
-                carta: cartaCategories
+                carta: cartaCategories,
+                vinos: vinosCategories
             }, null, 2))));
 
             const url = `https://api.github.com/repos/${repo}/contents/${path}`;
@@ -932,7 +1026,7 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        message: "Actualización de menú desde panel",
+                        message: "Actualización completa de vinos y menús",
                         content: content,
                         sha: sha || undefined
                     })
