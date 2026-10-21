@@ -111,67 +111,22 @@
         .print-header { border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 15px; display: flex; flex-direction: column; align-items: center; }
         .print-logo { max-height: 80px; margin-bottom: 10px; }
         .print-header h2 { color: var(--primary); font-size: 1.4rem; text-transform: uppercase; }
+        .print-subtitle { font-size: 0.9rem; font-weight: 600; color: #444; margin-top: 2px; }
         .print-section-title { color: var(--primary); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin: 12px 0 6px; border-bottom: 1px solid var(--border-color); text-align: left; font-weight: bold; }
         .print-dish { font-size: 0.9rem; margin: 4px 0; display: flex; justify-content: space-between; align-items: center; text-align: left; }
-        .social-box { background: #f4f4f4; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; font-size: 0.85rem; margin: 10px 0; max-height: 200px; overflow-y: auto; }
         .view-section { display: none; }
         .view-section.active { display: block; }
-
-      /* Estilos para las secciones dentro de la vista de impresión */
-        .print-section-title {
-            color: var(--primary);
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 16px 0 6px;
-            border-bottom: 1px solid var(--border-color);
-            text-align: left;
-            font-weight: bold;
-            page-break-after: avoid;
-        }
-
-        .print-dish {
-            font-size: 0.9rem;
-            margin: 6px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            text-align: left;
-            page-break-inside: avoid;
-        }
 
         @media print {
             * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
             body * { visibility: hidden; }
             #printModal, #printModal * { visibility: visible; }
             #printModal {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: auto;
-                background: white !important;
-                display: block !important;
+                position: absolute; left: 0; top: 0; width: 100%; height: auto; background: white !important; display: block !important;
             }
-            .modal-content {
-                box-shadow: none !important;
-                border: none !important;
-                max-width: 100% !important;
-                width: 100% !important;
-                margin: 0 !important;
-                padding: 10px !important;
-            }
-            #p-title:empty {
-            display: none;
-            margin: 0 !important;
-        }
+            .modal-content { box-shadow: none !important; border: none !important; max-width: 100% !important; width: 100% !important; margin: 0 !important; padding: 10px !important; }
             #printModal button { display: none !important; }
-            
-            .print-section-title {
-                break-inside: avoid;
-            }
-        }  
-
+        }
     </style>
 </head>
 <body>
@@ -204,6 +159,11 @@
                     <input type="text" id="menu-title-input" class="input-text" value="Menú Diario" oninput="saveData()">
                 </div>
 
+                <div style="margin-bottom: 10px;">
+                    <label style="font-size:0.8rem; color:#666; font-weight:bold;">Días / Subtítulo del Menú</label>
+                    <input type="text" id="menu-subtitle-input" class="input-text" placeholder="Ej: De Lunes a Viernes" value="De Lunes a Viernes" oninput="saveData()">
+                </div>
+
                 <div style="display: flex; gap: 10px; align-items: center;">
                     <div style="flex:1;">
                         <label style="font-size:0.8rem; color:#666; font-weight:bold;">Precio Menú (€)</label>
@@ -213,6 +173,7 @@
                 <div class="options-grid">
                     <label class="toggle-item"><input type="checkbox" id="inc-pan" checked onchange="saveData()"> Incluye Pan</label>
                     <label class="toggle-item"><input type="checkbox" id="inc-bebida" checked onchange="handleBebidaToggle('diario', 'inc-bebida')"> Incluye Bebida</label>
+                    <label class="toggle-item"><input type="checkbox" id="inc-una-bebida" onchange="handleBebidaToggle('diario', 'inc-una-bebida')"> Incluye Una Bebida</label>
                     <label class="toggle-item"><input type="checkbox" id="no-inc-bebida" onchange="handleBebidaToggle('diario', 'no-inc-bebida')"> Bebida No Incluida</label>
                     <label class="toggle-item"><input type="checkbox" id="inc-postre" checked onchange="saveData()"> Incluye Postre</label>
                     <label class="toggle-item"><input type="checkbox" id="inc-cafe" onchange="saveData()"> Incluye Café</label>
@@ -231,6 +192,11 @@
                     <input type="text" id="especial-title-input" class="input-text" value="Menú Especial" oninput="saveData()">
                 </div>
 
+                <div style="margin-bottom: 10px;">
+                    <label style="font-size:0.8rem; color:#666; font-weight:bold;">Días / Subtítulo del Menú Especial</label>
+                    <input type="text" id="especial-subtitle-input" class="input-text" placeholder="Ej: Sábados, Domingos y Festivos" value="Fin de Semana y Festivos" oninput="saveData()">
+                </div>
+
                 <div style="display: flex; gap: 10px; align-items: center;">
                     <div style="flex:1;">
                         <label style="font-size:0.8rem; color:#666; font-weight:bold;">Precio Menú (€)</label>
@@ -240,6 +206,7 @@
                 <div class="options-grid">
                     <label class="toggle-item"><input type="checkbox" id="esp-inc-pan" checked onchange="saveData()"> Incluye Pan</label>
                     <label class="toggle-item"><input type="checkbox" id="esp-inc-bebida" checked onchange="handleBebidaToggle('especial', 'esp-inc-bebida')"> Incluye Bebida</label>
+                    <label class="toggle-item"><input type="checkbox" id="esp-inc-una-bebida" onchange="handleBebidaToggle('especial', 'esp-inc-una-bebida')"> Incluye Una Bebida</label>
                     <label class="toggle-item"><input type="checkbox" id="esp-no-inc-bebida" onchange="handleBebidaToggle('especial', 'esp-no-inc-bebida')"> Bebida No Incluida</label>
                     <label class="toggle-item"><input type="checkbox" id="esp-inc-postre" checked onchange="saveData()"> Incluye Postre</label>
                     <label class="toggle-item"><input type="checkbox" id="esp-inc-cafe" onchange="saveData()"> Incluye Café</label>
@@ -371,7 +338,8 @@
                 <div class="print-header">
                     <img id="print-logo" src="" alt="Logo Restaurante" class="print-logo" style="display:none;">
                     <h2>RESTAURANTE MARQUICOS</h2>
-                    <p id="p-title" style="font-weight:bold; margin-top:5px;"></p>
+                    <p id="p-title" style="font-weight:bold; margin-top:5px; font-size:1.1rem;"></p>
+                    <p id="p-subtitle" class="print-subtitle"></p>
                 </div>
                 <div id="print-dynamic-body"></div>
                 <div style="margin-top:15px; font-weight:bold; font-size:1.1rem; color:var(--primary);" id="p-price"></div>
@@ -383,8 +351,6 @@
             </div>
         </div>
     </div>
-
-
 
     <script>
         let currentTab = 'diario';
@@ -465,14 +431,20 @@
         }
 
         function handleBebidaToggle(menuType, clickedId) {
-            const isDiario = menuType === 'diario';
-            const incId = isDiario ? 'inc-bebida' : 'esp-inc-bebida';
-            const noIncId = isDiario ? 'no-inc-bebida' : 'esp-no-inc-bebida';
+            const prefix = menuType === 'diario' ? '' : 'esp-';
+            const incId = `${prefix}inc-bebida`;
+            const incUnaId = `${prefix}inc-una-bebida`;
+            const noIncId = `${prefix}no-inc-bebida`;
 
             if (clickedId === incId && document.getElementById(incId).checked) {
+                document.getElementById(incUnaId).checked = false;
+                document.getElementById(noIncId).checked = false;
+            } else if (clickedId === incUnaId && document.getElementById(incUnaId).checked) {
+                document.getElementById(incId).checked = false;
                 document.getElementById(noIncId).checked = false;
             } else if (clickedId === noIncId && document.getElementById(noIncId).checked) {
                 document.getElementById(incId).checked = false;
+                document.getElementById(incUnaId).checked = false;
             }
             saveData();
         }
@@ -484,13 +456,17 @@
             localStorage.setItem('marquicos_logo', logoData);
 
             localStorage.setItem('marquicos_menu_title', document.getElementById('menu-title-input').value);
+            localStorage.setItem('marquicos_menu_subtitle', document.getElementById('menu-subtitle-input').value);
             localStorage.setItem('marquicos_menu_price', document.getElementById('menu-price').value);
+
             localStorage.setItem('marquicos_esp_title', document.getElementById('especial-title-input').value);
+            localStorage.setItem('marquicos_esp_subtitle', document.getElementById('especial-subtitle-input').value);
             localStorage.setItem('marquicos_esp_price', document.getElementById('especial-price').value);
 
             const opts = {
                 pan: document.getElementById('inc-pan').checked,
                 bebida: document.getElementById('inc-bebida').checked,
+                unabebida: document.getElementById('inc-una-bebida').checked,
                 noBebida: document.getElementById('no-inc-bebida').checked,
                 postre: document.getElementById('inc-postre').checked,
                 cafe: document.getElementById('inc-cafe').checked
@@ -500,6 +476,7 @@
             const espOpts = {
                 pan: document.getElementById('esp-inc-pan').checked,
                 bebida: document.getElementById('esp-inc-bebida').checked,
+                unabebida: document.getElementById('esp-inc-una-bebida').checked,
                 noBebida: document.getElementById('esp-no-inc-bebida').checked,
                 postre: document.getElementById('esp-inc-postre').checked,
                 cafe: document.getElementById('esp-inc-cafe').checked
@@ -507,57 +484,46 @@
             localStorage.setItem('marquicos_esp_options', JSON.stringify(espOpts));
         }
 
-        function cargarTodaLaCartaYMenu() {
-            if (!confirm("¿Quieres cargar toda la carta completa y el menú especial? (Esto actualizará las subfamilias actuales)")) return;
+        function restoreSavedOptions() {
+            const menuTitle = localStorage.getItem('marquicos_menu_title');
+            if (menuTitle !== null) document.getElementById('menu-title-input').value = menuTitle;
 
-            cartaCategories = [
-                {
-                    id: 'cat_entrantes_cocina', title: 'ENTRANTES DE COCINA',
-                    dishes: [
-                        { id: Date.now()+1, name: "Calamar nacional de abordo (Plancha)", price: 16.00, sel: true, allergens: [] },
-                        { id: Date.now()+2, name: "Calamar nacional a la Andaluza", price: 16.00, sel: true, allergens: ['gluten'] },
-                        { id: Date.now()+3, name: "Revuelto de setas y gambas (Ajetes y PX)", price: 12.00, sel: true, allergens: ['huevos', 'marisco'] },
-                        { id: Date.now()+4, name: "Gamba blanca (Cocida)", price: 12.00, sel: true, allergens: ['marisco'] },
-                        { id: Date.now()+5, name: "Gamba blanca plancha 250 gr", price: 20.00, sel: true, allergens: ['marisco'] },
-                        { id: Date.now()+6, name: "Zamburiñas (ud.)", price: 2.30, sel: true, allergens: ['marisco'] },
-                        { id: Date.now()+7, name: "Pulpo a la gallega", price: 16.00, sel: true, allergens: ['marisco'] },
-                        { id: Date.now()+8, name: "Sepia a la plancha (Salsa verde)", price: 14.00, sel: true, allergens: ['marisco'] },
-                        { id: Date.now()+9, name: "Croquetas de jamón (ud.)", price: 1.40, sel: true, allergens: ['gluten', 'lacteos'] }
-                    ]
-                },
-                {
-                    id: 'cat_entrantes_barra', title: 'ENTRANTES DE BARRA',
-                    dishes: [
-                        { id: Date.now()+10, name: "Ensaladilla rusa", price: 6.00, sel: true, allergens: ['huevos'] },
-                        { id: Date.now()+11, name: "Ensaladilla de mariscos", price: 7.00, sel: true, allergens: ['marisco', 'huevos'] },
-                        { id: Date.now()+12, name: "Tabla de quesos artesanos", price: 14.00, sel: true, allergens: ['lacteos'] },
-                        { id: Date.now()+13, name: "Hueva de mújol con almendras", price: 12.00, sel: true, allergens: ['pescado', 'frutos_secos'] }
-                    ]
-                },
-                {
-                    id: 'cat_ensaladas_carta', title: 'ENSALADAS',
-                    dishes: [
-                        { id: Date.now()+14, name: "Ensalada Casa Marquicos", price: 11.00, sel: true, allergens: ['huevos'] },
-                        { id: Date.now()+15, name: "Ensalada César con Pollo Crisp", price: 10.50, sel: true, allergens: ['gluten', 'lacteos'] }
-                    ]
-                },
-                {
-                    id: 'cat_carnes_carta', title: 'CARNES DE CALIDAD',
-                    dishes: [
-                        { id: Date.now()+16, name: "Solomillo de Vaca a la Brasa", price: 21.00, sel: true, allergens: [] },
-                        { id: Date.now()+17, name: "Entrecot de Ternera 350g", price: 18.50, sel: true, allergens: [] }
-                    ]
-                },
-                {
-                    id: 'cat_postres_carta', title: 'POSTRES CASEROS',
-                    dishes: [
-                        { id: Date.now()+18, name: "Tarta de Queso Horneada", price: 5.00, sel: true, allergens: ['lacteos', 'huevos'] }
-                    ]
-                }
-            ];
+            const menuSubtitle = localStorage.getItem('marquicos_menu_subtitle');
+            if (menuSubtitle !== null) document.getElementById('menu-subtitle-input').value = menuSubtitle;
 
-            saveData();
-            renderAll();
+            const menuPrice = localStorage.getItem('marquicos_menu_price');
+            if (menuPrice !== null) document.getElementById('menu-price').value = menuPrice;
+
+            const espTitle = localStorage.getItem('marquicos_esp_title');
+            if (espTitle !== null) document.getElementById('especial-title-input').value = espTitle;
+
+            const espSubtitle = localStorage.getItem('marquicos_esp_subtitle');
+            if (espSubtitle !== null) document.getElementById('especial-subtitle-input').value = espSubtitle;
+
+            const espPrice = localStorage.getItem('marquicos_esp_price');
+            if (espPrice !== null) document.getElementById('especial-price').value = espPrice;
+
+            const savedOpts = localStorage.getItem('marquicos_menu_options');
+            if (savedOpts) {
+                const opts = JSON.parse(savedOpts);
+                document.getElementById('inc-pan').checked = !!opts.pan;
+                document.getElementById('inc-bebida').checked = !!opts.bebida;
+                document.getElementById('inc-una-bebida').checked = !!opts.unabebida;
+                document.getElementById('no-inc-bebida').checked = !!opts.noBebida;
+                document.getElementById('inc-postre').checked = !!opts.postre;
+                document.getElementById('inc-cafe').checked = !!opts.cafe;
+            }
+
+            const savedEspOpts = localStorage.getItem('marquicos_esp_options');
+            if (savedEspOpts) {
+                const opts = JSON.parse(savedEspOpts);
+                document.getElementById('esp-inc-pan').checked = !!opts.pan;
+                document.getElementById('esp-inc-bebida').checked = !!opts.bebida;
+                document.getElementById('esp-inc-una-bebida').checked = !!opts.unabebida;
+                document.getElementById('esp-no-inc-bebida').checked = !!opts.noBebida;
+                document.getElementById('esp-inc-postre').checked = !!opts.postre;
+                document.getElementById('esp-inc-cafe').checked = !!opts.cafe;
+            }
         }
 
         function getCategoryList(type) {
@@ -583,7 +549,7 @@
                     <div class="card-title">
                         <span>${cat.title}</span>
                         <div class="title-actions">
-                            <button class="add-dish-btn" style="background:#6c757d; padding:4px 8px; font-size:0.75rem;" onclick="toggleAllDishesInCat('${type}', ${catIdx})" title="Marcar/Desmarcar todos">🔘 Todos</button>
+                            <button class="add-dish-btn" style="background:#6c757d; padding:4px 8px; font-size:0.75rem;" onclick="toggleAllDishesInCat('${type}', ${catIdx})">🔘 Todos</button>
                             <button class="add-dish-btn" onclick="openDishModal('${type}', ${catIdx})">➕ Añadir Plato</button>
                             <button class="title-btn" onclick="deleteCategory('${type}', ${catIdx})">🗑️</button>
                         </div>
@@ -630,19 +596,13 @@
         function toggleAllDishesInCat(type, catIdx) {
             const category = getCategoryList(type)[catIdx];
             if (!category || !category.dishes || category.dishes.length === 0) return;
-
-            // Comprobamos si ya están todos marcados para decidir si marcarlos o desmarcarlos todos
             const allSelected = category.dishes.every(dish => dish.sel);
-            
-            // Si todos estaban marcados, los desmarcamos; si no, los marcamos todos
-            category.dishes.forEach(dish => {
-                dish.sel = !allSelected;
-            });
-
+            category.dishes.forEach(dish => dish.sel = !allSelected);
             saveData();
             renderAll();
         }
-         function toggleDish(type, catIdx, dishIdx) {
+
+        function toggleDish(type, catIdx, dishIdx) {
             const dish = getCategoryList(type)[catIdx].dishes[dishIdx];
             dish.sel = !dish.sel;
             saveData();
@@ -757,10 +717,16 @@
         function openPrintModal() {
             const isDiario = currentTab === 'diario';
             const isEspecial = currentTab === 'especial';
+            
             const title = isDiario ? document.getElementById('menu-title-input').value :
                           isEspecial ? document.getElementById('especial-title-input').value : '';
 
+            const subtitle = isDiario ? document.getElementById('menu-subtitle-input').value :
+                             isEspecial ? document.getElementById('especial-subtitle-input').value : '';
+
             document.getElementById('p-title').innerText = title;
+            document.getElementById('p-subtitle').innerText = subtitle;
+            
             const categories = getCategoryList(currentTab);
 
             let bodyHtml = '';
@@ -792,6 +758,7 @@
                 const includes = [];
                 if (opts.pan) includes.push("Pan");
                 if (opts.bebida) includes.push("Bebida");
+                if (opts.unabebida) includes.push("Una Bebida");
                 if (opts.noBebida) includes.push("Bebida No Incluida");
                 if (opts.postre) includes.push("Postre");
                 if (opts.cafe) includes.push("Café");
@@ -805,29 +772,24 @@
         }
 
         function downloadMenuAsImage() {
-            // 1. Llamamos a tu función de impresión que ya rellena perfectamente todo el contenido
             openPrintModal();
-            
-            // 2. Ocultamos temporalmente los botones del modal para que no salgan en la foto
             const printModalElement = document.getElementById('printModal');
             const modalButtons = printModalElement.querySelector('.modal-content > div:last-child');
             if (modalButtons) modalButtons.style.display = 'none';
 
-            // 3. Damos un pequeño respiro al navegador para que renderice y capturamos con html2canvas
             setTimeout(() => {
                 const printArea = document.getElementById('print-area');
 
                 html2canvas(printArea, { 
                     scale: 2, 
                     useCORS: true,
-                    backgroundColor: '#fdfbf7' // Mantiene el color crema elegante de tu app
+                    backgroundColor: '#fdfbf7'
                 }).then(canvas => {
                     const link = document.createElement('a');
                     link.download = `menu-${currentTab}.png`;
                     link.href = canvas.toDataURL('image/png');
                     link.click();
 
-                    // Restauramos los botones y cerramos el modal de vista previa
                     if (modalButtons) modalButtons.style.display = 'flex';
                     closeModal('printModal');
                 }).catch(err => {
@@ -856,11 +818,12 @@
                 menu: menuCategories,
                 especial: especialCategories,
                 carta: cartaCategories,
-                // Añadimos títulos, precios y opciones
                 meta: {
                     menuTitle: document.getElementById('menu-title-input').value,
+                    menuSubtitle: document.getElementById('menu-subtitle-input').value,
                     menuPrice: document.getElementById('menu-price').value,
                     especialTitle: document.getElementById('especial-title-input').value,
+                    especialSubtitle: document.getElementById('especial-subtitle-input').value,
                     especialPrice: document.getElementById('especial-price').value,
                     menuOpts: JSON.parse(localStorage.getItem('marquicos_menu_options') || '{}'),
                     espOpts: JSON.parse(localStorage.getItem('marquicos_esp_options') || '{}')
@@ -882,17 +845,19 @@
                 especialCategories = data.content.especial || [];
                 cartaCategories = data.content.carta || [];
 
-                // Restauramos títulos, precios y opciones si vienen en el contenido
                 if (data.content.meta) {
                     const m = data.content.meta;
                     if (m.menuTitle !== undefined) document.getElementById('menu-title-input').value = m.menuTitle;
+                    if (m.menuSubtitle !== undefined) document.getElementById('menu-subtitle-input').value = m.menuSubtitle;
                     if (m.menuPrice !== undefined) document.getElementById('menu-price').value = m.menuPrice;
                     if (m.especialTitle !== undefined) document.getElementById('especial-title-input').value = m.especialTitle;
+                    if (m.especialSubtitle !== undefined) document.getElementById('especial-subtitle-input').value = m.especialSubtitle;
                     if (m.especialPrice !== undefined) document.getElementById('especial-price').value = m.especialPrice;
 
                     if (m.menuOpts) {
                         document.getElementById('inc-pan').checked = !!m.menuOpts.pan;
                         document.getElementById('inc-bebida').checked = !!m.menuOpts.bebida;
+                        document.getElementById('inc-una-bebida').checked = !!m.menuOpts.unabebida;
                         document.getElementById('no-inc-bebida').checked = !!m.menuOpts.noBebida;
                         document.getElementById('inc-postre').checked = !!m.menuOpts.postre;
                         document.getElementById('inc-cafe').checked = !!m.menuOpts.cafe;
@@ -900,6 +865,7 @@
                     if (m.espOpts) {
                         document.getElementById('esp-inc-pan').checked = !!m.espOpts.pan;
                         document.getElementById('esp-inc-bebida').checked = !!m.espOpts.bebida;
+                        document.getElementById('esp-inc-una-bebida').checked = !!m.espOpts.unabebida;
                         document.getElementById('esp-no-inc-bebida').checked = !!m.espOpts.noBebida;
                         document.getElementById('esp-inc-postre').checked = !!m.espOpts.postre;
                         document.getElementById('esp-inc-cafe').checked = !!m.espOpts.cafe;
@@ -966,7 +932,10 @@
                 alert("Error de red con GitHub: " + err.message);
             }
         }
+
         window.onload = function() {
+            restoreSavedOptions();
+
             const spUrl = localStorage.getItem('marquicos_sp_url');
             const spKey = localStorage.getItem('marquicos_sp_key');
             if (spUrl && spKey) {
@@ -985,7 +954,6 @@
 
             renderAll();
         };
-
     </script>
 </body>
 </html>
