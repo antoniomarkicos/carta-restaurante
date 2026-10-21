@@ -1626,24 +1626,24 @@
       "dishes": [
         {
           "id": 1792600570427,
-          "name": "Peñascal",
           "sel": true,
-          "allergens": [],
-          "price": 9
+          "name": "Peñascal",
+          "price": 9,
+          "allergens": []
         },
         {
           "id": 1792600607475,
-          "name": "Voila",
           "sel": true,
-          "allergens": [],
-          "price": 23
+          "name": "Voila",
+          "price": 23,
+          "allergens": []
         },
         {
           "id": 1792600619948,
-          "name": "Castaño ecológico",
           "sel": true,
-          "allergens": [],
-          "price": 14
+          "name": "Castaño ecológico",
+          "price": 14,
+          "allergens": []
         }
       ]
     },
