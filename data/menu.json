@@ -1208,10 +1208,11 @@
         },
         {
           "id": 1792408645943,
-          "sel": false,
-          "name": "Gamba roja de Denia (precio por Kg)",
+          "name": "Gamba roja de Denia",
+          "sel": true,
+          "allergens": [],
           "price": 140,
-          "allergens": []
+          "priceType": "kg"
         }
       ]
     },
@@ -1426,10 +1427,11 @@
         },
         {
           "id": 1792408492329,
-          "sel": false,
-          "name": "Cotte (chuleta de ternera) precio por kg",
+          "name": "Cotte (chuleta de ternera)",
+          "sel": true,
+          "allergens": [],
           "price": 65,
-          "allergens": []
+          "priceType": "kg"
         },
         {
           "id": 1792428528164,
@@ -1601,69 +1603,359 @@
           ]
         }
       ]
-    },
+    }
+  ],
+  "vinos": [
     {
-      "id": "cat_1792600239065",
-      "title": "VINO TINTO ",
-      "dishes": [
-        {
-          "id": 1792600295755,
-          "sel": true,
-          "name": "Altos de Luzón",
-          "price": 20,
-          "allergens": []
-        }
-      ]
-    },
-    {
-      "id": "cat_1792600250140",
-      "title": "VINO BLANCO ",
-      "dishes": []
-    },
-    {
-      "id": "cat_1792600259949",
-      "title": "VINO ROSADO ",
-      "dishes": [
-        {
-          "id": 1792600570427,
-          "sel": true,
-          "name": "Peñascal",
-          "price": 9,
-          "allergens": []
-        },
-        {
-          "id": 1792600607475,
-          "sel": true,
-          "name": "Voila",
-          "price": 23,
-          "allergens": []
-        },
-        {
-          "id": 1792600619948,
-          "sel": true,
-          "name": "Castaño ecológico",
-          "price": 14,
-          "allergens": []
-        }
-      ]
-    },
-    {
-      "id": "cat_1792600267588",
+      "id": "vinos_cavas",
       "title": "CAVAS",
       "dishes": [
         {
-          "id": 1792600393788,
-          "sel": true,
-          "name": "Mitic 1908",
+          "id": 401,
+          "name": "Mitic 1908 Brut Nature",
           "price": 20,
-          "allergens": []
+          "priceType": "fixed",
+          "sel": false
         },
         {
-          "id": 1792600428763,
-          "sel": true,
-          "name": "MILESIME",
+          "id": 402,
+          "name": "Milesime Cava",
           "price": 35,
-          "allergens": []
+          "priceType": "fixed",
+          "sel": false
+        }
+      ]
+    },
+    {
+      "id": "vinos_tintos",
+      "title": "VINOS TINTOS",
+      "dishes": [
+        {
+          "id": 403,
+          "name": "Altos de Luzón (Oferta especial)",
+          "price": 20,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 404,
+          "name": "Matarromera Crianza (Ribera)",
+          "price": 32,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 405,
+          "name": "Protos 27",
+          "price": 30,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 406,
+          "name": "Valduero Una Cepa (Ribera del Duero)",
+          "price": 39,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 407,
+          "name": "Bruto (Jumilla)",
+          "price": 40,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 408,
+          "name": "Porti (Jumilla)",
+          "price": 32,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 409,
+          "name": "Carmelo Rodero Crianza (Ribera del Duero)",
+          "price": 33,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 410,
+          "name": "Taulla 6 meses Magnum (Ribera del Duero 1.5L)",
+          "price": 35,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 411,
+          "name": "Roa Crianza (Ribera del Duero)",
+          "price": 18,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 412,
+          "name": "Ego Fuerza 21 - 12 meses (Jumilla)",
+          "price": 22,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 413,
+          "name": "Carmelo 9 meses (Ribera)",
+          "price": 22,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 414,
+          "name": "Abadía Retuerta (Botella de 3 L)",
+          "price": 180,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 415,
+          "name": "Juana la Loca Syrah - 18 meses en Barrica",
+          "price": 38,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 416,
+          "name": "Don Jacobo Rioja Crianza",
+          "price": 17,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 417,
+          "name": "Goru (Jumilla)",
+          "price": 14,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 418,
+          "name": "Viña Jaraba - Vino de Pago (3 meses barrica)",
+          "price": 14,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 419,
+          "name": "Montecastro Crianza (Ribera del Duero)",
+          "price": 28,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 420,
+          "name": "Tobia Selección de Autor (Rioja)",
+          "price": 24,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 421,
+          "name": "Carroa (Ribera del Duero)",
+          "price": 46,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 422,
+          "name": "Bosque de Matasnos Crianza (Ribera del Duero)",
+          "price": 42,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 423,
+          "name": "Luis Cañas Rioja Crianza",
+          "price": 20,
+          "priceType": "fixed",
+          "sel": true
+        },
+        {
+          "id": 424,
+          "name": "Tobia Cuvée",
+          "price": 16,
+          "priceType": "fixed",
+          "sel": true
+        }
+      ]
+    },
+    {
+      "id": "vinos_blancos",
+      "title": "VINOS BLANCOS",
+      "dishes": [
+        {
+          "id": 425,
+          "name": "Luzón Blanco (Jumilla)",
+          "price": 12,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 426,
+          "name": "De Alberto (Rueda)",
+          "price": 13,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 427,
+          "name": "Castaño Chardonnay - 6 meses barricas",
+          "price": 18,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 428,
+          "name": "Ego Goru Chardonnay (Jumilla)",
+          "price": 18,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 429,
+          "name": "Feroce (Espumoso)",
+          "price": 12,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 430,
+          "name": "Mar de Frades Albariño",
+          "price": 23,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 431,
+          "name": "Pazo das Bruxas Albariño",
+          "price": 20,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 432,
+          "name": "Martín Códax Albariño",
+          "price": 20,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 433,
+          "name": "Godeval Godello (Valdeorras)",
+          "price": 23,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 434,
+          "name": "Cepas Vellas Godeval Godello (Valdeorras)",
+          "price": 29,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 435,
+          "name": "Cuvée Protos Verdejo",
+          "price": 19,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 436,
+          "name": "Pago de la Jaraba Sauvignon Blanc",
+          "price": 18,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 437,
+          "name": "Los Ángeles También Pecan (Verdejo)",
+          "price": 19,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 438,
+          "name": "Valduero Blanco (Ribera del Duero)",
+          "price": 20,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 439,
+          "name": "Chardonnay Ropiteu (Francia)",
+          "price": 18,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 440,
+          "name": "Tobia Selección de Autor (Rioja)",
+          "price": 24,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 441,
+          "name": "Pita Verdejo 2024",
+          "price": 14,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 442,
+          "name": "Pita Finca La Cantera (Barrica roble francés y lías)",
+          "price": 29,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 443,
+          "name": "Juan Galindo Verdejo",
+          "price": 14,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 444,
+          "name": "Nasica Verdejo",
+          "price": 13.5,
+          "priceType": "fixed",
+          "sel": false
+        }
+      ]
+    },
+    {
+      "id": "vinos_rosados",
+      "title": "VINOS ROSADOS",
+      "dishes": [
+        {
+          "id": 445,
+          "name": "Peñascal",
+          "price": 9,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 446,
+          "name": "Voila (Navarra)",
+          "price": 23,
+          "priceType": "fixed",
+          "sel": false
+        },
+        {
+          "id": 447,
+          "name": "Castaño Ecológico (Yecla)",
+          "price": 14,
+          "priceType": "fixed",
+          "sel": false
         }
       ]
     }
