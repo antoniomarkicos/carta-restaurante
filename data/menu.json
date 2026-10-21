@@ -67,31 +67,57 @@
         },
         {
           "id": 1792406636543,
+          "sel": false,
+          "sup": 0,
           "name": "Salmorejo",
-          "sel": true,
           "allergens": [
             "huevos"
-          ],
-          "sup": 0
+          ]
         },
         {
           "id": 1792406691321,
+          "sel": false,
+          "sup": 0,
           "name": "Arroz caldoso de pescado.",
-          "sel": true,
           "allergens": [
             "pescado",
             "marisco"
-          ],
-          "sup": 0
+          ]
         },
         {
           "id": 1792406720206,
+          "sel": false,
+          "sup": 0,
           "name": "Ensalada mixta",
-          "sel": true,
           "allergens": [
             "huevos"
-          ],
-          "sup": 0
+          ]
+        },
+        {
+          "id": 1792578508496,
+          "sel": true,
+          "sup": 0,
+          "name": "Caldo con pelotas",
+          "allergens": []
+        },
+        {
+          "id": 1792578540621,
+          "sel": true,
+          "sup": 0,
+          "name": "Sopa de pescado.",
+          "allergens": [
+            "pescado",
+            "marisco"
+          ]
+        },
+        {
+          "id": 1792578577415,
+          "sel": true,
+          "sup": 0,
+          "name": "Crema de calabacín",
+          "allergens": [
+            "lacteos"
+          ]
         }
       ]
     },
@@ -101,12 +127,12 @@
       "dishes": [
         {
           "id": 4,
+          "sel": false,
+          "sup": 0,
           "name": "Solomillo de cerdo a la Pimienta",
-          "sel": true,
           "allergens": [
             "lacteos"
-          ],
-          "sup": 0
+          ]
         },
         {
           "id": 1792404617475,
@@ -119,7 +145,7 @@
         },
         {
           "id": 1792404642059,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Albóndigas en salsa.",
           "allergens": [
@@ -130,7 +156,7 @@
         },
         {
           "id": 1792404679778,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Boqueron rebozado.",
           "allergens": [
@@ -140,17 +166,24 @@
         },
         {
           "id": 1792406744801,
-          "name": "Filete de ternera",
           "sel": true,
-          "allergens": [],
-          "sup": 0
+          "sup": 0,
+          "name": "Filete de ternera",
+          "allergens": []
         },
         {
           "id": 1792406766946,
+          "sel": false,
+          "sup": 0,
           "name": "Filete de atún.",
+          "allergens": []
+        },
+        {
+          "id": 1792578628651,
           "sel": true,
-          "allergens": [],
-          "sup": 0
+          "sup": 0,
+          "name": "Solomillo de cerdo con patatas y pimientos",
+          "allergens": []
         }
       ]
     },
@@ -170,7 +203,7 @@
         },
         {
           "id": 1792403909736,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Tiramisú",
           "allergens": [
@@ -181,14 +214,14 @@
         },
         {
           "id": 1792404698887,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Piña",
           "allergens": []
         },
         {
           "id": 1792404761214,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Arroz con leche",
           "allergens": [
@@ -197,31 +230,31 @@
         },
         {
           "id": 1792427751039,
-          "name": "Crema de almendra",
           "sel": false,
-          "allergens": [],
-          "sup": 0
+          "sup": 0,
+          "name": "Crema de almendra",
+          "allergens": []
         },
         {
           "id": 1792427782916,
-          "name": "Tarta de la abuela",
           "sel": false,
+          "sup": 0,
+          "name": "Tarta de la abuela",
           "allergens": [
             "gluten",
             "lacteos",
             "huevos"
-          ],
-          "sup": 0
+          ]
         },
         {
           "id": 1792427999826,
+          "sel": false,
+          "sup": 0,
           "name": "Contesa",
-          "sel": true,
           "allergens": [
             "lacteos",
             "huevos"
-          ],
-          "sup": 0
+          ]
         }
       ]
     }
@@ -919,10 +952,10 @@
         },
         {
           "id": 1792406059886,
-          "name": "Poste casero a elegir.",
           "sel": true,
-          "allergens": [],
-          "sup": 0
+          "sup": 0,
+          "name": "Poste casero a elegir.",
+          "allergens": []
         }
       ]
     }
@@ -1158,7 +1191,7 @@
         },
         {
           "id": 1790964051848,
-          "sel": true,
+          "sel": false,
           "name": "Steak tartar vaca 180 gr",
           "price": 25,
           "allergens": []
@@ -1175,10 +1208,10 @@
         },
         {
           "id": 1792408645943,
+          "sel": false,
           "name": "Gamba roja de Denia (precio por Kg)",
-          "sel": true,
-          "allergens": [],
-          "price": 140
+          "price": 140,
+          "allergens": []
         }
       ]
     },
@@ -1265,52 +1298,52 @@
       "dishes": [
         {
           "id": 1790964051858,
+          "sel": false,
           "name": "Tomate raf con olivas y tallos",
-          "sel": true,
-          "allergens": [],
-          "price": 10
+          "price": 10,
+          "allergens": []
         },
         {
           "id": 1790964051859,
+          "sel": false,
           "name": "Tomate raf con lomo de atún",
-          "sel": true,
+          "price": 14,
           "allergens": [
             "pescado"
-          ],
-          "price": 14
+          ]
         },
         {
           "id": 1790964051860,
+          "sel": false,
           "name": "Tomate raf con bonito salado",
-          "sel": true,
+          "price": 14,
           "allergens": [
             "pescado"
-          ],
-          "price": 14
+          ]
         },
         {
           "id": 1790964051861,
+          "sel": false,
           "name": "Ensalada cántabra (Anchoas)",
-          "sel": true,
+          "price": 18,
           "allergens": [
             "pescado"
-          ],
-          "price": 18
+          ]
         },
         {
           "id": 1790964051862,
+          "sel": false,
           "name": "Ensalada de la casa",
-          "sel": true,
+          "price": 14,
           "allergens": [
             "lacteos",
             "huevos",
             "pescado"
-          ],
-          "price": 14
+          ]
         },
         {
           "id": 1790964051863,
-          "sel": true,
+          "sel": false,
           "name": "Ensalada de burrata",
           "price": 14,
           "allergens": [
@@ -1320,7 +1353,7 @@
         },
         {
           "id": 1790964051864,
-          "sel": true,
+          "sel": false,
           "name": "Ensalada César",
           "price": 16,
           "allergens": [
@@ -1351,21 +1384,21 @@
         },
         {
           "id": 1790964051867,
-          "sel": true,
+          "sel": false,
           "name": "Chuletas de cabrito",
           "price": 19,
           "allergens": []
         },
         {
           "id": 1790964051868,
-          "sel": true,
+          "sel": false,
           "name": "Costillas de cordero",
           "price": 19,
           "allergens": []
         },
         {
           "id": 1790964051869,
-          "sel": true,
+          "sel": false,
           "name": "Pluma de cerdo ibérica de bellota",
           "price": 22,
           "allergens": []
@@ -1379,33 +1412,33 @@
         },
         {
           "id": 1790964051871,
-          "sel": true,
+          "sel": false,
           "name": "Paletilla de cabrito al horno",
           "price": 27,
           "allergens": []
         },
         {
           "id": 1790964051872,
-          "sel": true,
+          "sel": false,
           "name": "Lomo alto de wagyu 250gr",
           "price": 50,
           "allergens": []
         },
         {
           "id": 1792408492329,
+          "sel": false,
           "name": "Cotte (chuleta de ternera) precio por kg",
-          "sel": true,
-          "allergens": [],
-          "price": 65
+          "price": 65,
+          "allergens": []
         },
         {
           "id": 1792428528164,
+          "sel": false,
           "name": "Pepito de ternera",
-          "sel": true,
+          "price": 6,
           "allergens": [
             "gluten"
-          ],
-          "price": 6
+          ]
         }
       ]
     },
@@ -1424,7 +1457,7 @@
         },
         {
           "id": 1790964051874,
-          "sel": true,
+          "sel": false,
           "name": "Lomo de Atún rojo",
           "price": 15,
           "allergens": [
@@ -1442,7 +1475,7 @@
         },
         {
           "id": 1790964051876,
-          "sel": true,
+          "sel": false,
           "name": "Dentón (A la espalda)",
           "price": 20,
           "allergens": [
@@ -1451,7 +1484,7 @@
         },
         {
           "id": 1790964051877,
-          "sel": true,
+          "sel": false,
           "name": "Rodaballo con verduras",
           "price": 22,
           "allergens": [
@@ -1460,7 +1493,7 @@
         },
         {
           "id": 1790964051878,
-          "sel": true,
+          "sel": false,
           "name": "Lecha",
           "price": 22,
           "allergens": [
@@ -1469,12 +1502,12 @@
         },
         {
           "id": 1790964051879,
+          "sel": false,
           "name": "Ijada de atún",
-          "sel": true,
+          "price": 20,
           "allergens": [
             "pescado"
-          ],
-          "price": 20
+          ]
         }
       ]
     },
@@ -1533,52 +1566,104 @@
         },
         {
           "id": 1792428209529,
+          "sel": false,
           "name": "Tarta de whisky",
-          "sel": true,
+          "price": 5,
           "allergens": [
             "gluten",
             "lacteos",
             "huevos",
             "frutos_secos"
-          ],
-          "price": 5
+          ]
         },
         {
           "id": 1792428240274,
+          "sel": false,
           "name": "Tarta de turrón",
-          "sel": true,
+          "price": 6,
           "allergens": [
             "gluten",
             "lacteos",
             "huevos",
             "frutos_secos"
-          ],
-          "price": 6
+          ]
         },
         {
           "id": 1792428333938,
+          "sel": false,
           "name": "Torrija con helado de turrón",
-          "sel": true,
+          "price": 6,
           "allergens": [
             "gluten",
             "lacteos",
             "huevos",
             "frutos_secos"
-          ],
-          "price": 6
+          ]
         }
       ]
     },
     {
-      "id": "cat_1792407682660",
-      "title": "CARTA DE VINOS",
+      "id": "cat_1792600239065",
+      "title": "VINO TINTO ",
       "dishes": [
         {
-          "id": 1792428147285,
-          "name": "Altos de luzon",
-          "sel": false,
+          "id": 1792600295755,
+          "sel": true,
+          "name": "Altos de Luzón",
+          "price": 20,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "cat_1792600250140",
+      "title": "VINO BLANCO ",
+      "dishes": []
+    },
+    {
+      "id": "cat_1792600259949",
+      "title": "VINO ROSADO ",
+      "dishes": [
+        {
+          "id": 1792600570427,
+          "name": "Peñascal",
+          "sel": true,
           "allergens": [],
-          "price": 20
+          "price": 9
+        },
+        {
+          "id": 1792600607475,
+          "name": "Voila",
+          "sel": true,
+          "allergens": [],
+          "price": 23
+        },
+        {
+          "id": 1792600619948,
+          "name": "Castaño ecológico",
+          "sel": true,
+          "allergens": [],
+          "price": 14
+        }
+      ]
+    },
+    {
+      "id": "cat_1792600267588",
+      "title": "CAVAS",
+      "dishes": [
+        {
+          "id": 1792600393788,
+          "sel": true,
+          "name": "Mitic 1908",
+          "price": 20,
+          "allergens": []
+        },
+        {
+          "id": 1792600428763,
+          "sel": true,
+          "name": "MILESIME",
+          "price": 35,
+          "allergens": []
         }
       ]
     }
