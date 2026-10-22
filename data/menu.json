@@ -102,7 +102,7 @@
         },
         {
           "id": 1792578540621,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Sopa de pescado.",
           "allergens": [
@@ -112,11 +112,29 @@
         },
         {
           "id": 1792578577415,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Crema de calabacín",
           "allergens": [
             "lacteos"
+          ]
+        },
+        {
+          "id": 1792663903005,
+          "sel": true,
+          "sup": 0,
+          "name": "Lentejas",
+          "allergens": []
+        },
+        {
+          "id": 1792663983102,
+          "sel": true,
+          "sup": 0,
+          "name": "Entremeses ( ensaladilla rusa con croquetas de jamón)",
+          "allergens": [
+            "gluten",
+            "lacteos",
+            "huevos"
           ]
         }
       ]
@@ -136,7 +154,7 @@
         },
         {
           "id": 1792404617475,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Hamburguesa de pollo.",
           "allergens": [
@@ -145,7 +163,7 @@
         },
         {
           "id": 1792404642059,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Albóndigas en salsa.",
           "allergens": [
@@ -166,7 +184,7 @@
         },
         {
           "id": 1792406744801,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Filete de ternera",
           "allergens": []
@@ -180,7 +198,7 @@
         },
         {
           "id": 1792578628651,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Solomillo de cerdo con patatas y pimientos",
           "allergens": []
@@ -1208,10 +1226,10 @@
         },
         {
           "id": 1792408645943,
-          "name": "Gamba roja de Denia",
           "sel": true,
-          "allergens": [],
+          "name": "Gamba roja de Denia",
           "price": 140,
+          "allergens": [],
           "priceType": "kg"
         }
       ]
@@ -1427,10 +1445,10 @@
         },
         {
           "id": 1792408492329,
-          "name": "Cotte (chuleta de ternera)",
           "sel": true,
-          "allergens": [],
+          "name": "Cotte (chuleta de ternera)",
           "price": 65,
+          "allergens": [],
           "priceType": "kg"
         },
         {
@@ -1612,17 +1630,17 @@
       "dishes": [
         {
           "id": 401,
+          "sel": false,
           "name": "Mitic 1908 Brut Nature",
           "price": 20,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 402,
+          "sel": false,
           "name": "Milesime Cava",
           "price": 35,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         }
       ]
     },
@@ -1632,157 +1650,157 @@
       "dishes": [
         {
           "id": 403,
+          "sel": true,
           "name": "Altos de Luzón (Oferta especial)",
           "price": 20,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 404,
+          "sel": true,
           "name": "Matarromera Crianza (Ribera)",
           "price": 32,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 405,
+          "sel": true,
           "name": "Protos 27",
           "price": 30,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 406,
+          "sel": true,
           "name": "Valduero Una Cepa (Ribera del Duero)",
           "price": 39,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 407,
+          "sel": true,
           "name": "Bruto (Jumilla)",
           "price": 40,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 408,
+          "sel": true,
           "name": "Porti (Jumilla)",
           "price": 32,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 409,
+          "sel": true,
           "name": "Carmelo Rodero Crianza (Ribera del Duero)",
           "price": 33,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 410,
+          "sel": true,
           "name": "Taulla 6 meses Magnum (Ribera del Duero 1.5L)",
           "price": 35,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 411,
+          "sel": true,
           "name": "Roa Crianza (Ribera del Duero)",
           "price": 18,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 412,
+          "sel": true,
           "name": "Ego Fuerza 21 - 12 meses (Jumilla)",
           "price": 22,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 413,
+          "sel": true,
           "name": "Carmelo 9 meses (Ribera)",
           "price": 22,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 414,
+          "sel": true,
           "name": "Abadía Retuerta (Botella de 3 L)",
           "price": 180,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 415,
+          "sel": true,
           "name": "Juana la Loca Syrah - 18 meses en Barrica",
           "price": 38,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 416,
+          "sel": true,
           "name": "Don Jacobo Rioja Crianza",
           "price": 17,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 417,
+          "sel": true,
           "name": "Goru (Jumilla)",
           "price": 14,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 418,
+          "sel": true,
           "name": "Viña Jaraba - Vino de Pago (3 meses barrica)",
           "price": 14,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 419,
+          "sel": true,
           "name": "Montecastro Crianza (Ribera del Duero)",
           "price": 28,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 420,
+          "sel": true,
           "name": "Tobia Selección de Autor (Rioja)",
           "price": 24,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 421,
+          "sel": true,
           "name": "Carroa (Ribera del Duero)",
           "price": 46,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 422,
+          "sel": true,
           "name": "Bosque de Matasnos Crianza (Ribera del Duero)",
           "price": 42,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 423,
+          "sel": true,
           "name": "Luis Cañas Rioja Crianza",
           "price": 20,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         },
         {
           "id": 424,
+          "sel": true,
           "name": "Tobia Cuvée",
           "price": 16,
-          "priceType": "fixed",
-          "sel": true
+          "priceType": "fixed"
         }
       ]
     },
@@ -1792,143 +1810,143 @@
       "dishes": [
         {
           "id": 425,
+          "sel": false,
           "name": "Luzón Blanco (Jumilla)",
           "price": 12,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 426,
+          "sel": false,
           "name": "De Alberto (Rueda)",
           "price": 13,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 427,
+          "sel": false,
           "name": "Castaño Chardonnay - 6 meses barricas",
           "price": 18,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 428,
+          "sel": false,
           "name": "Ego Goru Chardonnay (Jumilla)",
           "price": 18,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 429,
+          "sel": false,
           "name": "Feroce (Espumoso)",
           "price": 12,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 430,
+          "sel": false,
           "name": "Mar de Frades Albariño",
           "price": 23,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 431,
+          "sel": false,
           "name": "Pazo das Bruxas Albariño",
           "price": 20,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 432,
+          "sel": false,
           "name": "Martín Códax Albariño",
           "price": 20,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 433,
+          "sel": false,
           "name": "Godeval Godello (Valdeorras)",
           "price": 23,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 434,
+          "sel": false,
           "name": "Cepas Vellas Godeval Godello (Valdeorras)",
           "price": 29,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 435,
+          "sel": false,
           "name": "Cuvée Protos Verdejo",
           "price": 19,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 436,
+          "sel": false,
           "name": "Pago de la Jaraba Sauvignon Blanc",
           "price": 18,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 437,
+          "sel": false,
           "name": "Los Ángeles También Pecan (Verdejo)",
           "price": 19,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 438,
+          "sel": false,
           "name": "Valduero Blanco (Ribera del Duero)",
           "price": 20,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 439,
+          "sel": false,
           "name": "Chardonnay Ropiteu (Francia)",
           "price": 18,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 440,
+          "sel": false,
           "name": "Tobia Selección de Autor (Rioja)",
           "price": 24,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 441,
+          "sel": false,
           "name": "Pita Verdejo 2024",
           "price": 14,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 442,
+          "sel": false,
           "name": "Pita Finca La Cantera (Barrica roble francés y lías)",
           "price": 29,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 443,
+          "sel": false,
           "name": "Juan Galindo Verdejo",
           "price": 14,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 444,
+          "sel": false,
           "name": "Nasica Verdejo",
           "price": 13.5,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         }
       ]
     },
@@ -1938,24 +1956,24 @@
       "dishes": [
         {
           "id": 445,
+          "sel": false,
           "name": "Peñascal",
           "price": 9,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 446,
+          "sel": false,
           "name": "Voila (Navarra)",
           "price": 23,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         },
         {
           "id": 447,
+          "sel": false,
           "name": "Castaño Ecológico (Yecla)",
           "price": 14,
-          "priceType": "fixed",
-          "sel": false
+          "priceType": "fixed"
         }
       ]
     }
