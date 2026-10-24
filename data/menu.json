@@ -1736,10 +1736,10 @@
         },
         {
           "id": 410,
+          "name": "Taulla 6 meses Magnum (Ribera del Duero 1.5L) roble",
           "sel": true,
-          "name": "Taulla 6 meses Magnum (Ribera del Duero 1.5L)",
-          "price": 35,
-          "priceType": "fixed"
+          "allergens": [],
+          "price": 35
         },
         {
           "id": 411,
@@ -1764,17 +1764,17 @@
         },
         {
           "id": 414,
+          "name": "Abadía Retuerta (Botella de 3 L) ribera del Duero",
           "sel": true,
-          "name": "Abadía Retuerta (Botella de 3 L)",
-          "price": 180,
-          "priceType": "fixed"
+          "allergens": [],
+          "price": 180
         },
         {
           "id": 415,
+          "name": "Juana la Loca Syrah - 18 meses en Barrica Jumilla",
           "sel": true,
-          "name": "Juana la Loca Syrah - 18 meses en Barrica",
-          "price": 38,
-          "priceType": "fixed"
+          "allergens": [],
+          "price": 38
         },
         {
           "id": 416,
@@ -1834,14 +1834,14 @@
         },
         {
           "id": 424,
+          "name": "Tobia Cuvée Rioja crianza",
           "sel": true,
-          "name": "Tobia Cuvée",
-          "price": 16,
-          "priceType": "fixed"
+          "allergens": [],
+          "price": 16
         },
         {
           "id": 1792843267512,
-          "name": "Taulla ( ribera del Duero)",
+          "name": "Taulla ( ribera del Duero) roble.",
           "sel": true,
           "allergens": [],
           "price": 19
