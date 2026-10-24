@@ -986,17 +986,23 @@
         {
           "id": 1790964051823,
           "name": "Calamar nacional de abordo (Plancha o Andalucía)",
-          "sel": false,
-          "allergens": [],
+          "sel": true,
+          "allergens": [
+            "pescado"
+          ],
           "price": 16,
           "priceType": "fixed"
         },
         {
           "id": 1790964051825,
-          "sel": false,
           "name": "Revuelto de setas y gambas (Ajetes y Pedro Ximénez)",
+          "sel": true,
+          "allergens": [
+            "huevos",
+            "marisco"
+          ],
           "price": 12,
-          "allergens": []
+          "priceType": "fixed"
         },
         {
           "id": 1790964051826,
@@ -1009,7 +1015,7 @@
         },
         {
           "id": 1790964051827,
-          "sel": false,
+          "sel": true,
           "name": "Gamba blanca plancha 250 gr",
           "price": 20,
           "allergens": [
@@ -1018,16 +1024,17 @@
         },
         {
           "id": 1790964051828,
-          "sel": false,
-          "name": "Zamburiñas (ud.)",
-          "price": 2.3,
+          "name": "Zamburiñas (ud.) mínimo 2 unidades.",
+          "sel": true,
           "allergens": [
             "marisco"
-          ]
+          ],
+          "price": 2.3,
+          "priceType": "fixed"
         },
         {
           "id": 1790964051829,
-          "sel": false,
+          "sel": true,
           "name": "Pulpo a la gallega",
           "price": 16,
           "allergens": [
@@ -1036,7 +1043,7 @@
         },
         {
           "id": 1790964051830,
-          "sel": false,
+          "sel": true,
           "name": "Pastel de verduras",
           "price": 12,
           "allergens": []
@@ -1052,7 +1059,7 @@
         },
         {
           "id": 1790964051832,
-          "sel": false,
+          "sel": true,
           "name": "Alcachofa con foie, huevo frito y PX",
           "price": 9,
           "allergens": [
@@ -1061,62 +1068,68 @@
         },
         {
           "id": 1790964051833,
-          "sel": false,
-          "name": "Caballitos (ud.)",
-          "price": 1.5,
+          "name": "Caballitos (ud.) mínimo 2 unidades.",
+          "sel": true,
           "allergens": [
             "gluten",
             "marisco"
-          ]
+          ],
+          "price": 1.5,
+          "priceType": "fixed"
         },
         {
           "id": 1790964051834,
-          "sel": false,
-          "name": "Albóndigas de bacalao (ud.)",
-          "price": 1,
+          "name": "Albóndigas de bacalao (ud.) mínimo 2 unidades.",
+          "sel": true,
           "allergens": [
-            "pescado",
-            "gluten"
-          ]
+            "gluten",
+            "pescado"
+          ],
+          "price": 1,
+          "priceType": "fixed"
         },
         {
           "id": 1790964051835,
-          "sel": false,
-          "name": "Croquetas de jamón (ud.)",
-          "price": 1.4,
+          "name": "Croquetas de jamón (ud.) mínimo 2 unidades.",
+          "sel": true,
           "allergens": [
             "gluten",
             "lacteos"
-          ]
+          ],
+          "price": 1.4,
+          "priceType": "fixed"
         },
         {
           "id": 1790964051836,
-          "sel": false,
-          "name": "Croquetas de rabo de toro (ud.)",
-          "price": 1.8,
+          "name": "Croquetas de rabo de toro (ud.) mínimo 2 unidades.",
+          "sel": true,
           "allergens": [
             "gluten",
             "lacteos"
-          ]
+          ],
+          "price": 1.8,
+          "priceType": "fixed"
         },
         {
           "id": 1790964051837,
-          "sel": false,
-          "name": "Croqueta de centollo (ud.)",
-          "price": 1.8,
+          "name": "Croqueta de centollo (ud.) mínimo 2 unidades.",
+          "sel": true,
           "allergens": [
             "gluten",
             "marisco"
-          ]
+          ],
+          "price": 1.8,
+          "priceType": "fixed"
         },
         {
           "id": 1790964051838,
-          "sel": false,
-          "name": "Croquetón de puchero",
-          "price": 2.6,
+          "name": "Croquetón de puchero (ud) mínimo 2 unidades.",
+          "sel": true,
           "allergens": [
             "gluten"
-          ]
+          ],
+          "price": 2.6,
+          "priceType": "fixed"
         },
         {
           "id": 1790964051839,
@@ -1127,7 +1140,7 @@
         },
         {
           "id": 1790964051840,
-          "sel": false,
+          "sel": true,
           "name": "Boquerones fritos con pimientos",
           "price": 13,
           "allergens": [
@@ -1137,7 +1150,7 @@
         },
         {
           "id": 1790964051841,
-          "sel": false,
+          "sel": true,
           "name": "Gyozas de chipirón y marisco (4 ud.)",
           "price": 8,
           "allergens": [
@@ -1156,7 +1169,7 @@
         },
         {
           "id": 1790964051843,
-          "sel": false,
+          "sel": true,
           "name": "Huevos rotos con atún Rojo",
           "price": 18,
           "allergens": [
@@ -1166,7 +1179,7 @@
         },
         {
           "id": 1790964051844,
-          "sel": false,
+          "sel": true,
           "name": "Cazuela de Gambas",
           "price": 15,
           "allergens": [
@@ -1175,7 +1188,7 @@
         },
         {
           "id": 1790964051845,
-          "sel": false,
+          "sel": true,
           "name": "Cazuela mixta (bacalao y gambas)",
           "price": 17,
           "allergens": [
@@ -1185,7 +1198,7 @@
         },
         {
           "id": 1790964051846,
-          "sel": false,
+          "sel": true,
           "name": "Atún con cama de guacamole",
           "price": 15,
           "allergens": [
@@ -1194,7 +1207,7 @@
         },
         {
           "id": 1790964051847,
-          "sel": false,
+          "sel": true,
           "name": "Tartar de Salmón",
           "price": 15,
           "allergens": [
@@ -1203,7 +1216,7 @@
         },
         {
           "id": 1790964051848,
-          "sel": false,
+          "sel": true,
           "name": "Steak tartar vaca 180 gr",
           "price": 25,
           "allergens": []
@@ -1221,7 +1234,7 @@
         {
           "id": 1792408645943,
           "name": "Gamba roja de Denia",
-          "sel": false,
+          "sel": true,
           "allergens": [
             "marisco"
           ],
@@ -1231,7 +1244,7 @@
         {
           "id": 1792842086721,
           "name": "Almejas al ajillo",
-          "sel": false,
+          "sel": true,
           "allergens": [
             "marisco"
           ],
