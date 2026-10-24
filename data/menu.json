@@ -1700,7 +1700,7 @@
       "dishes": [
         {
           "id": 403,
-          "name": "Altos de Luzón.",
+          "name": "Altos de Luzón (Jumilla)",
           "sel": true,
           "allergens": [],
           "price": 20
@@ -1714,10 +1714,10 @@
         },
         {
           "id": 405,
+          "name": "Protos 27  ( Ribera del Duero)",
           "sel": true,
-          "name": "Protos 27",
-          "price": 30,
-          "priceType": "fixed"
+          "allergens": [],
+          "price": 30
         },
         {
           "id": 406,
@@ -1762,13 +1762,6 @@
           "priceType": "fixed"
         },
         {
-          "id": 412,
-          "sel": false,
-          "name": "Ego Fuerza 21 - 12 meses (Jumilla)",
-          "price": 22,
-          "priceType": "fixed"
-        },
-        {
           "id": 413,
           "sel": true,
           "name": "Carmelo 9 meses (Ribera)",
@@ -1798,15 +1791,8 @@
         },
         {
           "id": 417,
-          "sel": false,
+          "sel": true,
           "name": "Goru (Jumilla)",
-          "price": 14,
-          "priceType": "fixed"
-        },
-        {
-          "id": 418,
-          "sel": false,
-          "name": "Viña Jaraba - Vino de Pago (3 meses barrica)",
           "price": 14,
           "priceType": "fixed"
         },
@@ -1880,38 +1866,10 @@
           "priceType": "fixed"
         },
         {
-          "id": 427,
-          "sel": false,
-          "name": "Castaño Chardonnay - 6 meses barricas",
-          "price": 18,
-          "priceType": "fixed"
-        },
-        {
           "id": 428,
-          "sel": false,
+          "sel": true,
           "name": "Ego Goru Chardonnay (Jumilla)",
           "price": 18,
-          "priceType": "fixed"
-        },
-        {
-          "id": 429,
-          "sel": false,
-          "name": "Feroce (Espumoso)",
-          "price": 12,
-          "priceType": "fixed"
-        },
-        {
-          "id": 430,
-          "sel": false,
-          "name": "Mar de Frades Albariño",
-          "price": 23,
-          "priceType": "fixed"
-        },
-        {
-          "id": 431,
-          "sel": false,
-          "name": "Pazo das Bruxas Albariño",
-          "price": 20,
           "priceType": "fixed"
         },
         {
@@ -1943,27 +1901,6 @@
           "priceType": "fixed"
         },
         {
-          "id": 436,
-          "sel": false,
-          "name": "Pago de la Jaraba Sauvignon Blanc",
-          "price": 18,
-          "priceType": "fixed"
-        },
-        {
-          "id": 437,
-          "sel": false,
-          "name": "Los Ángeles También Pecan (Verdejo)",
-          "price": 19,
-          "priceType": "fixed"
-        },
-        {
-          "id": 438,
-          "sel": false,
-          "name": "Valduero Blanco (Ribera del Duero)",
-          "price": 20,
-          "priceType": "fixed"
-        },
-        {
           "id": 439,
           "sel": true,
           "name": "Chardonnay Ropiteu (Francia)",
@@ -1989,13 +1926,6 @@
           "sel": false,
           "name": "Pita Finca La Cantera (Barrica roble francés y lías)",
           "price": 29,
-          "priceType": "fixed"
-        },
-        {
-          "id": 443,
-          "sel": false,
-          "name": "Juan Galindo Verdejo",
-          "price": 14,
           "priceType": "fixed"
         },
         {
