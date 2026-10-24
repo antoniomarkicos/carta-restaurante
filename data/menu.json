@@ -985,17 +985,11 @@
       "dishes": [
         {
           "id": 1790964051823,
+          "name": "Calamar nacional de abordo (Plancha o Andalucía)",
           "sel": false,
-          "name": "Calamar nacional de abordo (Plancha)",
+          "allergens": [],
           "price": 16,
-          "allergens": []
-        },
-        {
-          "id": 1790964051824,
-          "sel": false,
-          "name": "Calamar nacional a la Andaluza",
-          "price": 16,
-          "allergens": []
+          "priceType": "fixed"
         },
         {
           "id": 1790964051825,
@@ -1226,11 +1220,23 @@
         },
         {
           "id": 1792408645943,
-          "sel": true,
           "name": "Gamba roja de Denia",
+          "sel": false,
+          "allergens": [
+            "marisco"
+          ],
           "price": 140,
-          "allergens": [],
           "priceType": "kg"
+        },
+        {
+          "id": 1792842086721,
+          "name": "Almejas al ajillo",
+          "sel": false,
+          "allergens": [
+            "marisco"
+          ],
+          "price": 16,
+          "priceType": "fixed"
         }
       ]
     },
@@ -1317,14 +1323,14 @@
       "dishes": [
         {
           "id": 1790964051858,
-          "sel": false,
+          "sel": true,
           "name": "Tomate raf con olivas y tallos",
           "price": 10,
           "allergens": []
         },
         {
           "id": 1790964051859,
-          "sel": false,
+          "sel": true,
           "name": "Tomate raf con lomo de atún",
           "price": 14,
           "allergens": [
@@ -1333,7 +1339,7 @@
         },
         {
           "id": 1790964051860,
-          "sel": false,
+          "sel": true,
           "name": "Tomate raf con bonito salado",
           "price": 14,
           "allergens": [
@@ -1342,16 +1348,17 @@
         },
         {
           "id": 1790964051861,
-          "sel": false,
-          "name": "Ensalada cántabra (Anchoas)",
-          "price": 18,
+          "name": "Ensalada cántabra (Anchoas y raf)",
+          "sel": true,
           "allergens": [
             "pescado"
-          ]
+          ],
+          "price": 18,
+          "priceType": "fixed"
         },
         {
           "id": 1790964051862,
-          "sel": false,
+          "sel": true,
           "name": "Ensalada de la casa",
           "price": 14,
           "allergens": [
@@ -1362,7 +1369,7 @@
         },
         {
           "id": 1790964051863,
-          "sel": false,
+          "sel": true,
           "name": "Ensalada de burrata",
           "price": 14,
           "allergens": [
@@ -1372,7 +1379,7 @@
         },
         {
           "id": 1790964051864,
-          "sel": false,
+          "sel": true,
           "name": "Ensalada César",
           "price": 16,
           "allergens": [
@@ -1380,6 +1387,16 @@
             "lacteos",
             "huevos"
           ]
+        },
+        {
+          "id": 1792842306144,
+          "name": "Tomate con mozarela de bufala",
+          "sel": true,
+          "allergens": [
+            "lacteos"
+          ],
+          "price": 14,
+          "priceType": "fixed"
         }
       ]
     },
@@ -1389,7 +1406,7 @@
       "dishes": [
         {
           "id": 1790964051865,
-          "sel": false,
+          "sel": true,
           "name": "Solomillo de cerdo",
           "price": 12,
           "allergens": []
@@ -1403,28 +1420,28 @@
         },
         {
           "id": 1790964051867,
-          "sel": false,
+          "sel": true,
           "name": "Chuletas de cabrito",
           "price": 19,
           "allergens": []
         },
         {
           "id": 1790964051868,
-          "sel": false,
+          "sel": true,
           "name": "Costillas de cordero",
           "price": 19,
           "allergens": []
         },
         {
           "id": 1790964051869,
-          "sel": false,
+          "sel": true,
           "name": "Pluma de cerdo ibérica de bellota",
           "price": 22,
           "allergens": []
         },
         {
           "id": 1790964051870,
-          "sel": false,
+          "sel": true,
           "name": "Entrecot parrilla (Vaca vieja)",
           "price": 23,
           "allergens": []
@@ -1459,6 +1476,16 @@
           "allergens": [
             "gluten"
           ]
+        },
+        {
+          "id": 1792842588456,
+          "name": "Salsa roquefort, champiñon y pimienta",
+          "sel": true,
+          "allergens": [
+            "lacteos"
+          ],
+          "price": 3,
+          "priceType": "fixed"
         }
       ]
     },
@@ -1477,7 +1504,7 @@
         },
         {
           "id": 1790964051874,
-          "sel": false,
+          "sel": true,
           "name": "Lomo de Atún rojo",
           "price": 15,
           "allergens": [
@@ -1495,7 +1522,7 @@
         },
         {
           "id": 1790964051876,
-          "sel": false,
+          "sel": true,
           "name": "Dentón (A la espalda)",
           "price": 20,
           "allergens": [
@@ -1504,7 +1531,7 @@
         },
         {
           "id": 1790964051877,
-          "sel": false,
+          "sel": true,
           "name": "Rodaballo con verduras",
           "price": 22,
           "allergens": [
@@ -1513,7 +1540,7 @@
         },
         {
           "id": 1790964051878,
-          "sel": false,
+          "sel": true,
           "name": "Lecha",
           "price": 22,
           "allergens": [
@@ -1522,12 +1549,22 @@
         },
         {
           "id": 1790964051879,
-          "sel": false,
+          "sel": true,
           "name": "Ijada de atún",
           "price": 20,
           "allergens": [
             "pescado"
           ]
+        },
+        {
+          "id": 1792842689480,
+          "name": "Bacalao a la espalda",
+          "sel": true,
+          "allergens": [
+            "pescado"
+          ],
+          "price": 19,
+          "priceType": "fixed"
         }
       ]
     },
