@@ -284,14 +284,14 @@
       "dishes": [
         {
           "id": 1790964051822.6707,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Calamar nacional de abordo (Plancha)",
           "allergens": []
         },
         {
           "id": 1790964051822.527,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Calamar nacional a la Andaluza",
           "allergens": []
@@ -332,7 +332,7 @@
         },
         {
           "id": 1790964051822.312,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Pulpo a la gallega",
           "allergens": [
@@ -341,7 +341,7 @@
         },
         {
           "id": 1790964051822.9783,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Pastel de verduras",
           "allergens": []
@@ -376,7 +376,7 @@
         },
         {
           "id": 1790964051822.128,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Albóndigas de bacalao (ud.)",
           "allergens": [
@@ -490,7 +490,7 @@
         },
         {
           "id": 1790964051822.5344,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Atún Rojo con cama de guacamole",
           "allergens": [
@@ -534,7 +534,7 @@
         },
         {
           "id": 1790964051822.578,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Ensaladilla de mariscos",
           "allergens": [
@@ -603,7 +603,7 @@
         },
         {
           "id": 1790964051823.1755,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Tomate RAF con lomo de atún",
           "allergens": [
@@ -630,7 +630,7 @@
         },
         {
           "id": 1790964051823.0674,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Ensalada de la casa",
           "allergens": [
@@ -852,7 +852,7 @@
         },
         {
           "id": 1790964051823.9912,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Emperador",
           "allergens": [
@@ -921,7 +921,7 @@
       "dishes": [
         {
           "id": 1790964051823.1094,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Arroz con leche",
           "allergens": [
@@ -930,7 +930,7 @@
         },
         {
           "id": 1790964051823.288,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Contesa (Helado)",
           "allergens": [
@@ -950,7 +950,7 @@
         },
         {
           "id": 1790964051823.315,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Tiramisú",
           "allergens": [
@@ -970,7 +970,7 @@
         },
         {
           "id": 1792406059886,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Poste casero a elegir.",
           "allergens": []
