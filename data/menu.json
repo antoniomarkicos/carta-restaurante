@@ -1675,26 +1675,6 @@
   ],
   "vinos": [
     {
-      "id": "vinos_cavas",
-      "title": "CAVAS",
-      "dishes": [
-        {
-          "id": 401,
-          "sel": true,
-          "name": "Mitic 1908 Brut Nature",
-          "price": 20,
-          "priceType": "fixed"
-        },
-        {
-          "id": 402,
-          "sel": true,
-          "name": "Milesime Cava",
-          "price": 35,
-          "priceType": "fixed"
-        }
-      ]
-    },
-    {
       "id": "vinos_tintos",
       "title": "VINOS TINTOS",
       "dishes": [
@@ -1860,21 +1840,21 @@
         },
         {
           "id": 426,
-          "sel": true,
+          "sel": false,
           "name": "De Alberto (Rueda)",
           "price": 13,
           "priceType": "fixed"
         },
         {
           "id": 428,
-          "sel": true,
+          "sel": false,
           "name": "Ego Goru Chardonnay (Jumilla)",
           "price": 18,
           "priceType": "fixed"
         },
         {
           "id": 432,
-          "sel": true,
+          "sel": false,
           "name": "Martín Códax Albariño",
           "price": 20,
           "priceType": "fixed"
@@ -1888,28 +1868,28 @@
         },
         {
           "id": 434,
-          "sel": true,
+          "sel": false,
           "name": "Cepas Vellas Godeval Godello (Valdeorras)",
           "price": 29,
           "priceType": "fixed"
         },
         {
           "id": 435,
-          "sel": true,
+          "sel": false,
           "name": "Cuvée Protos Verdejo",
           "price": 19,
           "priceType": "fixed"
         },
         {
           "id": 439,
-          "sel": true,
+          "sel": false,
           "name": "Chardonnay Ropiteu (Francia)",
           "price": 18,
           "priceType": "fixed"
         },
         {
           "id": 440,
-          "sel": true,
+          "sel": false,
           "name": "Tobia Selección de Autor (Rioja)",
           "price": 24,
           "priceType": "fixed"
@@ -1930,7 +1910,7 @@
         },
         {
           "id": 444,
-          "sel": true,
+          "sel": false,
           "name": "Nasica Verdejo",
           "price": 13.5,
           "priceType": "fixed"
@@ -1957,10 +1937,30 @@
         },
         {
           "id": 447,
-          "sel": true,
+          "sel": false,
           "name": "Castaño Ecológico (Yecla)",
           "price": 14,
           "priceType": "fixed"
+        }
+      ]
+    },
+    {
+      "id": "cat_1793101140080",
+      "title": "ESPUMOSOS ",
+      "dishes": [
+        {
+          "id": 1793101162672,
+          "name": "Mitic 1908 nature",
+          "sel": false,
+          "allergens": [],
+          "price": 20
+        },
+        {
+          "id": 1793101283619,
+          "name": "Milésime  de juve camps",
+          "sel": false,
+          "allergens": [],
+          "price": 35
         }
       ]
     }
