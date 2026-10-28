@@ -1875,6 +1875,13 @@
           "price": 18
         },
         {
+          "id": 1793215210251,
+          "name": "JOSE PARIENTE VERDEJO",
+          "sel": true,
+          "allergens": [],
+          "price": 20
+        },
+        {
           "id": 435,
           "sel": true,
           "name": "Cuvée Protos Verdejo",
@@ -1882,24 +1889,31 @@
           "priceType": "fixed"
         },
         {
-          "id": 440,
-          "sel": true,
-          "name": "Tobia Selección de Autor (Rioja)",
-          "price": 24,
-          "priceType": "fixed"
-        },
-        {
           "id": 426,
+          "name": "De Alberto VERDEJO",
           "sel": true,
-          "name": "De Alberto (Rueda)",
-          "price": 13,
-          "priceType": "fixed"
+          "allergens": [],
+          "price": 13
         },
         {
           "id": 444,
           "sel": true,
           "name": "Nasica Verdejo",
           "price": 13.5,
+          "priceType": "fixed"
+        },
+        {
+          "id": 1793215243257,
+          "name": "PITA ORGANICO VERDEJO",
+          "sel": true,
+          "allergens": [],
+          "price": 29
+        },
+        {
+          "id": 440,
+          "sel": true,
+          "name": "Tobia Selección de Autor (Rioja)",
+          "price": 24,
           "priceType": "fixed"
         },
         {
