@@ -88,8 +88,8 @@
         .supplement-badge { font-size: 0.75rem; background: #fff3cd; color: #856404; padding: 2px 6px; border-radius: 4px; }
         .allergen-badges { display: inline-flex; gap: 4px; margin-left: 4px; }
         .allergen-icon { font-size: 0.85rem; background: #f0f0f0; padding: 2px 4px; border-radius: 4px; }
-        .dish-actions { display: flex; gap: 6px; }
-        .action-btn { background: none; border: none; cursor: pointer; font-size: 1rem; padding: 4px; opacity: 0.8; transition: 0.2s; }
+        .dish-actions { display: flex; gap: 4px; align-items: center; }
+        .action-btn { background: none; border: none; cursor: pointer; font-size: 0.9rem; padding: 3px; opacity: 0.8; transition: 0.2s; }
         .action-btn:hover { opacity: 1; }
 
         .footer-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 2px solid var(--border-color); padding: 12px 20px; display: flex; gap: 10px; box-shadow: 0 -4px 10px rgba(0,0,0,0.08); z-index: 100; }
@@ -500,7 +500,6 @@
         let menuCategories = JSON.parse(localStorage.getItem('marquicos_menu_cats')) || defaultMenuCategories;
         let especialCategories = JSON.parse(localStorage.getItem('marquicos_esp_cats')) || defaultEspecialCategories;
         let cartaCategories = JSON.parse(localStorage.getItem('marquicos_carta_cats')) || defaultCartaCategories;
-        // Forzamos la carga de vinos si no existían o estaban vacíos en el navegador
         let vinosCategories = JSON.parse(localStorage.getItem('marquicos_vinos_cats'));
         if (!vinosCategories || vinosCategories.length === 0) {
             vinosCategories = defaultVinosCategories;
@@ -642,6 +641,7 @@
                     <div class="card-title">
                         <span>${cat.title}</span>
                         <div class="title-actions">
+                            <button class="title-btn" onclick="editCategoryName('${type}', ${catIdx})" title="Editar nombre de categoría">✏️</button>
                             <button class="add-dish-btn" style="background:#6c757d; padding:4px 8px; font-size:0.75rem;" onclick="toggleAllDishesInCat('${type}', ${catIdx})">🔘 Todos</button>
                             <button class="add-dish-btn" onclick="openDishModal('${type}', ${catIdx})">➕ Añadir</button>
                             <button class="title-btn" onclick="deleteCategory('${type}', ${catIdx})">🗑️</button>
@@ -660,8 +660,10 @@
                                 ${dish.sup ? `<span class="supplement-badge">+${dish.sup.toFixed(2)}€</span>` : ''}
                                 ${dish.price !== undefined && dish.price !== '' ? `<span class="dish-price">${dish.price.toFixed(2)}€${dish.priceType === 'kg' ? ' / kg' : ''}</span>` : ''}
                                 <div class="dish-actions">
-                                    <button class="action-btn" onclick="openDishModal('${type}', ${catIdx},${dishIdx})">✏️</button>
-                                    <button class="action-btn" onclick="deleteDish('${type}', ${catIdx},${dishIdx})">🗑️</button>
+                                    <button class="action-btn" onclick="moveDish('${type}', ${catIdx}, ${dishIdx}, -1)" title="Subir plato">⬆️</button>
+                                    <button class="action-btn" onclick="moveDish('${type}', ${catIdx}, ${dishIdx}, 1)" title="Bajar plato">⬇️</button>
+                                    <button class="action-btn" onclick="openDishModal('${type}', ${catIdx},${dishIdx})" title="Editar plato">✏️</button>
+                                    <button class="action-btn" onclick="deleteDish('${type}', ${catIdx},${dishIdx})" title="Eliminar plato">🗑️</button>
                                 </div>
                             </div>
                         `).join('')}
@@ -679,9 +681,33 @@
             renderAll();
         }
 
+        function editCategoryName(type, catIdx) {
+            const category = getCategoryList(type)[catIdx];
+            const newTitle = prompt("Nuevo nombre para la categoría:", category.title);
+            if (newTitle !== null && newTitle.trim() !== "") {
+                category.title = newTitle.trim().toUpperCase();
+                saveData();
+                renderAll();
+            }
+        }
+
         function deleteCategory(type, catIdx) {
             if (!confirm("¿Seguro que deseas eliminar esta categoría?")) return;
             getCategoryList(type).splice(catIdx, 1);
+            saveData();
+            renderAll();
+        }
+
+        function moveDish(type, catIdx, dishIdx, direction) {
+            const dishes = getCategoryList(type)[catIdx].dishes;
+            const newIdx = dishIdx + direction;
+            if (newIdx < 0 || newIdx >= dishes.length) return; // Fuera de límites
+            
+            // Intercambiar posiciones
+            const temp = dishes[dishIdx];
+            dishes[dishIdx] = dishes[newIdx];
+            dishes[newIdx] = temp;
+
             saveData();
             renderAll();
         }
@@ -821,7 +847,7 @@
             
             const title = isDiario ? document.getElementById('menu-title-input').value :
                           isEspecial ? document.getElementById('especial-title-input').value :
-                          isCarta ? "CARTA COMPLETA" :
+                          isCarta ? "" :
                           isVinos ? "CARTA DE VINOS" : '';
 
             const subtitle = isDiario ? document.getElementById('menu-subtitle-input').value :
