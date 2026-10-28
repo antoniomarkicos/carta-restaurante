@@ -1562,12 +1562,12 @@
         },
         {
           "id": 1790964051879,
-          "name": "Ijada de atún",
           "sel": false,
+          "name": "Ijada de atún",
+          "price": 25,
           "allergens": [
             "pescado"
           ],
-          "price": 25,
           "priceType": "fixed"
         },
         {
@@ -1869,17 +1869,17 @@
         },
         {
           "id": 1793214548781,
-          "name": "MARA (GODELLO)",
           "sel": true,
-          "allergens": [],
-          "price": 18
+          "name": "MARA (GODELLO)",
+          "price": 18,
+          "allergens": []
         },
         {
           "id": 1793215210251,
-          "name": "JOSE PARIENTE VERDEJO",
           "sel": true,
-          "allergens": [],
-          "price": 20
+          "name": "JOSE PARIENTE VERDEJO",
+          "price": 20,
+          "allergens": []
         },
         {
           "id": 435,
@@ -1890,10 +1890,10 @@
         },
         {
           "id": 426,
-          "name": "De Alberto VERDEJO",
           "sel": true,
-          "allergens": [],
-          "price": 13
+          "name": "De Alberto VERDEJO",
+          "price": 13,
+          "allergens": []
         },
         {
           "id": 444,
@@ -1904,10 +1904,10 @@
         },
         {
           "id": 1793215243257,
-          "name": "PITA ORGANICO VERDEJO",
           "sel": true,
-          "allergens": [],
-          "price": 29
+          "name": "PITA ORGANICO VERDEJO",
+          "price": 29,
+          "allergens": []
         },
         {
           "id": 440,
