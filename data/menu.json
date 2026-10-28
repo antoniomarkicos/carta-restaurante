@@ -810,49 +810,49 @@
         },
         {
           "id": 1790964051823.5137,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Chuletas de cabrito",
           "allergens": []
         },
         {
           "id": 1790964051823.1538,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Costillas de cordero",
           "allergens": []
         },
         {
           "id": 1790964051823.4385,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Pluma de cerdo ibérica de bellota",
           "allergens": []
         },
         {
           "id": 1790964051823.5356,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Entrecot parrilla (Vaca vieja)",
           "allergens": []
         },
         {
           "id": 1790964051823.4546,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Paletilla de cabrito al horno",
           "allergens": []
         },
         {
           "id": 1790964051823.0046,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Lomo alto de wagyu 250gr",
           "allergens": []
         },
         {
           "id": 1790964051823.9912,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Emperador",
           "allergens": [
@@ -870,7 +870,7 @@
         },
         {
           "id": 1790964051823.1482,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Lenguado con verduras",
           "allergens": [
@@ -879,7 +879,7 @@
         },
         {
           "id": 1790964051823.1406,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Dentón (A la espalda)",
           "allergens": [
@@ -888,7 +888,7 @@
         },
         {
           "id": 1790964051823.233,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Rodaballo con verduras",
           "allergens": [
@@ -897,7 +897,7 @@
         },
         {
           "id": 1790964051823.4827,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Lecha",
           "allergens": [
@@ -906,7 +906,7 @@
         },
         {
           "id": 1790964051823.9495,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Ijada de atún 250 gr",
           "allergens": [
@@ -985,7 +985,7 @@
       "dishes": [
         {
           "id": 1790964051823,
-          "sel": true,
+          "sel": false,
           "name": "Calamar nacional de abordo (Plancha o Andalucía)",
           "price": 16,
           "allergens": [
@@ -995,7 +995,7 @@
         },
         {
           "id": 1790964051825,
-          "sel": true,
+          "sel": false,
           "name": "Revuelto de setas y gambas (Ajetes y Pedro Ximénez)",
           "price": 12,
           "allergens": [
@@ -1015,7 +1015,7 @@
         },
         {
           "id": 1790964051827,
-          "sel": true,
+          "sel": false,
           "name": "Gamba blanca plancha 250 gr",
           "price": 20,
           "allergens": [
@@ -1024,7 +1024,7 @@
         },
         {
           "id": 1790964051828,
-          "sel": true,
+          "sel": false,
           "name": "Zamburiñas (ud.) mínimo 2 unidades.",
           "price": 2.3,
           "allergens": [
@@ -1034,7 +1034,7 @@
         },
         {
           "id": 1790964051829,
-          "sel": true,
+          "sel": false,
           "name": "Pulpo a la gallega",
           "price": 16,
           "allergens": [
@@ -1043,10 +1043,20 @@
         },
         {
           "id": 1790964051830,
-          "sel": true,
+          "sel": false,
           "name": "Pastel de verduras",
           "price": 12,
           "allergens": []
+        },
+        {
+          "id": 1792408645943,
+          "sel": false,
+          "name": "Gamba roja de Denia",
+          "price": 140,
+          "allergens": [
+            "marisco"
+          ],
+          "priceType": "kg"
         },
         {
           "id": 1790964051831,
@@ -1059,7 +1069,7 @@
         },
         {
           "id": 1790964051832,
-          "sel": true,
+          "sel": false,
           "name": "Alcachofa con foie, huevo frito y PX",
           "price": 9,
           "allergens": [
@@ -1068,7 +1078,7 @@
         },
         {
           "id": 1790964051833,
-          "sel": true,
+          "sel": false,
           "name": "Caballitos (ud.) mínimo 2 unidades.",
           "price": 1.5,
           "allergens": [
@@ -1079,7 +1089,7 @@
         },
         {
           "id": 1790964051834,
-          "sel": true,
+          "sel": false,
           "name": "Albóndigas de bacalao (ud.) mínimo 2 unidades.",
           "price": 1,
           "allergens": [
@@ -1090,7 +1100,7 @@
         },
         {
           "id": 1790964051835,
-          "sel": true,
+          "sel": false,
           "name": "Croquetas de jamón (ud.) mínimo 2 unidades.",
           "price": 1.4,
           "allergens": [
@@ -1101,7 +1111,7 @@
         },
         {
           "id": 1790964051836,
-          "sel": true,
+          "sel": false,
           "name": "Croquetas de rabo de toro (ud.) mínimo 2 unidades.",
           "price": 1.8,
           "allergens": [
@@ -1112,7 +1122,7 @@
         },
         {
           "id": 1790964051837,
-          "sel": true,
+          "sel": false,
           "name": "Croqueta de centollo (ud.) mínimo 2 unidades.",
           "price": 1.8,
           "allergens": [
@@ -1123,7 +1133,7 @@
         },
         {
           "id": 1790964051838,
-          "sel": true,
+          "sel": false,
           "name": "Croquetón de puchero (ud) mínimo 2 unidades.",
           "price": 2.6,
           "allergens": [
@@ -1140,7 +1150,7 @@
         },
         {
           "id": 1790964051840,
-          "sel": true,
+          "sel": false,
           "name": "Boquerones fritos con pimientos",
           "price": 13,
           "allergens": [
@@ -1150,7 +1160,7 @@
         },
         {
           "id": 1790964051841,
-          "sel": true,
+          "sel": false,
           "name": "Gyozas de chipirón y marisco (4 ud.)",
           "price": 8,
           "allergens": [
@@ -1169,7 +1179,7 @@
         },
         {
           "id": 1790964051843,
-          "sel": true,
+          "sel": false,
           "name": "Huevos rotos con atún Rojo",
           "price": 18,
           "allergens": [
@@ -1179,7 +1189,7 @@
         },
         {
           "id": 1790964051844,
-          "sel": true,
+          "sel": false,
           "name": "Cazuela de Gambas",
           "price": 15,
           "allergens": [
@@ -1188,7 +1198,7 @@
         },
         {
           "id": 1790964051845,
-          "sel": true,
+          "sel": false,
           "name": "Cazuela mixta (bacalao y gambas)",
           "price": 17,
           "allergens": [
@@ -1197,8 +1207,18 @@
           ]
         },
         {
+          "id": 1792842086721,
+          "sel": false,
+          "name": "Almejas al ajillo",
+          "price": 16,
+          "allergens": [
+            "marisco"
+          ],
+          "priceType": "fixed"
+        },
+        {
           "id": 1790964051846,
-          "sel": true,
+          "sel": false,
           "name": "Atún con cama de guacamole",
           "price": 15,
           "allergens": [
@@ -1207,7 +1227,7 @@
         },
         {
           "id": 1790964051847,
-          "sel": true,
+          "sel": false,
           "name": "Tartar de Salmón",
           "price": 15,
           "allergens": [
@@ -1216,7 +1236,7 @@
         },
         {
           "id": 1790964051848,
-          "sel": true,
+          "sel": false,
           "name": "Steak tartar vaca 180 gr",
           "price": 25,
           "allergens": []
@@ -1230,26 +1250,6 @@
             "marisco",
             "gluten"
           ]
-        },
-        {
-          "id": 1792408645943,
-          "sel": true,
-          "name": "Gamba roja de Denia",
-          "price": 140,
-          "allergens": [
-            "marisco"
-          ],
-          "priceType": "kg"
-        },
-        {
-          "id": 1792842086721,
-          "sel": true,
-          "name": "Almejas al ajillo",
-          "price": 16,
-          "allergens": [
-            "marisco"
-          ],
-          "priceType": "fixed"
         }
       ]
     },
@@ -1562,12 +1562,13 @@
         },
         {
           "id": 1790964051879,
-          "sel": false,
           "name": "Ijada de atún",
-          "price": 20,
+          "sel": false,
           "allergens": [
             "pescado"
-          ]
+          ],
+          "price": 25,
+          "priceType": "fixed"
         },
         {
           "id": 1792842689480,
@@ -1680,10 +1681,59 @@
       "dishes": [
         {
           "id": 403,
-          "sel": true,
+          "sel": false,
           "name": "Altos de Luzón (Jumilla)",
           "price": 20,
           "allergens": []
+        },
+        {
+          "id": 407,
+          "sel": false,
+          "name": "Bruto (Jumilla)",
+          "price": 40,
+          "priceType": "fixed"
+        },
+        {
+          "id": 415,
+          "sel": false,
+          "name": "Juana la Loca Syrah - 18 meses en Barrica Jumilla",
+          "price": 38,
+          "allergens": []
+        },
+        {
+          "id": 408,
+          "sel": false,
+          "name": "Porti (Jumilla)",
+          "price": 32,
+          "priceType": "fixed"
+        },
+        {
+          "id": 423,
+          "sel": false,
+          "name": "Luis Cañas Rioja Crianza",
+          "price": 20,
+          "priceType": "fixed"
+        },
+        {
+          "id": 416,
+          "sel": false,
+          "name": "Don Jacobo Rioja Crianza",
+          "price": 17,
+          "priceType": "fixed"
+        },
+        {
+          "id": 424,
+          "sel": false,
+          "name": "Tobia Cuvée Rioja crianza",
+          "price": 16,
+          "allergens": []
+        },
+        {
+          "id": 420,
+          "sel": false,
+          "name": "Tobia Selección de Autor (Rioja)",
+          "price": 24,
+          "priceType": "fixed"
         },
         {
           "id": 404,
@@ -1694,136 +1744,87 @@
         },
         {
           "id": 405,
-          "sel": true,
+          "sel": false,
           "name": "Protos 27  ( Ribera del Duero)",
           "price": 30,
           "allergens": []
         },
         {
           "id": 406,
-          "sel": true,
+          "sel": false,
           "name": "Valduero Una Cepa (Ribera del Duero)",
           "price": 39,
           "priceType": "fixed"
         },
         {
-          "id": 407,
-          "sel": true,
-          "name": "Bruto (Jumilla)",
-          "price": 40,
-          "priceType": "fixed"
-        },
-        {
-          "id": 408,
-          "sel": true,
-          "name": "Porti (Jumilla)",
-          "price": 32,
+          "id": 413,
+          "sel": false,
+          "name": "Carmelo 9 meses (Ribera)",
+          "price": 22,
           "priceType": "fixed"
         },
         {
           "id": 409,
-          "sel": true,
+          "sel": false,
           "name": "Carmelo Rodero Crianza (Ribera del Duero)",
           "price": 33,
           "priceType": "fixed"
         },
         {
           "id": 410,
-          "sel": true,
+          "sel": false,
           "name": "Taulla 6 meses Magnum (Ribera del Duero 1.5L) roble",
           "price": 35,
           "allergens": []
         },
         {
+          "id": 1792843267512,
+          "sel": false,
+          "name": "Taulla ( ribera del Duero) roble.",
+          "price": 19,
+          "allergens": []
+        },
+        {
           "id": 411,
-          "sel": true,
+          "sel": false,
           "name": "Roa Crianza (Ribera del Duero)",
           "price": 18,
           "priceType": "fixed"
         },
         {
-          "id": 413,
-          "sel": true,
-          "name": "Carmelo 9 meses (Ribera)",
-          "price": 22,
-          "priceType": "fixed"
-        },
-        {
           "id": 414,
-          "sel": true,
+          "sel": false,
           "name": "Abadía Retuerta (Botella de 3 L) ribera del Duero",
           "price": 180,
           "allergens": []
         },
         {
-          "id": 415,
-          "sel": true,
-          "name": "Juana la Loca Syrah - 18 meses en Barrica Jumilla",
-          "price": 38,
-          "allergens": []
-        },
-        {
-          "id": 416,
-          "sel": true,
-          "name": "Don Jacobo Rioja Crianza",
-          "price": 17,
-          "priceType": "fixed"
-        },
-        {
           "id": 417,
-          "sel": true,
+          "sel": false,
           "name": "Goru (Jumilla)",
           "price": 14,
           "priceType": "fixed"
         },
         {
           "id": 419,
-          "sel": true,
+          "sel": false,
           "name": "Montecastro Crianza (Ribera del Duero)",
           "price": 28,
           "priceType": "fixed"
         },
         {
-          "id": 420,
-          "sel": true,
-          "name": "Tobia Selección de Autor (Rioja)",
-          "price": 24,
-          "priceType": "fixed"
-        },
-        {
           "id": 421,
-          "sel": true,
+          "sel": false,
           "name": "Carroa (Ribera del Duero)",
           "price": 46,
           "priceType": "fixed"
         },
         {
           "id": 422,
-          "sel": true,
+          "sel": false,
           "name": "Bosque de Matasnos Crianza (Ribera del Duero)",
           "price": 42,
           "priceType": "fixed"
-        },
-        {
-          "id": 423,
-          "sel": true,
-          "name": "Luis Cañas Rioja Crianza",
-          "price": 20,
-          "priceType": "fixed"
-        },
-        {
-          "id": 424,
-          "sel": true,
-          "name": "Tobia Cuvée Rioja crianza",
-          "price": 16,
-          "allergens": []
-        },
-        {
-          "id": 1792843267512,
-          "sel": true,
-          "name": "Taulla ( ribera del Duero) roble.",
-          "price": 19,
-          "allergens": []
         }
       ]
     },
@@ -1833,28 +1834,21 @@
       "dishes": [
         {
           "id": 425,
-          "sel": false,
+          "sel": true,
           "name": "Luzón Blanco (Jumilla)",
           "price": 12,
           "priceType": "fixed"
         },
         {
-          "id": 426,
-          "sel": false,
-          "name": "De Alberto (Rueda)",
-          "price": 13,
-          "priceType": "fixed"
-        },
-        {
           "id": 428,
-          "sel": false,
+          "sel": true,
           "name": "Ego Goru Chardonnay (Jumilla)",
           "price": 18,
           "priceType": "fixed"
         },
         {
           "id": 432,
-          "sel": false,
+          "sel": true,
           "name": "Martín Códax Albariño",
           "price": 20,
           "priceType": "fixed"
@@ -1868,51 +1862,51 @@
         },
         {
           "id": 434,
-          "sel": false,
+          "sel": true,
           "name": "Cepas Vellas Godeval Godello (Valdeorras)",
           "price": 29,
           "priceType": "fixed"
         },
         {
+          "id": 1793214548781,
+          "name": "MARA (GODELLO)",
+          "sel": true,
+          "allergens": [],
+          "price": 18
+        },
+        {
           "id": 435,
-          "sel": false,
+          "sel": true,
           "name": "Cuvée Protos Verdejo",
           "price": 19,
           "priceType": "fixed"
         },
         {
-          "id": 439,
-          "sel": false,
-          "name": "Chardonnay Ropiteu (Francia)",
-          "price": 18,
-          "priceType": "fixed"
-        },
-        {
           "id": 440,
-          "sel": false,
+          "sel": true,
           "name": "Tobia Selección de Autor (Rioja)",
           "price": 24,
           "priceType": "fixed"
         },
         {
-          "id": 441,
-          "sel": false,
-          "name": "Pita Verdejo 2024",
-          "price": 14,
-          "priceType": "fixed"
-        },
-        {
-          "id": 442,
-          "sel": false,
-          "name": "Pita Finca La Cantera (Barrica roble francés y lías)",
-          "price": 29,
+          "id": 426,
+          "sel": true,
+          "name": "De Alberto (Rueda)",
+          "price": 13,
           "priceType": "fixed"
         },
         {
           "id": 444,
-          "sel": false,
+          "sel": true,
           "name": "Nasica Verdejo",
           "price": 13.5,
+          "priceType": "fixed"
+        },
+        {
+          "id": 439,
+          "sel": true,
+          "name": "Chardonnay Ropiteu (Francia)",
+          "price": 18,
           "priceType": "fixed"
         }
       ]
@@ -1937,7 +1931,7 @@
         },
         {
           "id": 447,
-          "sel": false,
+          "sel": true,
           "name": "Castaño Ecológico (Yecla)",
           "price": 14,
           "priceType": "fixed"
@@ -1950,14 +1944,14 @@
       "dishes": [
         {
           "id": 1793101162672,
-          "sel": false,
+          "sel": true,
           "name": "Mitic 1908 nature",
           "price": 20,
           "allergens": []
         },
         {
           "id": 1793101283619,
-          "sel": false,
+          "sel": true,
           "name": "Milésime  de juve camps",
           "price": 35,
           "allergens": []
