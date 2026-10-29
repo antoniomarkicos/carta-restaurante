@@ -95,7 +95,7 @@
         },
         {
           "id": 1792578508496,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Caldo con pelotas",
           "allergens": []
@@ -112,7 +112,7 @@
         },
         {
           "id": 1792578577415,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Crema de calabacín",
           "allergens": [
@@ -121,7 +121,7 @@
         },
         {
           "id": 1792663903005,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Lentejas",
           "allergens": []
@@ -136,6 +136,15 @@
             "lacteos",
             "huevos"
           ]
+        },
+        {
+          "id": 1793272245132,
+          "name": "Cocido",
+          "sel": true,
+          "allergens": [
+            "gluten"
+          ],
+          "sup": 0
         }
       ]
     },
@@ -154,7 +163,7 @@
         },
         {
           "id": 1792404617475,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Hamburguesa de pollo.",
           "allergens": [
@@ -174,7 +183,7 @@
         },
         {
           "id": 1792404679778,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Boqueron rebozado.",
           "allergens": [
@@ -191,7 +200,7 @@
         },
         {
           "id": 1792406766946,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Filete de atún.",
           "allergens": []
@@ -202,6 +211,13 @@
           "sup": 0,
           "name": "Solomillo de cerdo con patatas y pimientos",
           "allergens": []
+        },
+        {
+          "id": 1793272280363,
+          "name": "Alitas de pollo",
+          "sel": true,
+          "allergens": [],
+          "sup": 0
         }
       ]
     },
@@ -255,7 +271,7 @@
         },
         {
           "id": 1792427782916,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Tarta de la abuela",
           "allergens": [
