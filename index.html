@@ -408,7 +408,6 @@
             }
         };
 
-        // Sistema de traducción online automática mediante API gratuita
         const translationCache = {};
 
         async function translateString(text, targetLang) {
@@ -422,14 +421,19 @@
                 const data = await res.json();
                 if (data && data.responseData && data.responseData.translatedText) {
                     let translated = data.responseData.translatedText;
-                    // Limpiar si la API devuelve texto en mayúsculas forzadas extrañas
+                    
+                    // Limpieza estricta para eliminar cualquier etiqueta HTML o SVG residual que devuelva la API
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = translated;
+                    translated = tempDiv.textContent || tempDiv.innerText || translated;
+                    
                     translationCache[cacheKey] = translated;
                     return translated;
                 }
             } catch (e) {
                 console.error("Error traduciendo:", e);
             }
-            return text; // Si falla por red, devuelve el original
+            return text;
         }
 
         const defaultMenuCategories = [
@@ -933,7 +937,7 @@
                     if (printToolbar) printToolbar.style.display = 'flex';
                     closeModal('printModal');
                 });
-            }, 600);
+            }, 800);
         }
 
         function saveSupabaseConfig() {
