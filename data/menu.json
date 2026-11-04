@@ -112,7 +112,7 @@
         },
         {
           "id": 1792578577415,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Crema de calabacín",
           "allergens": [
@@ -128,7 +128,7 @@
         },
         {
           "id": 1792663983102,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Entremeses ( ensaladilla rusa con croquetas de jamón)",
           "allergens": [
@@ -140,9 +140,45 @@
         {
           "id": 1793272245132,
           "name": "Cocido",
-          "sel": true,
+          "sel": false,
           "allergens": [
             "gluten"
+          ],
+          "sup": 0
+        },
+        {
+          "id": 1793618882768,
+          "name": "Entremeses",
+          "sel": false,
+          "allergens": [
+            "lacteos",
+            "huevos"
+          ],
+          "sup": 0
+        },
+        {
+          "id": 1793789663601,
+          "name": "Pixto con huevo",
+          "sel": true,
+          "allergens": [
+            "huevos"
+          ],
+          "sup": 0
+        },
+        {
+          "id": 1793789703821,
+          "name": "Champiñones con salsa verde.",
+          "sel": true,
+          "allergens": [],
+          "sup": 0
+        },
+        {
+          "id": 1793789729953,
+          "name": "Pastel de puerros",
+          "sel": true,
+          "allergens": [
+            "lacteos",
+            "huevos"
           ],
           "sup": 0
         }
@@ -172,7 +208,7 @@
         },
         {
           "id": 1792404642059,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Albóndigas en salsa.",
           "allergens": [
@@ -200,7 +236,7 @@
         },
         {
           "id": 1792406766946,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Filete de atún.",
           "allergens": []
@@ -215,8 +251,46 @@
         {
           "id": 1793272280363,
           "name": "Alitas de pollo",
-          "sel": true,
+          "sel": false,
           "allergens": [],
+          "sup": 0
+        },
+        {
+          "id": 1793618925751,
+          "name": "Pechuga empanada",
+          "sel": false,
+          "allergens": [
+            "gluten",
+            "huevos"
+          ],
+          "sup": 0
+        },
+        {
+          "id": 1793789750073,
+          "name": "Migas",
+          "sel": true,
+          "allergens": [
+            "gluten"
+          ],
+          "sup": 0
+        },
+        {
+          "id": 1793789808190,
+          "name": "Berenjena rellena de pescado",
+          "sel": true,
+          "allergens": [
+            "lacteos",
+            "marisco"
+          ],
+          "sup": 0
+        },
+        {
+          "id": 1793789830914,
+          "name": "Lomo con huevo",
+          "sel": true,
+          "allergens": [
+            "huevos"
+          ],
           "sup": 0
         }
       ]
@@ -271,7 +345,7 @@
         },
         {
           "id": 1792427782916,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Tarta de la abuela",
           "allergens": [
@@ -282,13 +356,20 @@
         },
         {
           "id": 1792427999826,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Contesa",
           "allergens": [
             "lacteos",
             "huevos"
           ]
+        },
+        {
+          "id": 1793619025038,
+          "name": "Melocotón",
+          "sel": true,
+          "allergens": [],
+          "sup": 0
         }
       ]
     }
@@ -299,6 +380,17 @@
       "title": "ENTRANTES (AL CENTRO)",
       "dishes": [
         {
+          "id": 1790964051823.0674,
+          "sel": true,
+          "sup": 0,
+          "name": "Ensalada de la casa",
+          "allergens": [
+            "pescado",
+            "huevos",
+            "lacteos"
+          ]
+        },
+        {
           "id": 1790964051822.6707,
           "sel": false,
           "sup": 0,
@@ -307,7 +399,7 @@
         },
         {
           "id": 1790964051822.527,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Calamar nacional a la Andaluza",
           "allergens": []
@@ -402,7 +494,7 @@
         },
         {
           "id": 1790964051822.702,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Croquetas de jamón (ud.)",
           "allergens": [
@@ -487,7 +579,7 @@
         },
         {
           "id": 1790964051822.1284,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Cazuela de Gambas",
           "allergens": [
@@ -506,7 +598,7 @@
         },
         {
           "id": 1790964051822.5344,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Atún Rojo con cama de guacamole",
           "allergens": [
@@ -550,7 +642,7 @@
         },
         {
           "id": 1790964051822.578,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Ensaladilla de mariscos",
           "allergens": [
@@ -645,17 +737,6 @@
           ]
         },
         {
-          "id": 1790964051823.0674,
-          "sel": true,
-          "sup": 0,
-          "name": "Ensalada de la casa",
-          "allergens": [
-            "pescado",
-            "huevos",
-            "lacteos"
-          ]
-        },
-        {
           "id": 1790964051823.6255,
           "sel": false,
           "sup": 0,
@@ -675,6 +756,13 @@
             "lacteos",
             "huevos"
           ]
+        },
+        {
+          "id": 1793389485497,
+          "name": "Jamón y queso",
+          "sel": true,
+          "allergens": [],
+          "sup": 0
         }
       ]
     },
@@ -809,7 +897,7 @@
       "dishes": [
         {
           "id": 1790964051823.2144,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Solomillo de cerdo en salsa de champiñón",
           "allergens": [
@@ -826,49 +914,49 @@
         },
         {
           "id": 1790964051823.5137,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Chuletas de cabrito",
           "allergens": []
         },
         {
           "id": 1790964051823.1538,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Costillas de cordero",
           "allergens": []
         },
         {
           "id": 1790964051823.4385,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Pluma de cerdo ibérica de bellota",
           "allergens": []
         },
         {
           "id": 1790964051823.5356,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Entrecot parrilla (Vaca vieja)",
           "allergens": []
         },
         {
           "id": 1790964051823.4546,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Paletilla de cabrito al horno",
           "allergens": []
         },
         {
           "id": 1790964051823.0046,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Lomo alto de wagyu 250gr",
           "allergens": []
         },
         {
           "id": 1790964051823.9912,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Emperador",
           "allergens": [
@@ -886,7 +974,7 @@
         },
         {
           "id": 1790964051823.1482,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Lenguado con verduras",
           "allergens": [
@@ -895,7 +983,7 @@
         },
         {
           "id": 1790964051823.1406,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Dentón (A la espalda)",
           "allergens": [
@@ -904,7 +992,7 @@
         },
         {
           "id": 1790964051823.233,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Rodaballo con verduras",
           "allergens": [
@@ -913,7 +1001,7 @@
         },
         {
           "id": 1790964051823.4827,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Lecha",
           "allergens": [
@@ -922,7 +1010,7 @@
         },
         {
           "id": 1790964051823.9495,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Ijada de atún 250 gr",
           "allergens": [
@@ -937,7 +1025,7 @@
       "dishes": [
         {
           "id": 1790964051823.1094,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Arroz con leche",
           "allergens": [
@@ -946,7 +1034,7 @@
         },
         {
           "id": 1790964051823.288,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Contesa (Helado)",
           "allergens": [
@@ -966,7 +1054,7 @@
         },
         {
           "id": 1790964051823.315,
-          "sel": true,
+          "sel": false,
           "sup": 0,
           "name": "Tiramisú",
           "allergens": [
@@ -986,7 +1074,7 @@
         },
         {
           "id": 1792406059886,
-          "sel": false,
+          "sel": true,
           "sup": 0,
           "name": "Poste casero a elegir.",
           "allergens": []
@@ -1795,10 +1883,10 @@
         },
         {
           "id": 1792843267512,
+          "name": "Taulla 6 meses( ribera del Duero).",
           "sel": false,
-          "name": "Taulla ( ribera del Duero) roble.",
-          "price": 19,
-          "allergens": []
+          "allergens": [],
+          "price": 19
         },
         {
           "id": 411,
