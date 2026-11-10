@@ -139,48 +139,48 @@
         },
         {
           "id": 1793272245132,
-          "name": "Cocido",
           "sel": false,
+          "sup": 0,
+          "name": "Cocido",
           "allergens": [
             "gluten"
-          ],
-          "sup": 0
+          ]
         },
         {
           "id": 1793618882768,
-          "name": "Entremeses",
           "sel": false,
+          "sup": 0,
+          "name": "Entremeses",
           "allergens": [
             "lacteos",
             "huevos"
-          ],
-          "sup": 0
+          ]
         },
         {
           "id": 1793789663601,
-          "name": "Pixto con huevo",
           "sel": true,
+          "sup": 0,
+          "name": "Pixto con huevo",
           "allergens": [
             "huevos"
-          ],
-          "sup": 0
+          ]
         },
         {
           "id": 1793789703821,
-          "name": "Champiñones con salsa verde.",
           "sel": true,
-          "allergens": [],
-          "sup": 0
+          "sup": 0,
+          "name": "Champiñones con salsa verde.",
+          "allergens": []
         },
         {
           "id": 1793789729953,
-          "name": "Pastel de puerros",
           "sel": true,
+          "sup": 0,
+          "name": "Pastel de puerros",
           "allergens": [
             "lacteos",
             "huevos"
-          ],
-          "sup": 0
+          ]
         }
       ]
     },
@@ -250,48 +250,48 @@
         },
         {
           "id": 1793272280363,
-          "name": "Alitas de pollo",
           "sel": false,
-          "allergens": [],
-          "sup": 0
+          "sup": 0,
+          "name": "Alitas de pollo",
+          "allergens": []
         },
         {
           "id": 1793618925751,
-          "name": "Pechuga empanada",
           "sel": false,
+          "sup": 0,
+          "name": "Pechuga empanada",
           "allergens": [
             "gluten",
             "huevos"
-          ],
-          "sup": 0
+          ]
         },
         {
           "id": 1793789750073,
-          "name": "Migas",
           "sel": true,
+          "sup": 0,
+          "name": "Migas",
           "allergens": [
             "gluten"
-          ],
-          "sup": 0
+          ]
         },
         {
           "id": 1793789808190,
-          "name": "Berenjena rellena de pescado",
           "sel": true,
+          "sup": 0,
+          "name": "Berenjena rellena de pescado",
           "allergens": [
             "lacteos",
             "marisco"
-          ],
-          "sup": 0
+          ]
         },
         {
           "id": 1793789830914,
-          "name": "Lomo con huevo",
           "sel": true,
+          "sup": 0,
+          "name": "Lomo con huevo",
           "allergens": [
             "huevos"
-          ],
-          "sup": 0
+          ]
         }
       ]
     },
@@ -366,10 +366,10 @@
         },
         {
           "id": 1793619025038,
-          "name": "Melocotón",
           "sel": true,
-          "allergens": [],
-          "sup": 0
+          "sup": 0,
+          "name": "Melocotón",
+          "allergens": []
         }
       ]
     }
@@ -759,10 +759,10 @@
         },
         {
           "id": 1793389485497,
-          "name": "Jamón y queso",
           "sel": true,
-          "allergens": [],
-          "sup": 0
+          "sup": 0,
+          "name": "Jamón y queso",
+          "allergens": []
         }
       ]
     },
@@ -1883,10 +1883,10 @@
         },
         {
           "id": 1792843267512,
-          "name": "Taulla 6 meses( ribera del Duero).",
           "sel": false,
-          "allergens": [],
-          "price": 19
+          "name": "Taulla 6 meses( ribera del Duero).",
+          "price": 19,
+          "allergens": []
         },
         {
           "id": 411,
