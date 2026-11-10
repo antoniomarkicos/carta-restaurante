@@ -222,9 +222,6 @@
 
         <!-- Secciones de Carta Completa -->
         <div id="view-carta" class="view-section">
-            <button class="btn btn-secondary" style="width:100%; margin-bottom:15px; font-size:1rem; padding:12px;" onclick="cargarTodaLaCartaYMenu()">
-                🚀 Cargar Toda la Carta y Menú Especial Automáticamente
-            </button>
             <div id="carta-categories-container"></div>
             <button class="add-cat-btn" onclick="addCategory('carta')">➕ Añadir Nueva Subfamilia a la Carta</button>
         </div>
@@ -422,7 +419,6 @@
                 if (data && data.responseData && data.responseData.translatedText) {
                     let translated = data.responseData.translatedText;
                     
-                    // Limpieza estricta para eliminar cualquier etiqueta HTML o SVG residual que devuelva la API
                     const tempDiv = document.createElement('div');
                     tempDiv.innerHTML = translated;
                     translated = tempDiv.textContent || tempDiv.innerText || translated;
@@ -941,42 +937,61 @@
         }
 
         function saveSupabaseConfig() {
-            const url = document.getElementById('supabase-url').value;
-            const key = document.getElementById('supabase-key').value;
+            const url = document.getElementById('supabase-url').value.trim();
+            const key = document.getElementById('supabase-key').value.trim();
             localStorage.setItem('marquicos_sp_url', url);
             localStorage.setItem('marquicos_sp_key', key);
             if (url && key && window.supabase) {
-                supabaseClient = window.supabase.createClient(url, key);
-                document.getElementById('dot-supabase').classList.add('connected');
+                try {
+                    supabaseClient = window.supabase.createClient(url, key);
+                    document.getElementById('dot-supabase').classList.add('connected');
+                    alert("¡Configuración de Supabase guardada y conectada!");
+                } catch (err) {
+                    alert("Error al inicializar Supabase: " + err.message);
+                }
+            } else {
+                alert("Por favor, introduce una URL y una Key válidas.");
             }
         }
 
         async function pushToSupabase() {
+            if (!supabaseClient) saveSupabaseConfig();
             if (!supabaseClient) return alert("Configura Supabase primero.");
-            const data = {
-                menu: menuCategories,
-                especial: especialCategories,
-                carta: cartaCategories,
-                vinos: vinosCategories,
-                updated_at: new Date()
-            };
-            const { error } = await supabaseClient.from('menus').upsert({ id: 1, content: data });
-            if (error) alert("Error al subir: " + error.message);
-            else alert("¡Sincronizado con Supabase con éxito!");
+            
+            try {
+                const data = {
+                    menu: menuCategories,
+                    especial: especialCategories,
+                    carta: cartaCategories,
+                    vinos: vinosCategories,
+                    updated_at: new Date()
+                };
+                const { error } = await supabaseClient.from('menus').upsert({ id: 1, content: data });
+                if (error) throw error;
+                alert("¡Sincronizado con Supabase con éxito!");
+            } catch (err) {
+                alert("Error al subir a Supabase: " + (err.message || "Fallo de red o conexión"));
+            }
         }
 
         async function pullFromSupabase() {
+            if (!supabaseClient) saveSupabaseConfig();
             if (!supabaseClient) return alert("Configura Supabase primero.");
-            const { data, error } = await supabaseClient.from('menus').select('content').eq('id', 1).single();
-            if (error) return alert("Error al bajar datos: " + error.message);
-            if (data && data.content) {
-                menuCategories = data.content.menu || [];
-                especialCategories = data.content.especial || [];
-                cartaCategories = data.content.carta || [];
-                vinosCategories = data.content.vinos || [];
-                saveData();
-                renderAll();
-                alert("¡Datos actualizados desde Supabase!");
+            
+            try {
+                const { data, error } = await supabaseClient.from('menus').select('content').eq('id', 1).single();
+                if (error) throw error;
+                if (data && data.content) {
+                    menuCategories = data.content.menu || menuCategories;
+                    especialCategories = data.content.especial || especialCategories;
+                    cartaCategories = data.content.carta || cartaCategories;
+                    vinosCategories = data.content.vinos || vinosCategories;
+                    saveData();
+                    renderAll();
+                    alert("¡Datos actualizados desde Supabase con éxito!");
+                }
+            } catch (err) {
+                alert("Error al bajar datos de Supabase: " + (err.message || "Comprueba tu conexión a internet o los datos de acceso"));
             }
         }
 
@@ -1044,7 +1059,10 @@
             if (spUrl && spKey) {
                 document.getElementById('supabase-url').value = spUrl;
                 document.getElementById('supabase-key').value = spKey;
-                saveSupabaseConfig();
+                try {
+                    supabaseClient = window.supabase.createClient(spUrl, spKey);
+                    document.getElementById('dot-supabase').classList.add('connected');
+                } catch(e) {}
             }
 
             const ghToken = localStorage.getItem('marquicos_gh_token');
